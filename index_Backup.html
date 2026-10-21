@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CATFISH BIORESOURCE | Kasetsart University</title>
+  <meta name="description" content="CATFISH BIORESOURCE — an academic information website associated with Kasetsart University.">
+  <meta name="theme-color" content="#123d35">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #123d35;
+      --green-light: #e8f1eb;
+      --accent: #b7d7a8;
+      --ink: #1c2b28;
+      --muted: #65736d;
+      --paper: #f8faf7;
+      --white: #ffffff;
+      --line: #e1e8e1;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Prompt", sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      background: var(--green);
+      color: white;
+      font-size: 12px;
+      padding: 8px 0;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 43px;
+      height: 43px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: var(--green);
+      color: white;
+      font-size: 19px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      line-height: 1.3;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 21px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: #467b57; }
+
+    .lang-btn {
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: white;
+      color: var(--green);
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .hero {
+      background:
+        radial-gradient(ellipse at 85% 15%, #376a50 0, transparent 40%),
+        linear-gradient(120deg, #103b32, #1d5141);
+      color: white;
+      padding: 100px 0 92px;
+      overflow: hidden;
+    }
+
+    .hero-content { max-width: 760px; }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 1.12;
+      letter-spacing: -.045em;
+      margin: 0 0 24px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 640px;
+      color: #e0ebe3;
+      font-size: 16px;
+      margin: 0 0 30px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 11px 18px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .btn-light { background: white; color: var(--green); }
+    .btn-outline { border-color: #7f9d8c; color: white; }
+
+    section { padding: 76px 0; }
+
+    .section-head { max-width: 690px; margin-bottom: 32px; }
+
+    .kicker {
+      color: #4e795b;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(27px, 4vw, 39px);
+      line-height: 1.25;
+      letter-spacing: -.035em;
+      margin: 9px 0 14px;
+    }
+
+    .section-head p, .body-copy {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 25px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      min-height: 210px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px #163e3010;
+    }
+
+    .card-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      background: var(--green-light);
+      border-radius: 12px;
+      color: var(--green);
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 { font-size: 17px; margin: 0 0 10px; }
+    .card p { color: var(--muted); font-size: 13px; margin: 0; }
+
+    .about { background: white; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 56px;
+    }
+
+    .notice {
+      border: 1px solid #d9e6d9;
+      border-left: 4px solid #54845f;
+      background: #f4f8f2;
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #496052;
+    }
+
+    .contact-panel {
+      background: var(--green);
+      color: white;
+      padding: 35px;
+      border-radius: 18px;
+    }
+
+    .contact-panel p { color: #dce8df; font-size: 14px; }
+
+    .contact-panel a {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    footer {
+      background: #0c2b25;
+      color: white;
+      padding: 28px 0;
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 800px) {
+      .nav { padding: 13px 0; flex-wrap: wrap; }
+      .nav-links { order: 3; width: 100%; gap: 16px; flex-wrap: wrap; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 25px; }
+      .hero { padding: 72px 0; }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .cards { grid-template-columns: 1fr; }
+      section { padding: 55px 0; }
+      .hero h1 { font-size: 39px; }
+      .brand-sub { font-size: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span data-en="Academic Research Website"
+            data-th="เว็บไซต์ข้อมูลวิชาการและงานวิจัย">
+        Academic Research Website
+      </span>
+      <span>Kasetsart University</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="CATFISH BIORESOURCE Home">
+        <div class="brand-mark">CB</div>
+        <div>
+          <div class="brand-name">CATFISH BIORESOURCE</div>
+          <div class="brand-sub"
+               data-en="Academic Information Website"
+               data-th="เว็บไซต์ข้อมูลวิชาการ">
+            Academic Information Website
+          </div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home" data-en="Home" data-th="หน้าหลัก">Home</a>
+        <a href="#about" data-en="About" data-th="เกี่ยวกับ">About</a>
+        <a href="#research" data-en="Research" data-th="งานวิจัย">Research</a>
+        <a href="#resources" data-en="Resources" data-th="คลังข้อมูล">Resources</a>
+        <a href="#contact" data-en="Contact" data-th="ติดต่อ">Contact</a>
+      </nav>
+
+      <button class="lang-btn" id="languageToggle"
+              type="button" aria-label="Switch language">
+        ภาษาไทย
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <span class="eyebrow"
+                data-en="Science · Biodiversity · Research"
+                data-th="วิทยาศาสตร์ · ความหลากหลายทางชีวภาพ · งานวิจัย">
+            Science · Biodiversity · Research
+          </span>
+
+          <h1>CATFISH<br>BIORESOURCE</h1>
+
+          <p data-en="An academic information platform for catfish bioresources. Explore project information, research topics, and scientific resources through this developing website."
+             data-th="เว็บไซต์ข้อมูลวิชาการด้านทรัพยากรชีวภาพปลาดุก สำหรับรวบรวมข้อมูลโครงการ หัวข้อการศึกษา และแหล่งข้อมูลทางวิทยาศาสตร์ โดยเว็บไซต์นี้อยู่ระหว่างการพัฒนา">
+            An academic information platform for catfish bioresources. Explore project information, research topics, and scientific resources through this developing website.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-light" href="#about"
+               data-en="Explore the Project →"
+               data-th="รู้จักโครงการ →">
+              Explore the Project →
+            </a>
+            <a class="btn btn-outline"
+               href="https://sites.google.com/ku.th/catfishbioresource-th"
+               target="_blank" rel="noopener noreferrer"
+               data-en="Visit Current Website ↗"
+               data-th="เว็บไซต์เดิม ↗">
+              Visit Current Website ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div>
+          <span class="kicker"
+                data-en="About the Website"
+                data-th="เกี่ยวกับเว็บไซต์">
+            About the Website
+          </span>
+          <h2 data-en="Knowledge for Catfish Bioresources"
+              data-th="องค์ความรู้ด้านทรัพยากรชีวภาพปลาดุก">
+            Knowledge for Catfish Bioresources
+          </h2>
+          <p class="body-copy"
+             data-en="This website is being developed to organize academic information and resources related to CATFISH BIORESOURCE. Verified project descriptions and source materials will be added as they are reviewed."
+             data-th="เว็บไซต์นี้อยู่ระหว่างการพัฒนาเพื่อจัดระบบข้อมูลวิชาการและแหล่งข้อมูลที่เกี่ยวข้องกับ CATFISH BIORESOURCE โดยจะเพิ่มเติมรายละเอียดโครงการและเอกสารอ้างอิงหลังจากตรวจสอบข้อมูลแล้ว">
+            This website is being developed to organize academic information and resources related to CATFISH BIORESOURCE. Verified project descriptions and source materials will be added as they are reviewed.
+          </p>
+        </div>
+
+        <div class="notice">
+          <strong data-en="Content verification"
+                  data-th="การตรวจสอบเนื้อหา">
+            Content verification
+          </strong>
+          <p data-en="This is the initial website version. Detailed research findings, statistics, publications, and project claims will be included only after verification against authoritative sources."
+             data-th="นี่คือเว็บไซต์เวอร์ชันเริ่มต้น ข้อมูลผลการวิจัย สถิติ รายการผลงานตีพิมพ์ และรายละเอียดโครงการจะเพิ่มเมื่อมีแหล่งข้อมูลที่เชื่อถือได้ยืนยันแล้วเท่านั้น">
+            This is the initial website version. Detailed research findings, statistics, publications, and project claims will be included only after verification against authoritative sources.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker"
+                data-en="Research & Knowledge"
+                data-th="งานวิจัยและองค์ความรู้">
+            Research & Knowledge
+          </span>
+          <h2 data-en="Explore the Knowledge Areas"
+              data-th="สำรวจหมวดหมู่องค์ความรู้">
+            Explore the Knowledge Areas
+          </h2>
+          <p data-en="A framework for organizing verified scientific content as materials are transferred from the existing website."
+             data-th="โครงสร้างเบื้องต้นสำหรับจัดหมวดหมู่เนื้อหาทางวิทยาศาสตร์ที่ผ่านการตรวจสอบและย้ายมาจากเว็บไซต์เดิม">
+            A framework for organizing verified scientific content as materials are transferred from the existing website.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">◈</div>
+            <h3 data-en="Bioresources"
+                data-th="ทรัพยากรชีวภาพ">
+              Bioresources
+            </h3>
+            <p data-en="Information about biological resources documented by the project."
+               data-th="ข้อมูลเกี่ยวกับทรัพยากรชีวภาพที่มีเอกสารของโครงการรองรับ">
+              Information about biological resources documented by the project.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">⌘</div>
+            <h3 data-en="Research & Publications"
+                data-th="งานวิจัยและผลงานตีพิมพ์">
+              Research & Publications
+            </h3>
+            <p data-en="Research materials and publications will be listed after bibliographic verification."
+               data-th="รวบรวมเอกสารงานวิจัยและผลงานตีพิมพ์หลังตรวจสอบข้อมูลบรรณานุกรม">
+              Research materials and publications will be listed after bibliographic verification.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">▤</div>
+            <h3 data-en="Scientific Resources"
+                data-th="แหล่งข้อมูลทางวิทยาศาสตร์">
+              Scientific Resources
+            </h3>
+            <p data-en="A planned collection of educational materials, documents, and verified links."
+               data-th="พื้นที่รวบรวมสื่อความรู้ เอกสาร และลิงก์ที่ผ่านการตรวจสอบ">
+              A planned collection of educational materials, documents, and verified links.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="resources">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker"
+                data-en="Knowledge Library"
+                data-th="คลังองค์ความรู้">
+            Knowledge Library
+          </span>
+          <h2 data-en="Resources & Materials"
+              data-th="แหล่งข้อมูลและสื่อเผยแพร่">
+            Resources & Materials
+          </h2>
+          <p data-en="The existing website remains available while its content is reviewed and transferred."
+             data-th="เว็บไซต์เดิมยังคงเปิดให้เข้าชมระหว่างการตรวจสอบและย้ายเนื้อหา">
+            The existing website remains available while its content is reviewed and transferred.
+          </p>
+          <div class="actions">
+            <a class="btn btn-light"
+               style="background:var(--green);color:white"
+               href="https://sites.google.com/ku.th/catfishbioresource-th"
+               target="_blank" rel="noopener noreferrer"
+               data-en="Open Existing Resource Library ↗"
+               data-th="เปิดคลังข้อมูลเว็บไซต์เดิม ↗">
+              Open Existing Resource Library ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <span class="eyebrow"
+                data-en="Contact & Affiliation"
+                data-th="หน่วยงานและการติดต่อ">
+            Contact & Affiliation
+          </span>
+          <h2 data-en="CATFISH BIORESOURCE"
+              data-th="CATFISH BIORESOURCE">
+            CATFISH BIORESOURCE
+          </h2>
+          <p data-en="Kasetsart University, Thailand"
+             data-th="มหาวิทยาลัยเกษตรศาสตร์ ประเทศไทย">
+            Kasetsart University, Thailand
+          </p>
+          <p data-en="For current project information, please consult the existing website."
+             data-th="สำหรับข้อมูลโครงการในปัจจุบัน โปรดตรวจสอบจากเว็บไซต์เดิม">
+            For current project information, please consult the existing website.
+          </p>
+          <a href="https://sites.google.com/ku.th/catfishbioresource-th"
+             target="_blank" rel="noopener noreferrer"
+             data-en="Current project website ↗"
+             data-th="เว็บไซต์โครงการปัจจุบัน ↗">
+            Current project website ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> CATFISH BIORESOURCE</span>
+      <span>Academic Website · Kasetsart University</span>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById("languageToggle");
+
+    function setLanguage(language) {
+      document.documentElement.lang = language;
+
+      document.querySelectorAll("[data-en][data-th]").forEach(element => {
+        element.textContent = element.dataset[language];
+      });
+
+      toggle.textContent = language === "en" ? "ภาษาไทย" : "English";
+      toggle.setAttribute(
+        "aria-label",
+        language === "en" ? "Switch to Thai" : "Switch to English"
+      );
+
+      document.title = language === "en"
+        ? "CATFISH BIORESOURCE | Kasetsart University"
+        : "CATFISH BIORESOURCE | มหาวิทยาลัยเกษตรศาสตร์";
+    }
+
+    toggle.addEventListener("click", () => {
+      setLanguage(document.documentElement.lang === "en" ? "th" : "en");
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    setLanguage("en");
+  </script>
+</body>
+</html>
