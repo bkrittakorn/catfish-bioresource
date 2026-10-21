@@ -83,17 +83,12 @@
       min-width: 0;
     }
 
-    .brand-mark {
-      width: 43px;
-      height: 43px;
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
-      background: var(--green);
-      color: white;
-      font-size: 19px;
-      font-weight: 800;
-      flex-shrink: 0;
+    .brand-mark-img {
+      width: 43px;          /* ความกว้างของโลโก้ */
+      height: 43px;         /* ความสูงของโลโก้ */
+      object-fit: contain;  /* สเกลรูปให้ได้สัดส่วน ไม่เบี้ยว */
+      border-radius: 8px;   /* ทำมุมโค้งมน (ถ้าโลโก้เป็นสี่เหลี่ยมแล้วอยากให้ตัดขอบมน) */
+      flex-shrink: 0;       /* ป้องกันโลโก้โดนบีบขนาด */
     }
 
     .brand-name {
@@ -338,7 +333,7 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#home" aria-label="CATFISH BIORESOURCE Home">
-        <div class="brand-mark">CB</div>
+        <img src="images/Catfish Bioresource Logo.png" alt="CATFISH BIORESOURCE Logo" class="brand-mark-img">
         <div>
           <div class="brand-name">CATFISH BIORESOURCE</div>
           <div class="brand-sub"
