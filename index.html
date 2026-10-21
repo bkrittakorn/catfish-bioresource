@@ -6,7 +6,7 @@
 
   <title>CATFISH BIORESOURCE | Kasetsart University</title>
   <meta name="description" content="CATFISH BIORESOURCE — an academic information website associated with Kasetsart University.">
-  <meta name="theme-color" content="0b5394">
+  <meta name="theme-color" content="#123d35">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,48 +129,23 @@
       font-size: 12px;
     }
 
-  .hero {
-    background: url('images/bg.png') center/cover no-repeat;
-    color: #123d35;
-    padding: 100px 0 92px;
-    overflow: hidden;
-  }
-
-  .hero p {
-    max-width: 640px;
-    color: #334155;
-    font-size: 16px;
-    margin: 0 0 30px;
-  }
-
-  .hero .btn-light {
-    background: #123d35;
-    color: #ffffff;
-  }
-
-  .hero .btn-light:hover {
-    background: #1d5141;
-  }
-
-  .hero .btn-outline {
-    border-color: #123d35;
-    color: #123d35;
-    background: rgba(255, 255, 255, 0.6);
-  }
-
-  .hero .btn-outline:hover {
-    background: rgba(255, 255, 255, 0.9);
-  }
+    /* Hero Section ที่อัปเดตภาพพื้นหลัง bk.png */
+    .hero {
+      background: url('images/bk.png') center/cover no-repeat;
+      color: #123d35;
+      padding: 100px 0 92px;
+      overflow: hidden;
+    }
 
     .hero-content { max-width: 760px; }
 
-    .eyebrow {
+    .hero .eyebrow {
       display: inline-block;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: .16em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: #26604c;
       margin-bottom: 20px;
     }
 
@@ -180,11 +155,12 @@
       letter-spacing: -.045em;
       margin: 0 0 24px;
       font-weight: 800;
+      color: #123d35;
     }
 
     .hero p {
       max-width: 640px;
-      color: #e0ebe3;
+      color: #334155;
       font-size: 16px;
       margin: 0 0 30px;
     }
@@ -207,8 +183,23 @@
       border: 1px solid transparent;
     }
 
-    .btn-light { background: white; color: var(--green); }
-    .btn-outline { border-color: #7f9d8c; color: white; }
+    /* ปรับแต่งปุ่มให้เข้ากับภาพพื้นหลังสว่าง */
+    .hero .btn-light { 
+      background: #123d35; 
+      color: white; 
+    }
+    .hero .btn-light:hover {
+      background: #1d5141;
+    }
+
+    .hero .btn-outline { 
+      border-color: #123d35; 
+      color: #123d35; 
+      background: rgba(255, 255, 255, 0.7);
+    }
+    .hero .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.95);
+    }
 
     section { padding: 76px 0; }
 
@@ -597,4 +588,3 @@
   </script>
 </body>
 </html>
-
