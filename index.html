@@ -180,15 +180,19 @@
       border: 1px solid transparent;
     }
 
-    /* ปรับแต่งปุ่มให้เข้ากับภาพพื้นหลังสว่าง */
+    /* ปรับแต่งปุ่ม "รู้จักโครงการ" ให้เข้ากับภาพพื้นหลังสว่าง */
     .hero .btn-light { 
       background: #4876a3; 
       color: white; 
+      transition: transform .2s, box-shadow .2s, background-color .2s; /* เพิ่ม transition ให้เอฟเฟกต์นุ่มนวล */
     }
+    
     .hero .btn-light:hover {
       background: #0b5394;
+      transform: translateY(-3px);                /* ลอยขึ้น 3px เท่ากับส่วนการ์ดงานวิจัย */
+      box-shadow: 0 12px 30px rgba(22, 62, 48, 0.15); /* เพิ่มเงาด้าหลังแบบนุ่มนวล */
     }
-
+    
     .hero .btn-outline { 
       border-color: #4876a3; 
       color: #4876a3; 
