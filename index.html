@@ -291,16 +291,23 @@
       margin-bottom: 40px;
     }
 
+    /* ปรับสีหัวข้อคอลัมน์ใน Footer เป็นสี #4876a3 */
     .footer-col h3, 
     .footer-col h4 {
       font-size: 15px;
       font-weight: 700;
-      color: #0f172a;
+      color: #4876a3; /* ✏️ เปลี่ยนเป็นสีฟ้า #4876a3 */
       margin: 0 0 12px 0;
     }
 
+    /* กรณีหัวข้อเป็นลิงก์ (เช่น "หน้าหลัก") ให้ใช้สีเดียวกันด้วย */
     .footer-col h4 a {
-      color: #0369a1; /* สีลิงก์หัวข้อ */
+      color: #4876a3; /* ✏️ กำหนดสีลิงก์หัวข้อให้เป็น #4876a3 */
+      text-decoration: none;
+    }
+
+    .footer-col h4 a:hover {
+      text-decoration: underline; /* เพิ่มขีดเส้นใต้เมื่อเอาเมาส์ชี้ */
     }
 
     .footer-col p {
