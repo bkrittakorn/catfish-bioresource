@@ -38,10 +38,16 @@
     }
 
     .body-copy {
-      white-space: pre-line; /* เพื่อให้เว้นบรรทัดตามที่พิมพ์ใน HTML ได้สวยงาม */
-      line-height: 1.7;
+      text-align: justify;       /* จัดข้อความกระจายเต็มความกว้างขวา-ซ้าย */
+      white-space: pre-line;     /* เว้นบรรทัดตามที่พิมพ์ใน HTML */
+      line-height: 1.8;          /* ระยะห่างระหว่างบรรทัดอ่านสบายตา */
+      color: var(--ink);
     }
-    
+
+    .body-copy i, .body-copy em {
+      font-style: italic;        /* รองรับชื่อวิทยาศาสตร์ตัวเอียง */
+    }
+     
     a { color: inherit; text-decoration: none; }
 
     button { font: inherit; cursor: pointer; }
@@ -95,7 +101,7 @@
       width: 50px;          /* ความกว้างของโลโก้ */
       height: 50px;         /* ความสูงของโลโก้ */
       object-fit: contain;  /* สเกลรูปให้ได้สัดส่วน ไม่เบี้ยว */
-      border-radius: 8px;   /* ทำมุมโค้งมน (ถ้าโลโก้เป็นสี่เหลี่ยมแล้วอยากให้ตัดขอบมน) */
+      border-radius: 8px;   /* ทำมุมโค้งมน */
       flex-shrink: 0;       /* ป้องกันโลโก้โดนบีบขนาด */
     }
 
@@ -145,8 +151,8 @@
       display: inline-block;
       font-size: 16px;
       font-weight: 700;
-      letter-spacing: normal; /* ปรับระยะห่างตัวอักษรเป็นปกติ */
-      text-transform: none;   /* แสดงผลตามต้นฉบับ ไม่บังคับเป็นตัวพิมพ์ใหญ่ทั้งหมด */
+      letter-spacing: normal;
+      text-transform: none;
       color: #d9d9d9;
       margin-bottom: 20px;
     }
@@ -185,26 +191,29 @@
       border: 1px solid transparent;
     }
 
-    /* ปรับแต่งปุ่ม "รู้จักโครงการ" ให้เข้ากับภาพพื้นหลังสว่าง */
+    /* ปุ่ม "รู้จักโครงการ" มีเอฟเฟกต์ลอยตัวและเงาเหมือนการ์ดงานวิจัย */
     .hero .btn-light { 
       background: #4876a3; 
       color: white; 
-      transition: transform .2s, box-shadow .2s, background-color .2s; /* เพิ่ม transition ให้เอฟเฟกต์นุ่มนวล */
+      transition: transform .2s, box-shadow .2s, background-color .2s;
     }
     
     .hero .btn-light:hover {
       background: #0b5394;
-      transform: translateY(-3px);                /* ลอยขึ้น 3px เท่ากับส่วนการ์ดงานวิจัย */
-      box-shadow: 0 12px 30px rgba(22, 62, 48, 0.15); /* เพิ่มเงาด้านหลัง */
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(22, 62, 48, 0.15);
     }
     
     .hero .btn-outline { 
       border-color: #4876a3; 
       color: #4876a3; 
       background: rgba(255, 255, 255, 0.7);
+      transition: transform .2s, box-shadow .2s, background-color .2s;
     }
     .hero .btn-outline:hover {
       background: rgba(255, 255, 255, 0.95);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(22, 62, 48, 0.15);
     }
 
     section { padding: 76px 0; }
@@ -215,8 +224,8 @@
       color: #000000;
       font-size: 15px;
       font-weight: 800;
-      letter-spacing: normal; /* ปรับระยะห่างตัวอักษรเป็นปกติ */
-      text-transform: none;   /* แสดงผลตัวอักษรตามต้นฉบับ ไม่บังคับเป็นตัวพิมพ์ใหญ่ทั้งหมด */
+      letter-spacing: normal;
+      text-transform: none;
     }
 
     h2 {
@@ -226,7 +235,7 @@
       margin: 9px 0 14px;
     }
 
-    .section-head p, .body-copy {
+    .section-head p {
       color: var(--muted);
       font-size: 15px;
     }
@@ -256,9 +265,9 @@
       height: 43px;
       display: grid;
       place-items: center;
-      background: var(--green-light);
+      background: var(--blue-light);
       border-radius: 12px;
-      color: var(--green);
+      color: var(--blue);
       font-size: 20px;
       margin-bottom: 20px;
     }
@@ -270,7 +279,7 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       align-items: start;
       gap: 56px;
     }
@@ -285,28 +294,26 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr; /* แบ่งเป็น 4 คอลัมน์ */
+      grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 30px;
       margin-bottom: 40px;
     }
 
-    /* ปรับสีหัวข้อคอลัมน์ใน Footer เป็นสี #4876a3 */
     .footer-col h3, 
     .footer-col h4 {
       font-size: 15px;
       font-weight: 700;
-      color: #4876a3; /* เปลี่ยนเป็นสีฟ้า #4876a3 */
+      color: #4876a3;
       margin: 0 0 12px 0;
     }
 
-    /* กรณีหัวข้อเป็นลิงก์ (เช่น "หน้าหลัก") ให้ใช้สีเดียวกันด้วย */
     .footer-col h4 a {
-      color: #4876a3; /* กำหนดสีลิงก์หัวข้อให้เป็น #4876a3 */
+      color: #4876a3;
       text-decoration: none;
     }
 
     .footer-col h4 a:hover {
-      text-decoration: underline; /* เพิ่มขีดเส้นใต้เมื่อเอาเมาส์ชี้ */
+      text-decoration: underline;
     }
 
     .footer-col p {
@@ -334,7 +341,6 @@
       color: #4876a3;
     }
 
-    /* ไอคอน Social Media */
     .social-icons {
       display: flex;
       gap: 10px;
@@ -361,7 +367,6 @@
     }
     .social-icon.tiktok { background-color: #000000; }
 
-    /* เส้นแบ่งและ Copyright ด้านล่าง */
     .footer-bottom {
       border-top: 1px solid #c4c4c4;
       padding-top: 20px;
@@ -378,7 +383,6 @@
       color: white;
     }
 
-    /* Responsive สำหรับหน้าจอโทรศัพท์ */
     @media (max-width: 768px) {
       .footer-grid {
         grid-template-columns: 1fr;
@@ -488,31 +492,43 @@
             About the Website
           </span>
           <h2 data-en="Knowledge for Catfish Bioresources"
-              data-th="องค์ความรู้ด้านทรัพยากรชีวภาพปลาดุ">
+              data-th="องค์ความรู้ด้านทรัพยากรชีวภาพปลาดุก">
             Knowledge for Catfish Bioresources
           </h2>
           <p class="body-copy"
              data-en="Catfish of the genus Clarias represent a vital freshwater bioresource in Thailand, playing key roles in biodiversity, food security, aquaculture economics, and the utilization of genetic resources. Particularly significant are the broadhead catfish (Clarias macrocephalus), a species native to Thailand, and the African sharptooth catfish (Clarias gariepinus), an introduced species widely farmed commercially due to its high growth rate and environmental adaptability. Furthermore, hybrid catfish are extensively produced to enhance efficiency in aquaculture systems.
-                      However, environmental changes, habitat loss, the introduction of non-native species, and the risk of genetic introgression between native and non-native catfish may impact genetic diversity and the long-term integrity of biological resources. Simultaneously, genomic data and genetic resource documentation for catfish in Thailand require further research and development to support conservation and sustainable utilization.
-                      The CATFISH BIORESOURCE project focuses on studying, compiling, and advancing knowledge on the biodiversity and genetics of catfish. By integrating genomics, population genetics, comparative genomics, and bioinformatics, the project investigates genetic diversity, population structure, evolutionary relationships, genetic traits related to growth and sex determination, as well as the development of molecular tools for species identification and genetic contamination screening.
-                      Additionally, the project emphasizes the development of a catfish bioresource and genomic database to serve as a scientific repository and dissemination platform for researchers, students, aquaculture operators, and relevant agencies. The data can be applied toward native catfish conservation, monitoring the impacts of non-native species, selective breeding, and enhancing sustainable production efficiency.
-                      These efforts establish a crucial foundation connecting biodiversity conservation with sustainable genetic resource utilization, supporting the bioeconomy and the long-term security of aquatic resources in Thailand."
+
+However, environmental changes, habitat loss, the introduction of non-native species, and the risk of genetic introgression between native and non-native catfish may impact genetic diversity and the long-term integrity of biological resources. Simultaneously, genomic data and genetic resource documentation for catfish in Thailand require further research and development to support conservation and sustainable utilization.
+
+The CATFISH BIORESOURCE project focuses on studying, compiling, and advancing knowledge on the biodiversity and genetics of catfish. By integrating genomics, population genetics, comparative genomics, and bioinformatics, the project investigates genetic diversity, population structure, evolutionary relationships, genetic traits related to growth and sex determination, as well as the development of molecular tools for species identification and genetic contamination screening.
+
+Additionally, the project emphasizes the development of a catfish bioresource and genomic database to serve as a scientific repository and dissemination platform for researchers, students, aquaculture operators, and relevant agencies. The data can be applied toward native catfish conservation, monitoring the impacts of non-native species, selective breeding, and enhancing sustainable production efficiency.
+
+These efforts establish a crucial foundation connecting biodiversity conservation with sustainable genetic resource utilization, supporting the bioeconomy and the long-term security of aquatic resources in Thailand."
              data-th="ปลาดุกสกุล Clarias เป็นทรัพยากรชีวภาพสัตว์น้ำจืดที่มีความสำคัญต่อประเทศไทย ทั้งในด้านความหลากหลายทางชีวภาพ ความมั่นคงทางอาหาร เศรษฐกิจการเพาะเลี้ยงสัตว์น้ำ และการใช้ประโยชน์จากทรัพยากรพันธุกรรม โดยเฉพาะปลาดุกอุย (Clarias macrocephalus) ซึ่งเป็นปลาพื้นเมืองของประเทศไทย และปลาดุกยักษ์ (Clarias gariepinus) ซึ่งเป็นปลาต่างถิ่นที่ได้รับความนิยมในการเพาะเลี้ยงเชิงพาณิชย์ เนื่องจากมีอัตราการเจริญเติบโตสูงและสามารถปรับตัวต่อสภาพแวดล้อมได้ดี นอกจากนี้ ยังมีการผลิตปลาดุกลูกผสมเพื่อเพิ่มประสิทธิภาพการผลิตในระบบเพาะเลี้ยงสัตว์น้ำ
-                      อย่างไรก็ตาม การเปลี่ยนแปลงของสภาพแวดล้อม การสูญเสียถิ่นอาศัย การนำชนิดต่างถิ่นเข้าสู่ระบบนิเวศ และความเสี่ยงจากการปะปนทางพันธุกรรมระหว่างปลาดุกพื้นเมืองกับปลาดุกต่างถิ่น อาจส่งผลกระทบต่อความหลากหลายทางพันธุกรรมและความสมบูรณ์ของทรัพยากรชีวภาพในระยะยาว ขณะเดียวกัน ข้อมูลระดับจีโนมและทรัพยากรพันธุกรรมของปลาดุกในประเทศไทยยังจำเป็นต้องได้รับการศึกษาและพัฒนาเพิ่มเติม เพื่อสนับสนุนการอนุรักษ์และการใช้ประโยชน์อย่างยั่งยืน
-                      โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก จึงมุ่งเน้นการศึกษา รวบรวม และพัฒนาองค์ความรู้ด้านความหลากหลายทางชีวภาพและพันธุกรรมของปลาดุก โดยบูรณาการเทคโนโลยีจีโนมิกส์ (Genomics) พันธุศาสตร์ประชากร (Population Genetics) การเปรียบเทียบจีโนมิกส์ (Comparative Genomics) และชีวสารสนเทศ (Bioinformatics) เพื่อศึกษาความหลากหลายทางพันธุกรรม โครงสร้างประชากร ความสัมพันธ์เชิงวิวัฒนาการ ลักษณะทางพันธุกรรมที่เกี่ยวข้องกับการเจริญเติบโตและการกำหนดเพศ ตลอดจนการพัฒนาเครื่องมือระดับโมเลกุลสำหรับการจำแนกชนิดและตรวจสอบการปะปนทางพันธุกรรม
-                      นอกจากนี้ โครงการยังให้ความสำคัญกับการพัฒนาฐานข้อมูลทรัพยากรชีวภาพและจีโนมของปลาดุก เพื่อเป็นแหล่งรวบรวมและเผยแพร่องค์ความรู้ทางวิทยาศาสตร์สำหรับนักวิจัย นักศึกษา ผู้ประกอบการเพาะเลี้ยงสัตว์น้ำ และหน่วยงานที่เกี่ยวข้อง โดยสามารถนำข้อมูลไปประยุกต์ใช้ในการอนุรักษ์ปลาดุกพื้นเมือง การเฝ้าระวังผลกระทบจากปลาต่างถิ่น การปรับปรุงพันธุ์สัตว์น้ำ และการเพิ่มประสิทธิภาพการผลิตอย่างยั่งยืน
-                      การดำเนินงานดังกล่าวจะช่วยสร้างรากฐานสำคัญในการเชื่อมโยง การอนุรักษ์ความหลากหลายทางชีวภาพ (Biodiversity Conservation) เข้ากับ การใช้ประโยชน์ทรัพยากรพันธุกรรมอย่างยั่งยืน (Sustainable Genetic Resource Utilization) เพื่อสนับสนุนการพัฒนาเศรษฐกิจฐานชีวภาพ (Bioeconomy) และความมั่นคงของทรัพยากรสัตว์น้ำในประเทศไทย">
-              Catfish of the genus <i>Clarias</i> represent a vital freshwater bioresource in Thailand, playing key roles in biodiversity, food security, aquaculture economics, and the utilization of genetic resources. Particularly significant are the broadhead catfish (<i>Clarias macrocephalus</i>), a species native to Thailand, and the African sharptooth catfish (<i>Clarias gariepinus</i>), an introduced species widely farmed commercially due to its high growth rate and environmental adaptability. Furthermore, hybrid catfish are extensively produced to enhance efficiency in aquaculture systems.
-              However, environmental changes, habitat loss, the introduction of non-native species, and the risk of genetic introgression between native and non-native catfish may impact genetic diversity and the long-term integrity of biological resources. Simultaneously, genomic data and genetic resource documentation for catfish in Thailand require further research and development to support conservation and sustainable utilization.
-              The CATFISH BIORESOURCE project focuses on studying, compiling, and advancing knowledge on the biodiversity and genetics of catfish. By integrating genomics, population genetics, comparative genomics, and bioinformatics, the project investigates genetic diversity, population structure, evolutionary relationships, genetic traits related to growth and sex determination, as well as the development of molecular tools for species identification and genetic contamination screening.
-              Additionally, the project emphasizes the development of a catfish bioresource and genomic database to serve as a scientific repository and dissemination platform for researchers, students, aquaculture operators, and relevant agencies. The data can be applied toward native catfish conservation, monitoring the impacts of non-native species, selective breeding, and enhancing sustainable production efficiency.
-              These efforts establish a crucial foundation connecting biodiversity conservation with sustainable genetic resource utilization, supporting the bioeconomy and the long-term security of aquatic resources in Thailand.
+
+อย่างไรก็ตาม การเปลี่ยนแปลงของสภาพแวดล้อม การสูญเสียถิ่นอาศัย การนำชนิดต่างถิ่นเข้าสู่ระบบนิเวศ และความเสี่ยงจากการปะปนทางพันธุกรรมระหว่างปลาดุกพื้นเมืองกับปลาดุกต่างถิ่น อาจส่งผลกระทบต่อความหลากหลายทางพันธุกรรมและความสมบูรณ์ของทรัพยากรชีวภาพในระยะยาว ขณะเดียวกัน ข้อมูลระดับจีโนมและทรัพยากรพันธุกรรมของปลาดุกในประเทศไทยยังจำเป็นต้องได้รับการศึกษาและพัฒนาเพิ่มเติม เพื่อสนับสนุนการอนุรักษ์และการใช้ประโยชน์อย่างยั่งยืน
+
+โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก จึงมุ่งเน้นการศึกษา รวบรวม และพัฒนาองค์ความรู้ด้านความหลากหลายทางชีวภาพและพันธุกรรมของปลาดุก โดยบูรณาการเทคโนโลยีจีโนมิกส์ (Genomics) พันธุศาสตร์ประชากร (Population Genetics) การเปรียบเทียบจีโนมิกส์ (Comparative Genomics) และชีวสารสนเทศ (Bioinformatics) เพื่อศึกษาความหลากหลายทางพันธุกรรม โครงสร้างประชากร ความสัมพันธ์เชิงวิวัฒนาการ ลักษณะทางพันธุกรรมที่เกี่ยวข้องกับการเจริญเติบโตและการกำหนดเพศ ตลอดจนการพัฒนาเครื่องมือระดับโมเลกุลสำหรับการจำแนกชนิดและตรวจสอบการปะปนทางพันธุกรรม
+
+นอกจากนี้ โครงการยังให้ความสำคัญกับการพัฒนาฐานข้อมูลทรัพยากรชีวภาพและจีโนมของปลาดุก เพื่อเป็นแหล่งรวบรวมและเผยแพร่องค์ความรู้ทางวิทยาศาสตร์สำหรับนักวิจัย นักศึกษา ผู้ประกอบการเพาะเลี้ยงสัตว์น้ำ และหน่วยงานที่เกี่ยวข้อง โดยสามารถนำข้อมูลไปประยุกต์ใช้ในการอนุรักษ์ปลาดุกพื้นเมือง การเฝ้าระวังผลกระทบจากปลาต่างถิ่น การปรับปรุงพันธุ์สัตว์น้ำ และการเพิ่มประสิทธิภาพการผลิตอย่างยั่งยืน
+
+การดำเนินงานดังกล่าวจะช่วยสร้างรากฐานสำคัญในการเชื่อมโยง การอนุรักษ์ความหลากหลายทางชีวภาพ (Biodiversity Conservation) เข้ากับ การใช้ประโยชน์ทรัพยากรพันธุกรรมอย่างยั่งยืน (Sustainable Genetic Resource Utilization) เพื่อสนับสนุนการพัฒนาเศรษฐกิจฐานชีวภาพ (Bioeconomy) และความมั่นคงของทรัพยากรสัตว์น้ำในประเทศไทย">
+            Catfish of the genus <i>Clarias</i> represent a vital freshwater bioresource in Thailand, playing key roles in biodiversity, food security, aquaculture economics, and the utilization of genetic resources. Particularly significant are the broadhead catfish (<i>Clarias macrocephalus</i>), a species native to Thailand, and the African sharptooth catfish (<i>Clarias gariepinus</i>), an introduced species widely farmed commercially due to its high growth rate and environmental adaptability. Furthermore, hybrid catfish are extensively produced to enhance efficiency in aquaculture systems.
+
+            However, environmental changes, habitat loss, the introduction of non-native species, and the risk of genetic introgression between native and non-native catfish may impact genetic diversity and the long-term integrity of biological resources. Simultaneously, genomic data and genetic resource documentation for catfish in Thailand require further research and development to support conservation and sustainable utilization.
+
+            The CATFISH BIORESOURCE project focuses on studying, compiling, and advancing knowledge on the biodiversity and genetics of catfish. By integrating genomics, population genetics, comparative genomics, and bioinformatics, the project investigates genetic diversity, population structure, evolutionary relationships, genetic traits related to growth and sex determination, as well as the development of molecular tools for species identification and genetic contamination screening.
+
+            Additionally, the project emphasizes the development of a catfish bioresource and genomic database to serve as a scientific repository and dissemination platform for researchers, students, aquaculture operators, and relevant agencies. The data can be applied toward native catfish conservation, monitoring the impacts of non-native species, selective breeding, and enhancing sustainable production efficiency.
+
+            These efforts establish a crucial foundation connecting biodiversity conservation with sustainable genetic resource utilization, supporting the bioeconomy and the long-term security of aquatic resources in Thailand.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="research" style="background-color: #edf1fs;">
+    <section id="research">
       <div class="container">
         <div class="section-head">
           <span class="kicker"
@@ -588,7 +604,6 @@
           </p>
           <div class="actions">
             <a class="btn btn-light"
-               style="background:var(--green);color:white"
                href="https://sites.google.com/ku.th/catfishbioresource-th"
                target="_blank" rel="noopener noreferrer"
                data-en="Open Existing Resource Library ↗"
@@ -600,92 +615,89 @@
       </div>
     </section>
 
-<footer class="site-footer" id="contact">
-    <div class="container">
-      <div class="footer-grid">
-        
-        <!-- คอลัมน์ที่ 1: ชื่อองค์กร ที่อยู่ และโซเชียลมีเดีย -->
-        <div class="footer-col">
-          <h3 data-en="Catfish Bioresource" data-th="ทรัพยากรชีวภาพปลาดุก">ทรัพยากรชีวภาพปลาดุก</h3>
-          <p data-en="Animal Genomics and Bioresources Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</p>
-          <p data-en="Faculty of Science, Kasetsart University" data-th="คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์">คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
-          <p data-en="50 Ngamwongwan Rd, Lat Yao, Chatuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900">50 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900</p>
+    <footer class="site-footer" id="contact">
+      <div class="container">
+        <div class="footer-grid">
           
-          <!-- ปุ่ม Social Media (รวมลิงก์จริงทั้งหมด) -->
-          <div class="social-icons">
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/siamese-crocodile-project-1a2a143b4/?isSelfProfile=false" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="social-icon linkedin" 
-               title="LinkedIn">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
+          <!-- คอลัมน์ที่ 1: ชื่อองค์กร ที่อยู่ และโซเชียลมีเดีย -->
+          <div class="footer-col">
+            <h3 data-en="Catfish Bioresource" data-th="ทรัพยากรชีวภาพปลาดุก">ทรัพยากรชีวภาพปลาดุก</h3>
+            <p data-en="Animal Genomics and Bioresources Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</p>
+            <p data-en="Faculty of Science, Kasetsart University" data-th="คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์">คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
+            <p data-en="50 Ngamwongwan Rd, Lat Yao, Chatuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900">50 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900</p>
             
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/AGBResearchCenterKU" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="social-icon facebook" 
-               title="Facebook">
-              <i class="fa-brands fa-facebook-f"></i>
-            </a>
-            
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/siamesecroc" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="social-icon instagram" 
-               title="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            
-            <!-- TikTok -->
-            <a href="https://www.tiktok.com/@.siamesecroc" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="social-icon tiktok" 
-               title="TikTok">
-              <i class="fa-brands fa-tiktok"></i>
-            </a>
+            <!-- ปุ่ม Social Media -->
+            <div class="social-icons">
+              <a href="https://www.linkedin.com/in/siamese-crocodile-project-1a2a143b4/?isSelfProfile=false" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="social-icon linkedin" 
+                 title="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              
+              <a href="https://www.facebook.com/AGBResearchCenterKU" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="social-icon facebook" 
+                 title="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              
+              <a href="https://www.instagram.com/siamesecroc" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="social-icon instagram" 
+                 title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              
+              <a href="https://www.tiktok.com/@.siamesecroc" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="social-icon tiktok" 
+                 title="TikTok">
+                <i class="fa-brands fa-tiktok"></i>
+              </a>
+            </div>
           </div>
+
+          <!-- คอลัมน์ที่ 2: หน้าหลัก -->
+          <div class="footer-col">
+            <h4><a href="#home" data-en="Home" data-th="หน้าหลัก">หน้าหลัก</a></h4>
+            <ul class="footer-links">
+              <li><a href="#about" data-en="About" data-th="เกี่ยวกับ">เกี่ยวกับ</a></li>
+              <li><a href="#" data-en="News" data-th="ข่าวสาร">ข่าวสาร</a></li>
+              <li><a href="#" data-en="Activities" data-th="กิจกรรม">กิจกรรม</a></li>
+            </ul>
+          </div>
+
+          <!-- คอลัมน์ที่ 3: ทรัพยากร -->
+          <div class="footer-col">
+            <h4 data-en="Resources" data-th="ทรัพยากร">ทรัพยากร</h4>
+            <ul class="footer-links">
+              <li><a href="#" data-en="Articles" data-th="บทความวิชาการ">บทความวิชาการ</a></li>
+              <li><a href="#" data-en="Infographics" data-th="อินโฟกราฟิก">อินโฟกราฟิก</a></li>
+              <li><a href="#" data-en="Videos" data-th="วิดีโอ">วิดีโอ</a></li>
+              <li><a href="#" data-en="Brochures" data-th="โบร์ชัวร์">โบร์ชัวร์</a></li>
+            </ul>
+          </div>
+
+          <!-- คอลัมน์ที่ 4: ติดต่อ -->
+          <div class="footer-col">
+            <h4 data-en="Contact" data-th="ติดต่อ">ติดต่อ</h4>
+            <p><a href="mailto:agb.sci@ku.th" style="color: inherit;">agb.sci@ku.th</a></p>
+          </div>
+
         </div>
 
-        <!-- คอลัมน์ที่ 2: หน้าหลัก -->
-        <div class="footer-col">
-          <h4><a href="#home" data-en="Home" data-th="หน้าหลัก">หน้าหลัก</a></h4>
-          <ul class="footer-links">
-            <li><a href="#about" data-en="About" data-th="เกี่ยวกับ">เกี่ยวกับ</a></li>
-            <li><a href="#" data-en="News" data-th="ข่าวสาร">ข่าวสาร</a></li>
-            <li><a href="#" data-en="Activities" data-th="กิจกรรม">กิจกรรม</a></li>
-          </ul>
+        <!-- แถบ Copyright ด้านล่างสุด -->
+        <div class="footer-bottom">
+          <span><span id="year"></span> <span data-en="Catfish Bioresource · Kasetsart University · All Rights Reserved" data-th="ทรัพยากรชีวภาพปลาดุก · มหาวิทยาลัยเกษตรศาสตร์ · All Rights Reserved">ทรัพยากรชีวภาพปลาดุก · มหาวิทยาลัยเกษตรศาสตร์ · All Rights Reserved</span> - <a href="#" data-en="Privacy Policy" data-th="นโยบายความเป็นส่วนตัว">นโยบายความเป็นส่วนตัว</a></span>
         </div>
-
-        <!-- คอลัมน์ที่ 3: ทรัพยากร -->
-        <div class="footer-col">
-          <h4 data-en="Resources" data-th="ทรัพยากร">ทรัพยากร</h4>
-          <ul class="footer-links">
-            <li><a href="#" data-en="Articles" data-th="บทความวิชาการ">บทความวิชาการ</a></li>
-            <li><a href="#" data-en="Infographics" data-th="อินโฟกราฟิก">อินโฟกราฟิก</a></li>
-            <li><a href="#" data-en="Videos" data-th="วิดีโอ">วิดีโอ</a></li>
-            <li><a href="#" data-en="Brochures" data-th="โบร์ชัวร์">โบร์ชัวร์</a></li>
-          </ul>
-        </div>
-
-        <!-- คอลัมน์ที่ 4: ติดต่อ -->
-        <div class="footer-col">
-          <h4 data-en="Contact" data-th="ติดต่อ">ติดต่อ</h4>
-          <p><a href="mailto:agb.sci@ku.th" style="color: inherit;">agb.sci@ku.th</a></p>
-        </div>
-
       </div>
-
-      <!-- แถบ Copyright ด้านล่างสุด -->
-      <div class="footer-bottom">
-        <span><span id="year"></span> <span data-en="Catfish Bioresource · Kasetsart University · All Rights Reserved" data-th="ทรัพยากรชีวภาพปลาดุก · มหาวิทยาลัยเกษตรศาสตร์ · All Rights Reserved">ทรัพยากรชีวภาพปลาดุก · มหาวิทยาลัยเกษตรศาสตร์ · All Rights Reserved</span> - <a href="#" data-en="Privacy Policy" data-th="นโยบายความเป็นส่วนตัว">นโยบายความเป็นส่วนตัว</a></span>
-      </div>
-    </div>
-  </footer>
+    </footer>
+  </main>
 
   <script>
     const toggle = document.getElementById("languageToggle");
@@ -696,12 +708,12 @@
       document.querySelectorAll("[data-en][data-th]").forEach(element => {
         let text = element.dataset[language];
         
-        // แปลงชื่อวิทยาศาสตร์ให้เป็นตัวเอียงแบบอัตโนมัติเมื่อกดสลับภาษา
+        // แปลงชื่อวิทยาศาสตร์ให้เป็นตัวเอียงอัตโนมัติเมื่อเปลี่ยนภาษา
         text = text.replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
                    .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
                    .replace(/Clarias/g, "<i>Clarias</i>");
                    
-        element.innerHTML = text; // ใช้ innerHTML แทน textContent
+        element.innerHTML = text;
       });
 
       toggle.textContent = language === "en" ? "ภาษาไทย" : "English";
