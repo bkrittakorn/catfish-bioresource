@@ -8,9 +8,6 @@
   <meta name="description" content="CATFISH BIORESOURCE — an academic information website associated with Kasetsart University.">
   <meta name="theme-color" content="#123d35">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -25,7 +22,11 @@
       --line: #e2e8f0;          /* สีเส้นขอบ */
     }
 
-    * { box-sizing: border-box; }
+    /* ✏️ บังคับใช้ Arial และ Sans-serif ทั้งหมดทั้งภาษาไทยและอังกฤษ */
+    *, *::before, *::after { 
+      box-sizing: border-box; 
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+    }
 
     html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
@@ -33,7 +34,7 @@
       margin: 0;
       color: #4876a3;
       background: var(--paper);
-      font-family: Arial, sans-serif; /* เปลี่ยนมาใช้ฟอนต์ Arial ทั้งเว็บไซต์ */
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
       line-height: 1.7;
     }
 
@@ -43,7 +44,7 @@
       line-height: 1.8;          /* ระยะห่างบรรทัดอ่านสบายตา */
       color: var(--ink);
       word-break: break-word;    /* แก้ปัญหาคำภาษาไทยกระโดดลงบรรทัดใหม่ */
-      line-break: relaxed;       /* ช่วยจัดระเบียบการลงบรรทัดใหม่ของภาษาไทย */
+      line-break: relaxed;       /* จัดระเบียบการลงบรรทัดใหม่ของภาษาไทย */
     }
 
     .body-copy b, .body-copy strong {
