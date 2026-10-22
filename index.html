@@ -697,20 +697,26 @@
   <script>
     const toggle = document.getElementById("languageToggle");
 
-    function setLanguage(language) {
+function setLanguage(language) {
       document.documentElement.lang = language;
 
       document.querySelectorAll("[data-en][data-th]").forEach(element => {
         let text = element.dataset[language];
         
-        // 1. แปลงชื่อวิทยาศาสตร์ให้เป็นตัวหนา + ตัวเอียง (<b><i>...</i></b>)
-        text = text.replace(/Clarias macrocephalus/g, "<b><i>Clarias macrocephalus</i></b>")
-                   .replace(/Clarias gariepinus/g, "<b><i>Clarias gariepinus</i></b>")
-                   .replace(/Clarias/g, "<b><i>Clarias</i></b>");
-
-        // 2. เน้นคำสำคัญให้เป็นตัวหนาเพิ่มเติม (ตัวอย่าง)
-        text = text.replace(/ปลาดุกสกุล/g, "<b>ปลาดุกสกุล</b>")
-                   .replace(/Catfish of the genus/g, "<b>Catfish of the genus</b>");
+        // แปลงชื่อวิทยาศาสตร์และหัวข้อสำคัญเป็นตัวหนา/ตัวเอียงอัตโนมัติเมื่อกดสลับภาษา
+        if (language === "en") {
+          text = text.replace(/Catfish of the genus Clarias/g, "<b>Catfish of the genus <i>Clarias</i></b>")
+                     .replace(/The CATFISH BIORESOURCE Project/g, "<b>The CATFISH BIORESOURCE Project</b>")
+                     .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
+                     .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
+                     .replace(/Clarias/g, "<i>Clarias</i>");
+        } else {
+          text = text.replace(/ปลาดุกสกุล Clarias/g, "<b>ปลาดุกสกุล <i>Clarias</i></b>")
+                     .replace(/โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก/g, "<b>โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก</b>")
+                     .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
+                     .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
+                     .replace(/Clarias/g, "<i>Clarias</i>");
+        }
                    
         element.innerHTML = text;
       });
