@@ -8,6 +8,9 @@
   <meta name="description" content="CATFISH BIORESOURCE — an academic information website associated with Kasetsart University.">
   <meta name="theme-color" content="#123d35">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -22,10 +25,10 @@
       --line: #e2e8f0;          /* สีเส้นขอบ */
     }
 
-    /* ✏️ บังคับใช้ Arial และ Sans-serif ทั้งหมดทั้งภาษาไทยและอังกฤษ */
+    /* ✏️ ตั้งค่า font-family ให้ใช้ Arial นำหน้าสำหรับภาษาอังกฤษ และดึง Prompt มาแสดงผลภาษาไทย */
     *, *::before, *::after { 
       box-sizing: border-box; 
-      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+      font-family: Arial, "Prompt", sans-serif !important;
     }
 
     html { scroll-behavior: smooth; scroll-padding-top: 90px; }
@@ -34,7 +37,7 @@
       margin: 0;
       color: #4876a3;
       background: var(--paper);
-      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-family: Arial, "Prompt", sans-serif;
       line-height: 1.7;
     }
 
@@ -199,7 +202,6 @@
       border: 1px solid transparent;
     }
 
-    /* ปุ่ม "รู้จักโครงการ" มีเอฟเฟกต์ลอยตัวและเงาเหมือนการ์ดงานวิจัย */
     .hero .btn-light { 
       background: #4876a3; 
       color: white; 
@@ -615,14 +617,12 @@
       <div class="container">
         <div class="footer-grid">
           
-          <!-- คอลัมน์ที่ 1: ชื่อองค์กร ที่อยู่ และโซเชียลมีเดีย -->
           <div class="footer-col">
             <h3 data-en="Catfish Bioresource" data-th="ทรัพยากรชีวภาพปลาดุก">ทรัพยากรชีวภาพปลาดุก</h3>
             <p data-en="Animal Genomics and Bioresources Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</p>
             <p data-en="Faculty of Science, Kasetsart University" data-th="คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์">คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
             <p data-en="50 Ngamwongwan Rd, Lat Yao, Chatuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900">50 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900</p>
             
-            <!-- ปุ่ม Social Media -->
             <div class="social-icons">
               <a href="https://www.linkedin.com/in/siamese-crocodile-project-1a2a143b4/?isSelfProfile=false" 
                  target="_blank" 
@@ -658,7 +658,6 @@
             </div>
           </div>
 
-          <!-- คอลัมน์ที่ 2: หน้าหลัก -->
           <div class="footer-col">
             <h4><a href="#home" data-en="Home" data-th="หน้าหลัก">หน้าหลัก</a></h4>
             <ul class="footer-links">
@@ -668,7 +667,6 @@
             </ul>
           </div>
 
-          <!-- คอลัมน์ที่ 3: ทรัพยากร -->
           <div class="footer-col">
             <h4 data-en="Resources" data-th="ทรัพยากร">ทรัพยากร</h4>
             <ul class="footer-links">
@@ -679,7 +677,6 @@
             </ul>
           </div>
 
-          <!-- คอลัมน์ที่ 4: ติดต่อ -->
           <div class="footer-col">
             <h4 data-en="Contact" data-th="ติดต่อ">ติดต่อ</h4>
             <p><a href="mailto:agb.sci@ku.th" style="color: inherit;">agb.sci@ku.th</a></p>
@@ -687,7 +684,6 @@
 
         </div>
 
-        <!-- แถบ Copyright ด้านล่างสุด -->
         <div class="footer-bottom">
           <span><span id="year"></span> <span data-en="Catfish Bioresource · Kasetsart University · All Rights Reserved" data-th="ทรัพยากรชีวภาพปลาดุก · มหาวิทยาลัยเกษตรศาสตร์ · All Rights Reserved">ทรัพยากรชีวภาพปลาดุก · มหาวิทยาลัยเกษตรศาสตร์ · All Rights Reserved</span> - <a href="#" data-en="Privacy Policy" data-th="นโยบายความเป็นส่วนตัว">นโยบายความเป็นส่วนตัว</a></span>
         </div>
@@ -704,7 +700,6 @@
       document.querySelectorAll("[data-en][data-th]").forEach(element => {
         let text = element.dataset[language];
         
-        // แปลงชื่อวิทยาศาสตร์และหัวข้อสำคัญเป็นตัวหนา/ตัวเอียงอัตโนมัติเมื่อกดสลับภาษา
         if (language === "en") {
           text = text.replace(/Catfish of the genus Clarias/g, "<b>Catfish of the genus <i>Clarias</i></b>")
                      .replace(/The CATFISH BIORESOURCE Project/g, "<b>The CATFISH BIORESOURCE Project</b>")
