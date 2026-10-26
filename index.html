@@ -138,15 +138,56 @@
 
     .nav-links a:hover { color: #0b5394; }
 
-    .lang-btn {
-      border: 1px solid var(--line);
-      border-radius: 9px;
-      background: white;
-      color: var(--blue);
-      padding: 8px 12px;
-      font-weight: 700;
-      font-size: 12px;
+/* 📌 สไตล์สำหรับปุ่มเปลี่ยนภาษาแบบสไลด์ (Toggle Switch) */
+    .lang-switch {
+      position: relative;
+      width: 76px;
+      height: 32px;
+      background-color: #e2e8f0;
+      border-radius: 20px;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px;
+      transition: background-color 0.3s ease;
+      user-select: none;
     }
+
+    .lang-switch::before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 34px;
+      height: 26px;
+      background-color: var(--blue);
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    /* เมื่อเปลี่ยนเป็นภาษาไทย ให้เลื่อนปุ่มสไลด์ไปทางขวา */
+    html[lang="th"] .lang-switch::before {
+      transform: translateX(36px);
+    }
+
+    .lang-label {
+      font-size: 11px;
+      font-weight: 800;
+      z-index: 1;
+      width: 30px;
+      text-align: center;
+      transition: color 0.3s ease;
+    }
+
+    .lang-label.en { color: #ffffff; }
+    .lang-label.th { color: #64748b; }
+
+    html[lang="th"] .lang-label.en { color: #64748b; }
+    html[lang="th"] .lang-label.th { color: #ffffff; }
 
     .hero {
       background: url('images/images.bg.png') center/cover no-repeat;
@@ -495,9 +536,10 @@
         <a href="#contact" data-en="Contact" data-th="ติดต่อ">Contact</a>
       </nav>
 
-      <button class="lang-btn" id="languageToggle"
-              type="button" aria-label="Switch language">
-        ภาษาไทย
+      <!-- 📌 ปุ่มสไลด์เปลี่ยนภาษา EN / TH -->
+      <button class="lang-switch" id="languageToggle" type="button" aria-label="Switch language">
+        <span class="lang-label en">EN</span>
+        <span class="lang-label th">TH</span>
       </button>
     </div>
   </header>
@@ -796,7 +838,7 @@
         element.innerHTML = text;
       });
 
-      toggle.textContent = language === "en" ? "ภาษาไทย" : "English";
+      // 📌 ปรับการตั้งค่า aria-label ของปุ่มสไลด์
       toggle.setAttribute(
         "aria-label",
         language === "en" ? "Switch to Thai" : "Switch to English"
