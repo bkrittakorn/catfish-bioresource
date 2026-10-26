@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>รายละเอียดข่าว | CATFISH BIORESOURCE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --blue: #4876a3;
+      --blue-hover: #0b5394;
+      --ink: #1e293b;
+      --muted: #64748b;
+      --paper: #f8fafc;
+      --white: #ffffff;
+      --line: #e2e8f0;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      font-family: Arial, "Prompt", sans-serif !important;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container { width: min(900px, calc(100% - 40px)); margin-inline: auto; }
+
+    /* Topbar */
+    .topbar { background: #4876a3; color: white; font-size: 12px; padding: 8px 0; }
+    .topbar-inner { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+
+    /* Header & Navigation */
+    header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-mark-img { width: 50px; height: 50px; object-fit: contain; border-radius: 8px; flex-shrink: 0; }
+    .brand-name { font-size: 20px; font-weight: 800; letter-spacing: .04em; line-height: 1.3; color: var(--blue); }
+    .brand-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .nav-links { display: flex; align-items: center; gap: 21px; font-size: 15px; font-weight: 600; }
+    .nav-links a:hover { color: var(--blue-hover); }
+
+    /* Language Switch Switch */
+    .lang-switch { position: relative; width: 76px; height: 32px; background-color: #e2e8f0; border-radius: 20px; border: none; padding: 0 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: background-color 0.3s ease; user-select: none; }
+    .lang-switch::before { content: ""; position: absolute; top: 3px; left: 3px; width: 34px; height: 26px; background-color: var(--blue); border-radius: 16px; transition: transform 0.3s ease; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); }
+    html[lang="th"] .lang-switch::before { transform: translateX(36px); }
+    .lang-label { font-size: 11px; font-weight: 800; z-index: 1; width: 30px; text-align: center; transition: color 0.3s ease; }
+    .lang-label.en { color: #ffffff; }
+    .lang-label.th { color: #64748b; }
+    html[lang="th"] .lang-label.en { color: #64748b; }
+    html[lang="th"] .lang-label.th { color: #ffffff; }
+
+    /* Article Content */
+    .news-article { padding: 50px 0 80px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-weight: 700; font-size: 14px; margin-bottom: 24px; }
+    .back-link:hover { text-decoration: underline; }
+    .article-meta { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+    .article-meta i { color: var(--blue); }
+    .article-title { font-size: clamp(26px, 4vw, 38px); font-weight: 800; color: var(--blue); margin: 0 0 24px 0; line-height: 1.3; }
+    .article-image-container { width: 100%; max-height: 480px; border-radius: 14px; overflow: hidden; background: #e2e8f0; margin-bottom: 32px; }
+    .article-image-container img { width: 100%; height: 100%; object-fit: cover; }
+    .article-body { background: var(--white); padding: 40px; border: 1px solid var(--line); border-radius: 16px; font-size: 16px; line-height: 1.8; color: var(--ink); }
+    .article-body p { margin-bottom: 20px; text-align: justify; }
+    .article-body h3 { font-size: 20px; font-weight: 700; color: var(--blue); margin-top: 30px; margin-bottom: 12px; }
+
+    /* Footer */
+    .site-footer { background-color: #c1c1c1; color: #1e293b; padding: 50px 0 20px; font-size: 13px; border-top: 1px solid #d1d5db; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; margin-bottom: 40px; width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .footer-col h3, .footer-col h4 { font-size: 15px; font-weight: 700; color: #4876a3; margin: 0 0 12px 0; }
+    .footer-col h4 a { color: #4876a3; }
+    .footer-col p { margin: 0 0 6px 0; line-height: 1.6; color: #334155; }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a { color: #334155; }
+    .social-icons { display: flex; gap: 10px; margin-top: 16px; }
+    .social-icon { width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; color: white; font-weight: bold; font-size: 14px; }
+    .social-icon.linkedin { background-color: #0a66c2; }
+    .social-icon.facebook { background-color: #1877f2; }
+    .social-icon.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
+    .social-icon.tiktok { background-color: #000000; }
+    .footer-bottom { border-top: 1px solid #c4c4c4; padding-top: 20px; font-size: 12px; color: #475569; width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner" style="width: 100%; margin: 0;">
+      <span data-en="Academic Research Website" data-th="เว็บไซต์ข้อมูลวิชาการและงานวิจัย">Academic Research Website</span>
+      <span>Kasetsart University</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav" style="width: 100%; max-width: 1120px; margin-inline: auto;">
+      <a class="brand" href="index.html#home" aria-label="CATFISH BIORESOURCE Home">
+        <img src="images/Catfish Bioresource Logo.png" alt="CATFISH BIORESOURCE Logo" class="brand-mark-img">
+        <div>
+          <div class="brand-name">CATFISH BIORESOURCE</div>
+          <div class="brand-sub" data-en="AGB Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#home" data-en="Home" data-th="หน้าหลัก">Home</a>
+        <a href="index.html#about" data-en="About" data-th="เกี่ยวกับ">About</a>
+        <a href="all-news.html" data-en="News" data-th="ข่าวสาร">News</a>
+        <a href="index.html#resources" data-en="Resources" data-th="คลังข้อมูล">Resources</a>
+        <a href="#contact" data-en="Contact" data-th="ติดต่อ">Contact</a>
+      </nav>
+
+      <button class="lang-switch" id="languageToggle" type="button" aria-label="Switch language">
+        <span class="lang-label en">EN</span>
+        <span class="lang-label th">TH</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="news-article">
+      <a href="all-news.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span data-en="Back to News List" data-th="กลับสู่หน้าข่าวสาร">Back to News List</span>
+      </a>
+
+      <div class="article-meta">
+        <i class="fa-regular fa-calendar"></i>
+        <span id="articleDate">--</span>
+      </div>
+
+      <h1 class="article-title" id="articleTitle">--</h1>
+
+      <div class="article-image-container">
+        <img id="articleImage" src="" alt="News Image">
+      </div>
+
+      <div class="article-body" id="articleBody">
+        <!-- เนื้อหาข่าวเจาะจงเฉพาะ ID จะถูกดึงมาใส่ที่นี่ -->
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3 data-en="Catfish Bioresource" data-th="ทรัพยากรชีวภาพปลาดุก">ทรัพยากรชีวภาพปลาดุก</h3>
+        <p data-en="Animal Genomics and Bioresources Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</p>
+        <p data-en="Faculty of Science, Kasetsart University" data-th="คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์">คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
+        <p data-en="50 Ngamwongwan Rd, Lat Yao, Chatuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900">50 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900</p>
+        
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/siamese-crocodile-project-1a2a143b4/?isSelfProfile=false" target="_blank" rel="noopener noreferrer" class="social-icon linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.facebook.com/AGBResearchCenterKU" target="_blank" rel="noopener noreferrer" class="social-icon facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/siamesecroc" target="_blank" rel="noopener noreferrer" class="social-icon instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@.siamesecroc" target="_blank" rel="noopener noreferrer" class="social-icon tiktok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4><a href="index.html#home" data-en="Home" data-th="หน้าหลัก">หน้าหลัก</a></h4>
+        <ul class="footer-links">
+          <li><a href="index.html#about" data-en="About" data-th="เกี่ยวกับ">เกี่ยวกับ</a></li>
+          <li><a href="all-news.html" data-en="News" data-th="ข่าวสาร">ข่าวสาร</a></li>
+          <li><a href="#" data-en="Activities" data-th="กิจกรรม">กิจกรรม</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-en="Resources" data-th="ทรัพยากร">ทรัพยากร</h4>
+        <ul class="footer-links">
+          <li><a href="#" data-en="Articles" data-th="บทความวิชาการ">บทความวิชาการ</a></li>
+          <li><a href="#" data-en="Infographics" data-th="อินโฟกราฟิก">อินโฟกราฟิก</a></li>
+          <li><a href="#" data-en="Videos" data-th="วิดีโอ">วิดีโอ</a></li>
+          <li><a href="#" data-en="Brochures" data-th="โบร์ชัวร์">โบร์ชัวร์</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-en="Contact" data-th="ติดต่อ">ติดต่อ</h4>
+        <p><a href="mailto:agb.sci@ku.th" style="color: inherit;">agb.sci@ku.th</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span><span id="year"></span> <span data-en="Catfish Bioresource · Kasetsart University · All Rights Reserved" data-th="ทรัพยากรชีวภาพปลาดุก · มหาวิทยาลัยเกษตรศาสตร์ · All Rights Reserved">ทรัพยากรชีวภาพปลาดุก · มหาวิทยาลัยเกษตรศาสตร์ · All Rights Reserved</span></span>
+    </div>
+  </footer>
+
+  <!-- ดึงไฟล์ข้อมูลข่าวสารกลาง -->
+  <script src="news-data.js"></script>
+
+  <script>
+    const toggle = document.getElementById("languageToggle");
+
+    // 📌 ดึง ID ข่าวจาก URL เช่น news-detail.html?id=1
+    function getNewsId() {
+      const params = new URLSearchParams(window.location.search);
+      return parseInt(params.get("id"));
+    }
+
+    // 📌 ค้นหาข่าวที่ตรงกับ ID และนำข้อมูลมาแสดงผลเฉพาะข่าวนั้น
+    function renderSpecificArticle(lang) {
+      if (typeof newsData === "undefined" || newsData.length === 0) return;
+
+      const targetId = getNewsId();
+      // ถ้าหา ID ไม่เจอ ให้ดึงข่าวแรกสุดมาแสดงแทน
+      const currentNews = newsData.find(item => item.id === targetId) || newsData[0];
+      const isEn = lang === "en";
+
+      document.getElementById("articleDate").textContent = isEn ? (currentNews.dateEn || currentNews.date) : currentNews.date;
+      document.getElementById("articleTitle").textContent = isEn ? currentNews.titleEn : currentNews.titleTh;
+      
+      const imgEl = document.getElementById("articleImage");
+      imgEl.src = currentNews.image;
+      imgEl.alt = isEn ? currentNews.titleEn : currentNews.titleTh;
+
+      // แสดงเนื้อหาเต็มของข่าวนั้นๆ
+      document.getElementById("articleBody").innerHTML = isEn 
+        ? (currentNews.contentEn || currentNews.excerptEn)
+        : (currentNews.contentTh || currentNews.excerptTh);
+
+      document.title = isEn 
+        ? `${currentNews.titleEn} | CATFISH BIORESOURCE`
+        : `${currentNews.titleTh} | CATFISH BIORESOURCE`;
+    }
+
+    function setLanguage(language) {
+      document.documentElement.lang = language;
+
+      document.querySelectorAll("[data-en][data-th]").forEach(element => {
+        let text = element.dataset[language];
+        if (text) element.innerHTML = text;
+      });
+
+      toggle.setAttribute(
+        "aria-label",
+        language === "en" ? "Switch to Thai" : "Switch to English"
+      );
+
+      renderSpecificArticle(language);
+    }
+
+    toggle.addEventListener("click", () => {
+      setLanguage(document.documentElement.lang === "en" ? "th" : "en");
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    setLanguage("en");
+  </script>
+</body>
+</html>
