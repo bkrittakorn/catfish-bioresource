@@ -1,6 +1,6 @@
 const newsData = [
   {
-    id: 2,
+    id: 1,
     date: "26 มีนาคม 2569",
     dateEn: "March 26, 2026",
     titleTh: "งานสัมมนาสรุปความก้าวหน้าโครงการวิจัยทรัพยากรชีวภาพปลาดุกประจำปี 2569",
@@ -20,12 +20,12 @@ const newsData = [
                 <p>During the event, survey data on broadhead catfish (<i>Clarias macrocephalus</i>) populations in natural water sources across Thailand was presented...</p>`
   },
   {
-    id: 1,
+    id: 2,
     date: "22 มิถุนายน 2569",
     dateEn: "June 22, 2026",
     titleTh: "DUKEOME The Clarias Genome Browser",
     titleEn: "DUKEOME The Clarias Genome Browser",
-    image: "images/news00001.jpg",
+    image: "images/news-00001.jpg",
     excerptTh: "เพิ่มชุดข้อมูลระดับโมเลกุล การเพิ่มประสิทธิภาพ...",
     excerptEn: "New features and documentation have been added...",
     // 📌 ปรับลิงก์ให้ชี้ไปที่ news-detail.html พร้อมระบุ id
