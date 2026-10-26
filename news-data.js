@@ -6,7 +6,7 @@ const newsData = [
     dateEn: "June 22, 2026",
     titleTh: "DUKEOME: The Clarias Genome Browser",
     titleEn: "DUKEOME: The Clarias Genome Browser",
-    image: "images/news-00001.jpg",
+    image: "images/news/news-00001.jpg",
     excerptTh: "นักวิจัย ม.เกษตรศาสตร์ ผนึกกำลังไทย–จีน เปิดตัว DUKEOME แพลตฟอร์มจีโนมปลาดุก เชื่อมโยงข้อมูลพันธุกรรมเพื่ออนาคตงานวิจัยและการเพาะเลี้ยงสัตว์น้ำ",
     excerptEn: "Thai–Chinese Research Collaboration Launches DUKEOME, a Clarias Genome Browser Advancing Catfish Genomics and Aquaculture Research",
     link: "news-detail.html?id=1",
