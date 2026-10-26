@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ข่าวสารและกิจกรรม | CATFISH BIORESOURCE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --blue: #4876a3;
+      --blue-hover: #0b5394;
+      --ink: #1e293b;
+      --muted: #64748b;
+      --paper: #f8fafc;
+      --white: #ffffff;
+      --line: #e2e8f0;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      font-family: Arial, "Prompt", sans-serif !important;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    .container {
+      width: min(1000px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    /* Header & Title Section */
+    .page-header {
+      padding: 60px 0 30px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 40px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 16px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .page-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      color: var(--blue);
+      margin: 0 0 10px 0;
+    }
+
+    .page-subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0;
+    }
+
+    /* News List Container */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    /* Long Card Layout (การ์ดยาว) */
+    .news-long-card {
+      display: flex;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .news-long-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(72, 118, 163, 0.12);
+    }
+
+    .news-card-media {
+      width: 320px;
+      min-width: 320px;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      background: #e2e8f0;
+    }
+
+    .news-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .news-long-card:hover .news-card-media img {
+      transform: scale(1.04);
+    }
+
+    .news-card-body {
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .news-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .news-card-meta i {
+      color: var(--blue);
+    }
+
+    .news-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 10px 0;
+      line-height: 1.4;
+      transition: color 0.2s ease;
+    }
+
+    .news-long-card:hover .news-card-title {
+      color: var(--blue);
+    }
+
+    .news-card-excerpt {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 16px 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* แสดงเนื้อหาแบบย่อสูงสุด 3 บรรทัด */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.6;
+    }
+
+    .news-card-action {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    /* Responsive Design สำหรับหน้าจอขนาดเล็ก */
+    @media (max-width: 768px) {
+      .news-long-card {
+        flex-direction: column;
+      }
+      .news-card-media {
+        width: 100%;
+        min-width: 100%;
+        height: 200px;
+      }
+      .news-card-body {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    
+    <!-- ปุ่มย้อนกลับ & หัวข้อหน้า -->
+    <header class="page-header">
+      <a href="index.html#research" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> กลับสู่หน้าหลัก
+      </a>
+      <h1 class="page-title" data-en="News & Announcements" data-th="ข่าวสารและประกาศทั้งหมด">
+        ข่าวสารและประกาศทั้งหมด
+      </h1>
+      <p class="page-subtitle" data-en="Latest updates, research activities, and official announcements." data-th="รวมข่าวสาร กิจกรรมวิจัย และประกาศความเคลื่อนไหวล่าสุด">
+        รวมข่าวสาร กิจกรรมวิจัย และประกาศความเคลื่อนไหวล่าสุด
+      </p>
+    </header>
+
+    <!-- รายการข่าวแบบการ์ดยาว (เรียงจากล่าสุดไปเก่าสุด ไม่เกิน 10 ข่าว) -->
+    <div class="news-list" id="newsContainer">
+      <!-- โค้ดรายการข่าวสารจะถูก Render และเรียงลำดับผ่าน JavaScript อัตโนมัติ -->
+    </div>
+
+  </main>
+
+  <script>
+    // 📌 ข้อมูลข่าวสาร (เรียงตามวันที่/ID ล่าสุดไว้บนสุด สามารถเพิ่ม/แก้ไขได้ที่นี่)
+    const newsData = [
+      {
+        id: 10,
+        date: "26 มีนาคม 2569",
+        titleEn: "Annual Progress Seminar on Bioresource Genomics 2026",
+        titleTh: "งานสัมมนาสรุปความก้าวหน้าโครงการวิจัยทรัพยากรชีวภาพปลาดุกประจำปี 2569",
+        image: "images/news10.jpg",
+        excerptEn: "Summary of research outcomes, native species conservation strategies, and genomic repository updates.",
+        excerptTh: "สรุปผลการดำเนินงานวิจัย การพัฒนาคลังข้อมูลจีโนมิกส์ปลาดุก และแนวทางการอนุรักษ์สายพันธุ์พื้นเมืองอย่างยั่งยืน...",
+        link: "news-detail-10.html"
+      },
+      {
+        id: 9,
+        date: "10 มีนาคม 2569",
+        titleEn: "Database Update for Catfish Genomics Repository",
+        titleTh: "อัปเดตระบบฐานข้อมูลจีโนมและเครื่องมือชีวสารสนเทศสำหรับปลาดุก",
+        image: "images/news3.jpg",
+        excerptEn: "New features and documentation have been added to the bioresource database for researchers.",
+        excerptTh: "เพิ่มชุดข้อมูลระดับโมเลกุล การเพิ่มประสิทธิภาพเครื่องมือตรวจวัดความบริสุทธิ์ของสายพันธุ์ปลาดุกอุย...",
+        link: "news-detail-9.html"
+      },
+      {
+        id: 8,
+        date: "20 กุมภาพันธ์ 2569",
+        titleEn: "Academic Seminar on Sustainable Aquaculture and Hybrid Catfish Impact",
+        titleTh: "สัมมนาวิชาการการเฝ้าระวังผลกระทบทางพันธุกรรมในปลาดุกลูกผสม",
+        image: "images/news2.jpg",
+        excerptEn: "Join our upcoming seminar focusing on bioresources, hybrid dynamics, and aquatic resource security.",
+        excerptTh: "ขอเชิญผู้สนใจร่วมแลกเปลี่ยนความรู้ประเด็นการปะปนทางพันธุกรรมระหว่างปลาดุกต่างถิ่นและปลาดุกพื้นเมือง...",
+        link: "news-detail-8.html"
+      },
+      {
+        id: 7,
+        date: "15 มกราคม 2569",
+        titleEn: "Research Team Discovers New Genetic Insights in Native Catfish",
+        titleTh: "ทีมวิจัยค้นพบข้อมูลเชิงลึกด้านพันธุกรรมปลาดุกอุยในแหล่งน้ำธรรมชาติ",
+        image: "images/news1.jpg",
+        excerptEn: "Summary of the recent findings regarding catfish biodiversity and genomic mapping in Thailand.",
+        excerptTh: "การสำรวจประชากรปลาดุกอุยในลุ่มน้ำธรรมชาติ พบรูปแบบพันธุกรรมที่มีความหลากหลายจำเพาะถิ่น...",
+        link: "news-detail-7.html"
+      }
+      // สามารถเพิ่มข่าวสารอื่นๆ ได้สูงสุด 10 ข่าว
+    ];
+
+    // ฟังก์ชัน Render แสดงผลข่าวสารและจำกัดจำนวนไม่เกิน 10 ข่าว
+    function renderNewsList() {
+      const container = document.getElementById("newsContainer");
+      container.innerHTML = "";
+
+      // ดึงข่าวสูงสุดไม่เกิน 10 ข่าวล่าสุด
+      const displayNews = newsData.slice(0, 10);
+
+      displayNews.forEach(news => {
+        const cardHTML = `
+          <a href="${news.link}" class="news-long-card">
+            <div class="news-card-media">
+              <img src="${news.image}" alt="${news.titleTh}" onerror="this.src='https://via.placeholder.com/320x220?text=No+Image'">
+            </div>
+            <div class="news-card-body">
+              <div>
+                <div class="news-card-meta">
+                  <i class="fa-regular fa-calendar"></i>
+                  <span>${news.date}</span>
+                </div>
+                <h2 class="news-card-title">${news.titleTh}</h2>
+                <p class="news-card-excerpt">${news.excerptTh}</p>
+              </div>
+              <div class="news-card-action">
+                อ่านรายละเอียด <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+              </div>
+            </div>
+          </a>
+        `;
+        container.insertAdjacentHTML("beforeend", cardHTML);
+      });
+    }
+
+    window.addEventListener("DOMContentLoaded", renderNewsList);
+  </script>
+</body>
+</html>
