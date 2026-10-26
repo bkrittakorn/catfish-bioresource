@@ -1,25 +1,25 @@
 const newsData = [
   {
-    id: 11, // รหัสข่าว (เพิ่มตัวเลขขึ้นเรื่อยๆ)
-    date: "26 มีนาคม 269",
-    dateEn: "March 26, 2026",
-    titleTh: "หัวข้อข่าวใหม่ล่าสุดของคุณตรงนี้...",
-    titleEn: "Your new English title here...",
-    image: "images/news11.jpg", // ชื่อไฟล์รูปภาพ
-    excerptTh: "เนื้อหาย่อสรุปสั้นๆ สำหรับภาษาไทย...",
+    id: 00001, // รหัสข่าว (เพิ่มตัวเลขขึ้นเรื่อยๆ)
+    date: "22 มิถุนายน 2569",
+    dateEn: "June 22, 2026",
+    titleTh: "DUKEOME The Clarias Genome Browser",
+    titleEn: "DUKEOME The Clarias Genome Browser",
+    image: "images/news-00001.jpg", // ชื่อไฟล์รูปภาพ
+    excerptTh: "นักวิจัยไทย มหาวิทยาลัยเกษตรศาสตร์ สานฝันสู่เวทีโลก!",
     excerptEn: "Short excerpt for English version...",
-    link: "news-detail-11.html" // ลิงก์ไปหน้าเนื้อหาเต็ม
+    link: "news-detail-00001.html" // ลิงก์ไปหน้าเนื้อหาเต็ม
   },
   {
-    id: 10,
-    date: "10 มีนาคม 2569",
-    dateEn: "March 10, 2026",
-    titleTh: "งานสัมมนาสรุปความก้าวหน้าโครงการวิจัย...",
-    titleEn: "Annual Progress Seminar...",
-    image: "images/news10.jpg",
-    excerptTh: "สรุปผลการดำเนินงานวิจัยและการพัฒนา...",
-    excerptEn: "Summary of research outcomes...",
-    link: "news-detail-10.html"
+    id: 00001, // รหัสข่าว (เพิ่มตัวเลขขึ้นเรื่อยๆ)
+    date: "22 มิถุนายน 2569",
+    dateEn: "June 22, 2026",
+    titleTh: "DUKEOME The Clarias Genome Browser",
+    titleEn: "DUKEOME The Clarias Genome Browser",
+    image: "images/news-00001.jpg", // ชื่อไฟล์รูปภาพ
+    excerptTh: "นักวิจัยไทย มหาวิทยาลัยเกษตรศาสตร์ สานฝันสู่เวทีโลก!",
+    excerptEn: "Short excerpt for English version...",
+    link: "news-detail-00001.html" // ลิงก์ไปหน้าเนื้อหาเต็ม
   }
   // ข่าวเก่าๆ จะเรียงลงมาเรื่อยๆ อัตโนมัติ
 ];
