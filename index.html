@@ -25,7 +25,6 @@
       --line: #e2e8f0;          /* สีเส้นขอบ */
     }
 
-    /* ✏️ ตั้งค่า font-family ให้ใช้ Arial นำหน้าสำหรับภาษาอังกฤษ และดึง Prompt มาแสดงผลภาษาไทย */
     *, *::before, *::after { 
       box-sizing: border-box; 
       font-family: Arial, "Prompt", sans-serif !important;
@@ -42,21 +41,21 @@
     }
 
     .body-copy {
-      text-align: justify;       /* จัดข้อความกระจายเต็มขอบ */
-      white-space: pre-line;     /* เว้นบรรทัดตามย่อหน้า */
-      line-height: 1.8;          /* ระยะห่างบรรทัดอ่านสบายตา */
+      text-align: justify;
+      white-space: pre-line;
+      line-height: 1.8;
       color: var(--ink);
-      word-break: break-word;    /* แก้ปัญหาคำภาษาไทยกระโดดลงบรรทัดใหม่ */
-      line-break: relaxed;       /* จัดระเบียบการลงบรรทัดใหม่ของภาษาไทย */
+      word-break: break-word;
+      line-break: relaxed;
     }
 
     .body-copy b, .body-copy strong {
-      font-weight: 700;          /* กำหนดความหนาของตัวหนา */
-      color: #1e293b;            /* กำหนดสีให้คมชัด */
+      font-weight: 700;
+      color: #1e293b;
     }
 
     .body-copy i, .body-copy em {
-      font-style: italic;        /* กำหนดตัวเอียงสำหรับชื่อวิทยาศาสตร์ */
+      font-style: italic;
     }
      
     a { color: inherit; text-decoration: none; }
@@ -109,11 +108,11 @@
     }
 
     .brand-mark-img {
-      width: 50px;          /* ความกว้างของโลโก้ */
-      height: 50px;         /* ความสูงของโลโก้ */
-      object-fit: contain;  /* สเกลรูปให้ได้สัดส่วน ไม่เบี้ยว */
-      border-radius: 8px;   /* ทำมุมโค้งมน */
-      flex-shrink: 0;       /* ป้องกันโลโก้โดนบีบขนาด */
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 8px;
+      flex-shrink: 0;
     }
 
     .brand-name {
@@ -143,7 +142,7 @@
       border: 1px solid var(--line);
       border-radius: 9px;
       background: white;
-      color: var(--green);
+      color: var(--blue);
       padding: 8px 12px;
       font-weight: 700;
       font-size: 12px;
@@ -250,40 +249,87 @@
       font-size: 15px;
     }
 
-    .cards {
+    /* สไตล์สำหรับการ์ดข่าวสาร */
+    .news-cards-track {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .card {
-      padding: 25px;
+    .news-card {
+      padding: 0 !important;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
       background: white;
       border: 1px solid var(--line);
       border-radius: 15px;
-      min-height: 210px;
       transition: transform .2s, box-shadow .2s;
     }
 
-    .card:hover {
+    .news-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 12px 30px #163e3010;
     }
 
-    .card-icon {
-      width: 43px;
-      height: 43px;
-      display: grid;
-      place-items: center;
-      background: var(--blue-light);
-      border-radius: 12px;
-      color: var(--blue);
-      font-size: 20px;
-      margin-bottom: 20px;
+    .news-img-wrapper {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      background: #e2e8f0;
     }
 
-    .card h3 { font-size: 17px; margin: 0 0 10px; }
-    .card p { color: var(--muted); font-size: 13px; margin: 0; }
+    .news-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .news-card:hover .news-thumb {
+      transform: scale(1.05);
+    }
+
+    .news-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .news-date {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .news-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .news-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 16px 0;
+      flex-grow: 1;
+    }
+
+    .read-more-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      text-decoration: none;
+      margin-top: auto;
+    }
+
+    .read-more-link:hover {
+      text-decoration: underline;
+    }
 
     .about { background: white; }
 
@@ -370,15 +416,15 @@
       font-size: 14px;
     }
     
-    .social-icon i {
-      fort-size: 14px;
-      color: #ffffff;
-    }
-    
     .social-icon.linkedin { background-color: #0a66c2; }
     .social-icon.facebook { background-color: #1877f2; }
-    .social-icon.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);  }
+    .social-icon.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
     .social-icon.tiktok { background-color: #000000; }
+
+    .social-icon i {
+      font-size: 14px;
+      color: white;
+    }
 
     .footer-bottom {
       border-top: 1px solid #c4c4c4;
@@ -391,11 +437,6 @@
       text-decoration: underline;
     }
 
-    .social-icon i {
-      font-size: 14px;
-      color: white;
-    }
-
     @media (max-width: 768px) {
       .footer-grid {
         grid-template-columns: 1fr;
@@ -406,14 +447,14 @@
     @media (max-width: 800px) {
       .nav { padding: 13px 0; flex-wrap: wrap; }
       .nav-links { order: 3; width: 100%; gap: 16px; flex-wrap: wrap; }
-      .cards { grid-template-columns: 1fr 1fr; }
+      .news-cards-track { grid-template-columns: 1fr 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 25px; }
       .hero { padding: 72px 0; }
     }
 
     @media (max-width: 520px) {
       .container { width: min(100% - 28px, 1120px); }
-      .cards { grid-template-columns: 1fr; }
+      .news-cards-track { grid-template-columns: 1fr; }
       section { padding: 55px 0; }
       .hero h1 { font-size: 39px; }
       .brand-sub { font-size: 10px; }
@@ -533,57 +574,92 @@
       <div class="container">
         <div class="section-head">
           <span class="kicker"
-                data-en="Research & Knowledge"
-                data-th="งานวิจัยและองค์ความรู้">
-            Research & Knowledge
+                data-en="News & Updates"
+                data-th="ข่าวสารและกิจกรรม">
+            News & Updates
           </span>
-          <h2 data-en="Explore the Knowledge Areas"
-              data-th="สำรวจหมวดหมู่องค์ความรู้">
-            Explore the Knowledge Areas
+          <h2 data-en="Latest News & Announcements"
+              data-th="ข่าวสารและประกาศล่าสุด">
+            Latest News & Announcements
           </h2>
-          <p data-en="A framework for organizing verified scientific content as materials are transferred from the existing website."
-             data-th="โครงสร้างเบื้องต้นสำหรับจัดหมวดหมู่เนื้อหาทางวิทยาศาสตร์ที่ผ่านการตรวจสอบและย้ายมาจากเว็บไซต์เดิม">
-            A framework for organizing verified scientific content as materials are transferred from the existing website.
+          <p data-en="Follow our latest activities, research announcements, and updates."
+             data-th="ติดตามความเคลื่อนไหว กิจกรรม และประกาศล่าสุดจากทางหน่วยวิจัย">
+            Follow our latest activities, research announcements, and updates.
           </p>
         </div>
 
-        <div class="cards">
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">◈</div>
-            <h3 data-en="Bioresources"
-                data-th="ทรัพยากรชีวภาพ">
-              Bioresources
-            </h3>
-            <p data-en="Information about biological resources documented by the project."
-               data-th="ข้อมูลเกี่ยวกับทรัพยากรชีวภาพที่มีเอกสารของโครงการรองรับ">
-              Information about biological resources documented by the project.
-            </p>
-          </article>
+        <div class="news-slider-container">
+          <div class="news-cards-track">
+            
+            <!-- ข่าวที่ 1 -->
+            <article class="news-card">
+              <div class="news-img-wrapper">
+                <img src="images/news1.jpg" alt="News Image 1" class="news-thumb">
+              </div>
+              <div class="news-content">
+                <span class="news-date">15 มกราคม 2569</span>
+                <h3 data-en="Research Team Discovers New Genetic Insights"
+                    data-th="ทีมวิจัยค้นพบข้อมูลเชิงลึกด้านพันธุกรรมปลาดุกไทย">
+                  Research Team Discovers New Genetic Insights
+                </h3>
+                <p data-en="Summary of the recent findings regarding catfish biodiversity and genomic mapping..."
+                   data-th="สรุปผลการศึกษาล่าสุดเกี่ยวกับการสำรวจความหลากหลายทางชีวภาพและจีโนมิกส์ของปลาดุก...">
+                  Summary of the recent findings regarding catfish biodiversity and genomic mapping...
+                </p>
+                <a href="news-detail-1.html" class="read-more-link" data-en="Read More →" data-th="อ่านเพิ่มเติม →">Read More →</a>
+              </div>
+            </article>
 
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">⌘</div>
-            <h3 data-en="Research & Publications"
-                data-th="งานวิจัยและผลงานตีพิมพ์">
-              Research & Publications
-            </h3>
-            <p data-en="Research materials and publications will be listed after bibliographic verification."
-               data-th="รวบรวมเอกสารงานวิจัยและผลงานตีพิมพ์หลังตรวจสอบข้อมูลบรรณานุกรม">
-              Research materials and publications will be listed after bibliographic verification.
-            </p>
-          </article>
+            <!-- ข่าวที่ 2 -->
+            <article class="news-card">
+              <div class="news-img-wrapper">
+                <img src="images/news2.jpg" alt="News Image 2" class="news-thumb">
+              </div>
+              <div class="news-content">
+                <span class="news-date">20 กุมภาพันธ์ 2569</span>
+                <h3 data-en="Academic Seminar on Sustainable Aquaculture"
+                    data-th="จัดสัมมนาวิชาการการเพาะเลี้ยงสัตว์น้ำอย่างยั่งยืน">
+                  Academic Seminar on Sustainable Aquaculture
+                </h3>
+                <p data-en="Join our upcoming seminar focusing on bioresources and aquatic resource security."
+                   data-th="ขอเชิญเข้าร่วมงานสัมมนาวิชาการแลกเปลี่ยนเรียนรู้ด้านทรัพยากรชีวภาพและความมั่นคง...">
+                  Join our upcoming seminar focusing on bioresources and aquatic resource security.
+                </p>
+                <a href="news-detail-2.html" class="read-more-link" data-en="Read More →" data-th="อ่านเพิ่มเติม →">Read More →</a>
+              </div>
+            </article>
 
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">▤</div>
-            <h3 data-en="Scientific Resources"
-                data-th="แหล่งข้อมูลทางวิทยาศาสตร์">
-              Scientific Resources
-            </h3>
-            <p data-en="A planned collection of educational materials, documents, and verified links."
-               data-th="พื้นที่รวบรวมสื่อความรู้ เอกสาร และลิงก์ที่ผ่านการตรวจสอบ">
-              A planned collection of educational materials, documents, and verified links.
-            </p>
-          </article>
+            <!-- ข่าวที่ 3 -->
+            <article class="news-card">
+              <div class="news-img-wrapper">
+                <img src="images/news3.jpg" alt="News Image 3" class="news-thumb">
+              </div>
+              <div class="news-content">
+                <span class="news-date">5 มีนาคม 2569</span>
+                <h3 data-en="Database Update for Catfish Genomics"
+                    data-th="อัปเดตระบบฐานข้อมูลจีโนมปลาดุกรอบใหม่">
+                  Database Update for Catfish Genomics
+                </h3>
+                <p data-en="New features and documentation have been added to the bioresource database."
+                   data-th="เพิ่มชุดข้อมูลและเครื่องมือใหม่บนแพลตฟอร์มฐานข้อมูลทรัพยากรชีวภาพสัตว์น้ำ">
+                  New features and documentation have been added to the bioresource database.
+                </p>
+                <a href="news-detail-3.html" class="read-more-link" data-en="Read More →" data-th="อ่านเพิ่มเติม →">Read More →</a>
+              </div>
+            </article>
+
+          </div>
         </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <a class="btn btn-light" href="all-news.html"
+             style="background: #4876a3; color: white; padding: 12px 28px; border-radius: 9px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;"
+             data-en="View All News"
+             data-th="ดูข่าวทั้งหมด">
+            View All News
+          </a>
+        </div>
+
       </div>
     </section>
 
@@ -737,6 +813,25 @@
 
     document.getElementById("year").textContent = new Date().getFullYear();
     setLanguage("en");
+
+    // ระบบสไลด์การ์ดข่าวสารบนอุปกรณ์หน้าจอเล็ก
+    const track = document.querySelector('.news-cards-track');
+    let scrollInterval;
+
+    function startAutoSlide() {
+      if (track && window.innerWidth <= 800) {
+        let scrollAmount = 0;
+        scrollInterval = setInterval(() => {
+          scrollAmount += 300;
+          if (scrollAmount >= track.scrollWidth - track.clientWidth) {
+            scrollAmount = 0;
+          }
+          track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+        }, 4000);
+      }
+    }
+
+    window.addEventListener('load', startAutoSlide);
   </script>
 </body>
 </html>
