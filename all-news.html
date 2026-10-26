@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +14,7 @@
     :root {
       --blue: #4876a3;
       --blue-hover: #0b5394;
+      --blue-light: #eff6ff;
       --ink: #1e293b;
       --muted: #64748b;
       --paper: #f8fafc;
@@ -26,6 +27,8 @@
       font-family: Arial, "Prompt", sans-serif !important;
     }
 
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
     body {
       margin: 0;
       background: var(--paper);
@@ -33,16 +36,142 @@
       line-height: 1.7;
     }
 
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
     .container {
-      width: min(1000px, calc(100% - 40px));
+      width: min(1120px, calc(100% - 40px));
       margin-inline: auto;
     }
 
-    /* Header & Title Section */
-    .page-header {
-      padding: 60px 0 30px;
+    /* Topbar */
+    .topbar {
+      background: #4876a3;
+      color: white;
+      font-size: 12px;
+      padding: 8px 0;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.96);
       border-bottom: 1px solid var(--line);
-      margin-bottom: 40px;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark-img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      line-height: 1.3;
+      color: var(--blue);
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 21px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--blue-hover); }
+
+    /* Language Toggle Switch */
+    .lang-switch {
+      position: relative;
+      width: 76px;
+      height: 32px;
+      background-color: #e2e8f0;
+      border-radius: 20px;
+      border: none;
+      padding: 0 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .lang-switch::before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 34px;
+      height: 26px;
+      background-color: var(--blue);
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    html[lang="th"] .lang-switch::before {
+      transform: translateX(36px);
+    }
+
+    .lang-label {
+      font-size: 11px;
+      font-weight: 800;
+      z-index: 1;
+      width: 30px;
+      text-align: center;
+      transition: color 0.3s ease;
+    }
+
+    .lang-label.en { color: #ffffff; }
+    .lang-label.th { color: #64748b; }
+
+    html[lang="th"] .lang-label.en { color: #64748b; }
+    html[lang="th"] .lang-label.th { color: #ffffff; }
+
+    /* Page Header Section */
+    .page-header {
+      padding: 48px 0 28px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 36px;
     }
 
     .back-link {
@@ -73,7 +202,7 @@
       margin: 0;
     }
 
-    /* News List Container */
+    /* News List Container & Long Card */
     .news-list {
       display: flex;
       flex-direction: column;
@@ -81,7 +210,6 @@
       margin-bottom: 60px;
     }
 
-    /* Long Card Layout (การ์ดยาว) */
     .news-long-card {
       display: flex;
       background: var(--white);
@@ -157,7 +285,7 @@
       color: var(--muted);
       margin: 0 0 16px 0;
       display: -webkit-box;
-      -webkit-line-clamp: 3; /* แสดงเนื้อหาแบบย่อสูงสุด 3 บรรทัด */
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
       line-height: 1.6;
@@ -173,126 +301,235 @@
       margin-top: auto;
     }
 
-    /* Responsive Design สำหรับหน้าจอขนาดเล็ก */
+    /* Site Footer */
+    .site-footer {
+      background-color: #c1c1c1;
+      color: #1e293b;
+      padding: 50px 0 20px;
+      font-size: 13px;
+      border-top: 1px solid #d1d5db;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h3, 
+    .footer-col h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #4876a3;
+      margin: 0 0 12px 0;
+    }
+
+    .footer-col h4 a {
+      color: #4876a3;
+      text-decoration: none;
+    }
+
+    .footer-col h4 a:hover {
+      color: #0b5394;
+    }
+
+    .footer-col p {
+      margin: 0 0 6px 0;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      color: #334155;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #4876a3;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .social-icon {
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .social-icon.linkedin { background-color: #0a66c2; }
+    .social-icon.facebook { background-color: #1877f2; }
+    .social-icon.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
+    .social-icon.tiktok { background-color: #000000; }
+
+    .social-icon i {
+      font-size: 14px;
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #c4c4c4;
+      padding-top: 20px;
+      font-size: 12px;
+      color: #475569;
+    }
+
+    .footer-bottom a {
+      text-decoration: underline;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 800px) {
+      .nav { padding: 13px 0; flex-wrap: wrap; }
+      .nav-links { order: 3; width: 100%; gap: 16px; flex-wrap: wrap; }
+    }
+
     @media (max-width: 768px) {
-      .news-long-card {
-        flex-direction: column;
-      }
-      .news-card-media {
-        width: 100%;
-        min-width: 100%;
-        height: 200px;
-      }
-      .news-card-body {
-        padding: 20px;
-      }
+      .news-long-card { flex-direction: column; }
+      .news-card-media { width: 100%; min-width: 100%; height: 200px; }
+      .news-card-body { padding: 20px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
     }
   </style>
 </head>
 
 <body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span data-en="Academic Research Website"
+            data-th="เว็บไซต์ข้อมูลวิชาการและงานวิจัย">
+        Academic Research Website
+      </span>
+      <span>Kasetsart University</span>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html#home" aria-label="CATFISH BIORESOURCE Home">
+        <img src="images/Catfish Bioresource Logo.png" alt="CATFISH BIORESOURCE Logo" class="brand-mark-img">
+        <div>
+          <div class="brand-name">CATFISH BIORESOURCE</div>
+          <div class="brand-sub"
+               data-en="AGB Research Unit"
+               data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">
+            หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์
+          </div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#home" data-en="Home" data-th="หน้าหลัก">Home</a>
+        <a href="index.html#about" data-en="About" data-th="เกี่ยวกับ">About</a>
+        <a href="all-news.html" data-en="News" data-th="ข่าวสาร">News</a>
+        <a href="index.html#resources" data-en="Resources" data-th="คลังข้อมูล">Resources</a>
+        <a href="#contact" data-en="Contact" data-th="ติดต่อ">Contact</a>
+      </nav>
+
+      <button class="lang-switch" id="languageToggle" type="button" aria-label="Switch language">
+        <span class="lang-label en">EN</span>
+        <span class="lang-label th">TH</span>
+      </button>
+    </div>
+  </header>
+
   <main class="container">
-    
-    <!-- ปุ่มย้อนกลับ & หัวข้อหน้า -->
     <header class="page-header">
       <a href="index.html#research" class="back-link">
-        <i class="fa-solid fa-arrow-left"></i> กลับสู่หน้าหลัก
+        <i class="fa-solid fa-arrow-left"></i>
+        <span data-en="Back to Home" data-th="กลับสู่หน้าหลัก">Back to Home</span>
       </a>
       <h1 class="page-title" data-en="News & Announcements" data-th="ข่าวสารและประกาศทั้งหมด">
-        ข่าวสารและประกาศทั้งหมด
+        News & Announcements
       </h1>
       <p class="page-subtitle" data-en="Latest updates, research activities, and official announcements." data-th="รวมข่าวสาร กิจกรรมวิจัย และประกาศความเคลื่อนไหวล่าสุด">
-        รวมข่าวสาร กิจกรรมวิจัย และประกาศความเคลื่อนไหวล่าสุด
+        Latest updates, research activities, and official announcements.
       </p>
     </header>
 
-    <!-- รายการข่าวแบบการ์ดยาว (เรียงจากล่าสุดไปเก่าสุด ไม่เกิน 10 ข่าว) -->
     <div class="news-list" id="newsContainer">
-      <!-- โค้ดรายการข่าวสารจะถูก Render และเรียงลำดับผ่าน JavaScript อัตโนมัติ -->
+      <!-- โค้ดรายการข่าวจะ Render ผ่าน JavaScript -->
     </div>
-
   </main>
 
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3 data-en="Catfish Bioresource" data-th="ทรัพยากรชีวภาพปลาดุก">ทรัพยากรชีวภาพปลาดุก</h3>
+          <p data-en="Animal Genomics and Bioresources Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</p>
+          <p data-en="Faculty of Science, Kasetsart University" data-th="คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์">คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
+          <p data-en="50 Ngamwongwan Rd, Lat Yao, Chatuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900">50 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900</p>
+          
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/siamese-crocodile-project-1a2a143b4/?isSelfProfile=false" target="_blank" rel="noopener noreferrer" class="social-icon linkedin" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.facebook.com/AGBResearchCenterKU" target="_blank" rel="noopener noreferrer" class="social-icon facebook" title="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/siamesecroc" target="_blank" rel="noopener noreferrer" class="social-icon instagram" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@.siamesecroc" target="_blank" rel="noopener noreferrer" class="social-icon tiktok" title="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4><a href="index.html#home" data-en="Home" data-th="หน้าหลัก">หน้าหลัก</a></h4>
+          <ul class="footer-links">
+            <li><a href="index.html#about" data-en="About" data-th="เกี่ยวกับ">เกี่ยวกับ</a></li>
+            <li><a href="all-news.html" data-en="News" data-th="ข่าวสาร">ข่าวสาร</a></li>
+            <li><a href="#" data-en="Activities" data-th="กิจกรรม">กิจกรรม</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-en="Resources" data-th="ทรัพยากร">ทรัพยากร</h4>
+          <ul class="footer-links">
+            <li><a href="#" data-en="Articles" data-th="บทความวิชาการ">บทความวิชาการ</a></li>
+            <li><a href="#" data-en="Infographics" data-th="อินโฟกราฟิก">อินโฟกราฟิก</a></li>
+            <li><a href="#" data-en="Videos" data-th="วิดีโอ">วิดีโอ</a></li>
+            <li><a href="#" data-en="Brochures" data-th="โบร์ชัวร์">โบร์ชัวร์</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-en="Contact" data-th="ติดต่อ">ติดต่อ</h4>
+          <p><a href="mailto:agb.sci@ku.th" style="color: inherit;">agb.sci@ku.th</a></p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span><span id="year"></span> <span data-en="Catfish Bioresource · Kasetsart University · All Rights Reserved" data-th="ทรัพยากรชีวภาพปลาดุก · มหาวิทยาลัยเกษตรศาสตร์ · All Rights Reserved">ทรัพยากรชีวภาพปลาดุก · มหาวิทยาลัยเกษตรศาสตร์ · All Rights Reserved</span> - <a href="#" data-en="Privacy Policy" data-th="นโยบายความเป็นส่วนตัว">นโยบายความเป็นส่วนตัว</a></span>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    // 📌 ข้อมูลข่าวสาร (เรียงตามวันที่/ID ล่าสุดไว้บนสุด สามารถเพิ่ม/แก้ไขได้ที่นี่)
-    const newsData = [
-      {
-        id: 10,
-        date: "26 มีนาคม 2569",
-        titleEn: "Annual Progress Seminar on Bioresource Genomics 2026",
-        titleTh: "งานสัมมนาสรุปความก้าวหน้าโครงการวิจัยทรัพยากรชีวภาพปลาดุกประจำปี 2569",
-        image: "images/news10.jpg",
-        excerptEn: "Summary of research outcomes, native species conservation strategies, and genomic repository updates.",
-        excerptTh: "สรุปผลการดำเนินงานวิจัย การพัฒนาคลังข้อมูลจีโนมิกส์ปลาดุก และแนวทางการอนุรักษ์สายพันธุ์พื้นเมืองอย่างยั่งยืน...",
-        link: "news-detail-10.html"
-      },
-      {
-        id: 9,
-        date: "10 มีนาคม 2569",
-        titleEn: "Database Update for Catfish Genomics Repository",
-        titleTh: "อัปเดตระบบฐานข้อมูลจีโนมและเครื่องมือชีวสารสนเทศสำหรับปลาดุก",
-        image: "images/news3.jpg",
-        excerptEn: "New features and documentation have been added to the bioresource database for researchers.",
-        excerptTh: "เพิ่มชุดข้อมูลระดับโมเลกุล การเพิ่มประสิทธิภาพเครื่องมือตรวจวัดความบริสุทธิ์ของสายพันธุ์ปลาดุกอุย...",
-        link: "news-detail-9.html"
-      },
-      {
-        id: 8,
-        date: "20 กุมภาพันธ์ 2569",
-        titleEn: "Academic Seminar on Sustainable Aquaculture and Hybrid Catfish Impact",
-        titleTh: "สัมมนาวิชาการการเฝ้าระวังผลกระทบทางพันธุกรรมในปลาดุกลูกผสม",
-        image: "images/news2.jpg",
-        excerptEn: "Join our upcoming seminar focusing on bioresources, hybrid dynamics, and aquatic resource security.",
-        excerptTh: "ขอเชิญผู้สนใจร่วมแลกเปลี่ยนความรู้ประเด็นการปะปนทางพันธุกรรมระหว่างปลาดุกต่างถิ่นและปลาดุกพื้นเมือง...",
-        link: "news-detail-8.html"
-      },
-      {
-        id: 7,
-        date: "15 มกราคม 2569",
-        titleEn: "Research Team Discovers New Genetic Insights in Native Catfish",
-        titleTh: "ทีมวิจัยค้นพบข้อมูลเชิงลึกด้านพันธุกรรมปลาดุกอุยในแหล่งน้ำธรรมชาติ",
-        image: "images/news1.jpg",
-        excerptEn: "Summary of the recent findings regarding catfish biodiversity and genomic mapping in Thailand.",
-        excerptTh: "การสำรวจประชากรปลาดุกอุยในลุ่มน้ำธรรมชาติ พบรูปแบบพันธุกรรมที่มีความหลากหลายจำเพาะถิ่น...",
-        link: "news-detail-7.html"
-      }
-      // สามารถเพิ่มข่าวสารอื่นๆ ได้สูงสุด 10 ข่าว
-    ];
-
-    // ฟังก์ชัน Render แสดงผลข่าวสารและจำกัดจำนวนไม่เกิน 10 ข่าว
-    function renderNewsList() {
-      const container = document.getElementById("newsContainer");
-      container.innerHTML = "";
-
-      // ดึงข่าวสูงสุดไม่เกิน 10 ข่าวล่าสุด
-      const displayNews = newsData.slice(0, 10);
-
-      displayNews.forEach(news => {
-        const cardHTML = `
-          <a href="${news.link}" class="news-long-card">
-            <div class="news-card-media">
-              <img src="${news.image}" alt="${news.titleTh}" onerror="this.src='https://via.placeholder.com/320x220?text=No+Image'">
-            </div>
-            <div class="news-card-body">
-              <div>
-                <div class="news-card-meta">
-                  <i class="fa-regular fa-calendar"></i>
-                  <span>${news.date}</span>
-                </div>
-                <h2 class="news-card-title">${news.titleTh}</h2>
-                <p class="news-card-excerpt">${news.excerptTh}</p>
-              </div>
-              <div class="news-card-action">
-                อ่านรายละเอียด <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
-              </div>
-            </div>
-          </a>
-        `;
-        container.insertAdjacentHTML("beforeend", cardHTML);
-      });
-    }
-
-    window.addEventListener("DOMContentLoaded", renderNewsList);
-  </script>
-</body>
-</html>
+    const toggle = document.getElementById("languageToggle
