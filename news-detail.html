@@ -90,23 +90,27 @@
       gap: 10px;
     }
     .share-btn {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
       color: white;
       text-decoration: none;
-      font-size: 15px;
       transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .share-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
     }
     .share-btn:hover {
       transform: translateY(-2px);
       opacity: 0.9;
     }
-    .share-btn.facebook { background-color: #1877f2; }
     .share-btn.linkedin { background-color: #0a66c2; }
+    .share-btn.facebook { background-color: #1877f2; }
     .share-btn.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
     .share-btn.tiktok { background-color: #000000; }
     .share-btn.copy-link { background-color: #64748b; cursor: pointer; border: none; }
@@ -185,29 +189,33 @@
         <!-- เนื้อหาข่าวเจาะจงเฉพาะ ID จะถูกดึงมาใส่ที่นี่ -->
       </div>
 
-      <!-- 📌 ส่วนปุ่มแชร์โซเชียลมีเดีย (เรียงลำดับ: LinkedIn, Facebook, Instagram, TikTok, Copy Link) -->
+      <!-- 📌 ส่วนปุ่มแชร์โซเชียลมีเดีย (เรียงลำดับ: LinkedIn, Facebook, Instagram, TikTok, Copy Link ด้วย Vector SVG ชัวร์ 100%) -->
       <div class="share-section">
         <span class="share-label" data-en="Share this article:" data-th="แชร์บทความนี้:">แชร์บทความนี้:</span>
         <div class="share-buttons">
-          <!-- LinkedIn Share -->
+          <!-- LinkedIn -->
           <a id="shareLinkedin" href="#" target="_blank" rel="noopener noreferrer" class="share-btn linkedin" title="Share to LinkedIn">
-            <i class="fa-brands fa-square-linkedin-in"></i>
+            <svg viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
           </a>
-          <!-- Facebook Share -->
+
+          <!-- Facebook -->
           <a id="shareFacebook" href="#" target="_blank" rel="noopener noreferrer" class="share-btn facebook" title="Share to Facebook">
-            <i class="fa-brands fa-square-facebook-f"></i>
+            <svg viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
           </a>
+
           <!-- Instagram -->
           <a href="https://www.instagram.com/siamesecroc" target="_blank" rel="noopener noreferrer" class="share-btn instagram" title="Instagram">
-            <i class="fa-brands fa-square-instagram"></i>
+            <svg viewBox="0 0 448 512"><path d="M224.1 141.1c-43.6 0-78.9 35.3-78.9 78.9s35.3 78.9 78.9 78.9 78.9-35.3 78.9-78.9-35.3-78.9-78.9-78.9zm0 129.7c-28 0-50.8-22.8-50.8-50.8s22.8-50.8 50.8-50.8 50.8 22.8 50.8 50.8-22.8 50.8-50.8 50.8zm112.5-139c0 10.1-8.2 18.3-18.3 18.3s-18.3-8.2-18.3-18.3c0-10.1 8.2-18.3 18.3-18.3s18.3 8.2 18.3 18.3zm81.4 34.2c-1.6-33.8-9.4-63.7-34.2-88.5s-54.7-32.6-88.5-34.2c-35-2-139.9-2-174.9 0-33.8 1.6-63.7 9.4-88.5 34.2s-32.6 54.7-34.2 88.5c-2 35-2 139.9 0 174.9 1.6 33.8 9.4 63.7 34.2 88.5s54.7 32.6 88.5 34.2c35 2 139.9 2 174.9 0 33.8-1.6 63.7-9.4 88.5-34.2s32.6-54.7 34.2-88.5c2-35 2-139.9 0-174.9zm-41.1 233c-7.4 18.6-21.7 32.9-40.3 40.3-29.9 11.9-101 9.1-136.5 9.1s-106.6 2.8-136.5-9.1c-18.6-7.4-32.9-21.7-40.3-40.3-11.9-29.9-9.1-101-9.1-136.5s-2.8-106.6 9.1-136.5c7.4-18.6 21.7-32.9 40.3-40.3 29.9-11.9 101-9.1 136.5-9.1s106.6-2.8 136.5 9.1c18.6 7.4 32.9 21.7 40.3 40.3 11.9 29.9 9.1 101 9.1 136.5s2.8 106.6-9.1 136.5z"/></svg>
           </a>
+
           <!-- TikTok -->
           <a href="https://www.tiktok.com/@.siamesecroc" target="_blank" rel="noopener noreferrer" class="share-btn tiktok" title="TikTok">
-            <i class="fa-brands fa-square-tiktok"></i>
+            <svg viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h.06A122.18 122.18 0 0 0 381 84.86a121.2 121.2 0 0 0 67 20.05z"/></svg>
           </a>
-          <!-- ปุ่มคัดลอกลิงก์ (Copy Link) -->
+
+          <!-- ปุ่มคัดลอกลิงก์ -->
           <button type="button" id="copyLinkBtn" class="share-btn copy-link" title="Copy Link">
-            <i class="fa-solid fa-link"></i>
+            <svg viewBox="0 0 512 512"><path d="M326.1 239.9c-21.9-21.9-57.3-21.9-79.2 0l-68.8 68.8c-21.9 21.9-21.9 57.3 0 79.2 21.9 21.9 57.3 21.9 79.2 0l34.4-34.4c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6l-34.4 34.4c-34.4 34.4-90.1 34.4-124.5 0-34.4-34.4-34.4-90.1 0-124.5l68.8-68.8c34.4-34.4 90.1-34.4 124.5 0 34.4 34.4 34.4 90.1 0 124.5l-20.1 20.1c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l20.1-20.1c21.9-21.9 21.9-57.3 0-79.2zM185.9 272.1c21.9 21.9 57.3 21.9 79.2 0l68.8-68.8c21.9-21.9 21.9-57.3 0-79.2-21.9-21.9-57.3-21.9-79.2 0l-34.4 34.4c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l34.4-34.4c34.4-34.4 90.1-34.4 124.5 0 34.4 34.4 34.4 90.1 0 124.5l-68.8 68.8c-34.4 34.4-90.1 34.4-124.5 0-34.4-34.4-34.4-90.1 0-124.5l20.1-20.1c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6l-20.1 20.1c-21.9 21.9-21.9 57.3 0 79.2z"/></svg>
           </button>
         </div>
       </div>
@@ -266,13 +274,11 @@
   <script>
     const toggle = document.getElementById("languageToggle");
 
-    // 📌 ดึง ID ข่าวจาก URL เช่น news-detail.html?id=1
     function getNewsId() {
       const params = new URLSearchParams(window.location.search);
       return parseInt(params.get("id"));
     }
 
-    // 📌 ค้นหาข่าวที่ตรงกับ ID และนำข้อมูลมาแสดงผลเฉพาะข่าวนั้น
     function renderSpecificArticle(lang) {
       if (typeof newsData === "undefined" || newsData.length === 0) return;
 
@@ -295,15 +301,12 @@
         ? `${currentNews.titleEn} | CATFISH BIORESOURCE`
         : `${currentNews.titleTh} | CATFISH BIORESOURCE`;
 
-      // 📌 อัปเดตลิงก์แชร์โซเชียลมีเดียให้อัตโนมัติตาม URL หน้าปัจจุบัน
       const currentUrl = encodeURIComponent(window.location.href);
-      const shareTitle = encodeURIComponent(isEn ? currentNews.titleEn : currentNews.titleTh);
 
       document.getElementById("shareFacebook").href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
       document.getElementById("shareLinkedin").href = `https://www.linkedin.com/sharing/share-offsite/?url=${currentUrl}`;
     }
 
-    // 📌 ฟังก์ชันปุ่มคัดลอกลิงก์
     document.getElementById("copyLinkBtn").addEventListener("click", () => {
       navigator.clipboard.writeText(window.location.href).then(() => {
         alert("Copied article link to clipboard!");
