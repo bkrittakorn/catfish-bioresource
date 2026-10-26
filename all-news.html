@@ -471,7 +471,7 @@
     </header>
 
     <div class="news-list" id="newsContainer">
-      <!-- โค้ดรายการข่าวจะ Render ผ่าน JavaScript -->
+      <!-- โค้ดรายการข่าวจะ Render ผ่าน JavaScript จากไฟล์กลาง news-data.js -->
     </div>
   </main>
 
@@ -531,5 +531,76 @@
     </div>
   </footer>
 
+  <!-- 📌 ดึงข้อมูลข่าวจากไฟล์กลางภายนอก (news-data.js) -->
+  <script src="news-data.js"></script>
+
   <script>
-    const toggle = document.getElementById("languageToggle
+    const toggle = document.getElementById("languageToggle");
+
+    function renderNewsList(lang) {
+      const container = document.getElementById("newsContainer");
+      if (!container) return;
+      container.innerHTML = "";
+      
+      // ดึงข่าวสารจาก news-data.js มาแสดงสูงสุด 10 ข่าว
+      const displayNews = typeof newsData !== "undefined" ? newsData.slice(0, 10) : [];
+
+      displayNews.forEach(news => {
+        const title = lang === "en" ? news.titleEn : news.titleTh;
+        const excerpt = lang === "en" ? news.excerptEn : news.excerptTh;
+        const dateStr = lang === "en" ? news.dateEn : news.date;
+        const actionText = lang === "en" ? "Read More" : "อ่านรายละเอียด";
+
+        const cardHTML = `
+          <a href="${news.link}" class="news-long-card">
+            <div class="news-card-media">
+              <img src="${news.image}" alt="${title}" onerror="this.src='https://via.placeholder.com/320x220?text=No+Image'">
+            </div>
+            <div class="news-card-body">
+              <div>
+                <div class="news-card-meta">
+                  <i class="fa-regular fa-calendar"></i>
+                  <span>${dateStr}</span>
+                </div>
+                <h2 class="news-card-title">${title}</h2>
+                <p class="news-card-excerpt">${excerpt}</p>
+              </div>
+              <div class="news-card-action">
+                ${actionText} <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+              </div>
+            </div>
+          </a>
+        `;
+        container.insertAdjacentHTML("beforeend", cardHTML);
+      });
+    }
+
+    function setLanguage(language) {
+      document.documentElement.lang = language;
+
+      document.querySelectorAll("[data-en][data-th]").forEach(element => {
+        let text = element.dataset[language];
+        if (text) element.innerHTML = text;
+      });
+
+      toggle.setAttribute(
+        "aria-label",
+        language === "en" ? "Switch to Thai" : "Switch to English"
+      );
+
+      document.title = language === "en"
+        ? "News & Announcements | CATFISH BIORESOURCE"
+        : "ข่าวสารและกิจกรรม | CATFISH BIORESOURCE";
+
+      renderNewsList(language);
+    }
+
+    toggle.addEventListener("click", () => {
+      setLanguage(document.documentElement.lang === "en" ? "th" : "en");
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    setLanguage("en");
+  </script>
+</body>
+</html>
