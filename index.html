@@ -789,8 +789,8 @@
         const dateStr = lang === "en" ? (news.dateEn || news.date) : news.date;
         const readMoreText = lang === "en" ? "Read More →" : "อ่านเพิ่มเติม →";
         
-        // ลิงก์ไปยังหน้าข่าวเต็มตาม ID ข่าว
-        const targetLink = `news-detail.html?id=${news.id}`;
+        // 📌 แก้ไขตรงนี้: ดึงลิงก์ไฟล์เฉพาะข่าวตรงจาก news-data.js
+        const targetLink = news.link;
 
         const cardHTML = `
           <article class="news-card">
