@@ -47,7 +47,7 @@
     .nav-links { display: flex; align-items: center; gap: 21px; font-size: 15px; font-weight: 600; }
     .nav-links a:hover { color: var(--blue-hover); }
 
-    /* Language Switch Switch */
+    /* Language Switch */
     .lang-switch { position: relative; width: 76px; height: 32px; background-color: #e2e8f0; border-radius: 20px; border: none; padding: 0 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: background-color 0.3s ease; user-select: none; }
     .lang-switch::before { content: ""; position: absolute; top: 3px; left: 3px; width: 34px; height: 26px; background-color: var(--blue); border-radius: 16px; transition: transform 0.3s ease; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); }
     html[lang="th"] .lang-switch::before { transform: translateX(36px); }
@@ -69,6 +69,47 @@
     .article-body { background: var(--white); padding: 40px; border: 1px solid var(--line); border-radius: 16px; font-size: 16px; line-height: 1.8; color: var(--ink); }
     .article-body p { margin-bottom: 20px; text-align: left; text-justify: auto; word-break: normal; overflow-wrap: break-word; white-space: normal; }
     .article-body h3 { font-size: 20px; font-weight: 700; color: var(--blue); margin-top: 30px; margin-bottom: 12px; }
+
+    /* 📌 สไตล์สำหรับส่วนแชร์โซเชียลมีเดีย */
+    .share-section {
+      margin-top: 35px;
+      padding-top: 25px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .share-label {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .share-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .share-btn {
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .share-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+    .share-btn.facebook { background-color: #1877f2; }
+    .share-btn.linkedin { background-color: #0a66c2; }
+    .share-btn.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
+    .share-btn.tiktok { background-color: #000000; }
+    .share-btn.copy-link { background-color: #64748b; cursor: pointer; border: none; }
 
     /* Footer */
     .site-footer { background-color: #c1c1c1; color: #1e293b; padding: 50px 0 20px; font-size: 13px; border-top: 1px solid #d1d5db; }
@@ -143,6 +184,33 @@
       <div class="article-body" id="articleBody">
         <!-- เนื้อหาข่าวเจาะจงเฉพาะ ID จะถูกดึงมาใส่ที่นี่ -->
       </div>
+
+      <!-- 📌 ส่วนปุ่มแชร์โซเชียลมีเดีย -->
+      <div class="share-section">
+        <span class="share-label" data-en="Share this article:" data-th="แชร์บทความนี้:">แชร์บทความนี้:</span>
+        <div class="share-buttons">
+          <!-- Facebook Share -->
+          <a id="shareFacebook" href="#" target="_blank" rel="noopener noreferrer" class="share-btn facebook" title="Share to Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <!-- LinkedIn Share -->
+          <a id="shareLinkedin" href="#" target="_blank" rel="noopener noreferrer" class="share-btn linkedin" title="Share to LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <!-- Instagram (เนื่องจาก IG ไม่รองรับลิงก์แชร์ตรงๆ ปุ่มนี้จะลิงก์ไปที่หน้าไอจีหลักหรือเปิดแจ้งเตือนคัดลอกลิงก์) -->
+          <a href="https://www.instagram.com/siamesecroc" target="_blank" rel="noopener noreferrer" class="share-btn instagram" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com/@.siamesecroc" target="_blank" rel="noopener noreferrer" class="share-btn tiktok" title="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+          <!-- ปุ่มคัดลอกลิงก์ (Copy Link) -->
+          <button type="button" id="copyLinkBtn" class="share-btn copy-link" title="Copy Link">
+            <i class="fa-solid fa-link"></i>
+          </button>
+        </div>
+      </div>
     </article>
   </main>
 
@@ -209,7 +277,6 @@
       if (typeof newsData === "undefined" || newsData.length === 0) return;
 
       const targetId = getNewsId();
-      // ถ้าหา ID ไม่เจอ ให้ดึงข่าวแรกสุดมาแสดงแทน
       const currentNews = newsData.find(item => item.id === targetId) || newsData[0];
       const isEn = lang === "en";
 
@@ -220,7 +287,6 @@
       imgEl.src = currentNews.image;
       imgEl.alt = isEn ? currentNews.titleEn : currentNews.titleTh;
 
-      // แสดงเนื้อหาเต็มของข่าวนั้นๆ
       document.getElementById("articleBody").innerHTML = isEn 
         ? (currentNews.contentEn || currentNews.excerptEn)
         : (currentNews.contentTh || currentNews.excerptTh);
@@ -228,7 +294,23 @@
       document.title = isEn 
         ? `${currentNews.titleEn} | CATFISH BIORESOURCE`
         : `${currentNews.titleTh} | CATFISH BIORESOURCE`;
+
+      // 📌 อัปเดตลิงก์แชร์โซเชียลมีเดียให้อัตโนมัติตาม URL หน้าปัจจุบัน
+      const currentUrl = encodeURIComponent(window.location.href);
+      const shareTitle = encodeURIComponent(isEn ? currentNews.titleEn : currentNews.titleTh);
+
+      document.getElementById("shareFacebook").href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+      document.getElementById("shareLinkedin").href = `https://www.linkedin.com/sharing/share-offsite/?url=${currentUrl}`;
     }
+
+    // 📌 ฟังก์ชันปุ่มคัดลอกลิงก์
+    document.getElementById("copyLinkBtn").addEventListener("click", () => {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert("Copied article link to clipboard!");
+      }).catch(err => {
+        console.error("Failed to copy: ", err);
+      });
+    });
 
     function setLanguage(language) {
       document.documentElement.lang = language;
