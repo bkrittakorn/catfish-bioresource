@@ -99,7 +99,16 @@
       font-weight: 600;
     }
 
-    .nav-links a:hover { color: var(--blue-hover); }
+    /* 📌 ปรับสีเมื่อเอาเมาส์ไปชี้ให้เป็นสีฟ้าเข้มเหมือนหน้าหลัก */
+    .nav-links a {
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { 
+      color: var(--blue-hover); 
+    }
 
     /* Language Toggle Switch */
     .lang-switch {
