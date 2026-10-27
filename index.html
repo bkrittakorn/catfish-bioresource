@@ -17,6 +17,8 @@
     :root {
       --blue: #4876a3;
       --blue-hover: #0b5394;
+      --blue-light: #eff6ff;
+      --accent: #93c5fd;
       --ink: #1e293b;
       --muted: #64748b;
       --paper: #f8fafc;
@@ -225,7 +227,7 @@
       margin: 0 0 24px 0;
     }
 
-    /* Slider Dots (ปุ่มจุดด้านล่างสไลด์) */
+    /* Slider Dots */
     .slider-dots {
       position: absolute;
       bottom: 20px;
@@ -331,11 +333,13 @@
     .news-card {
       background: white;
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: 15px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
     }
 
     .news-card:hover {
@@ -372,6 +376,7 @@
       font-size: 12px;
       color: var(--muted);
       margin-bottom: 8px;
+      display: block;
     }
 
     .news-card h3 {
@@ -641,6 +646,7 @@
     let slideInterval;
 
     function showSlide(index) {
+      if (!slides.length) return;
       slides.forEach(s => s.classList.remove("active"));
       dots.forEach(d => d.classList.remove("active"));
 
@@ -663,7 +669,9 @@
       slideInterval = setInterval(nextSlide, 5000);
     }
 
-    slideInterval = setInterval(nextSlide, 5000);
+    if (slides.length > 0) {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
 
     // 📌 เรนเดอร์การ์ดข่าว 3 ข่าวล่าสุด
     function renderHomeNewsCards(lang) {
@@ -699,28 +707,36 @@
       });
     }
 
-    // 📌 ฟังก์ชันสลับภาษา
+    // 📌 ฟังก์ชันสลับภาษาพร้อมบันทึกค่าลง localStorage
     function setLanguage(language) {
       document.documentElement.lang = language;
+      localStorage.setItem("preferred_lang", language);
 
       document.querySelectorAll("[data-en][data-th]").forEach(element => {
         let text = element.dataset[language];
         if (text) element.innerHTML = text;
       });
 
-      toggle.setAttribute(
-        "aria-label",
-        language === "en" ? "Switch to Thai" : "Switch to English"
-      );
+      if (toggle) {
+        toggle.setAttribute(
+          "aria-label",
+          language === "en" ? "Switch to Thai" : "Switch to English"
+        );
+      }
 
       renderHomeNewsCards(language);
     }
 
-    toggle.addEventListener("click", () => {
-      setLanguage(document.documentElement.lang === "en" ? "th" : "en");
-    });
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        const currentLang = document.documentElement.lang;
+        setLanguage(currentLang === "en" ? "th" : "en");
+      });
+    }
 
-    setLanguage("en");
+    // 📌 โหลดค่าภาษาที่เคยเลือกไว้ตอนเปิดหน้าเว็บ (ข้ามหน้าเว็บได้ไม่หลุด)
+    const savedLang = localStorage.getItem("preferred_lang") || "en";
+    setLanguage(savedLang);
   </script>
 </body>
 </html>
