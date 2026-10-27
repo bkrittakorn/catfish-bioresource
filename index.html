@@ -15,15 +15,17 @@
 
   <style>
     :root {
-      --blue: #4876a3;          /* สีฟ้าหลัก (Primary Blue) */
+      --blue: #4876a3;          
       --blue-hover: #0b5394;
-      --blue-light: #eff6ff;    /* สีฟ้าอ่อน */
-      --accent: #93c5fd;        /* สีฟ้าพาสเทลเสริม */
-      --ink: #1e293b;           /* สีตัวหนังสือหลัก */
-      --muted: #64748b;         /* สีตัวหนังสือรอง */
-      --paper: #f8fafc;         /* สีพื้นหลังภาพรวม */
-      --white: #ffffff;         /* สีขาว */
-      --line: #e2e8f0;          /* สีเส้นขอบ */
+      --blue-light: #eff6ff;    
+      --accent: #93c5fd;        
+      --ink: #1e293b;           
+      --muted: #64748b;         
+      --paper: #f8fafc;         
+      --white: #ffffff;         
+      --line: #e2e8f0;          
+      --nia-dark: #242238;      /* 📌 สีม่วงเข้มสไตล์ NIA */
+      --nia-red: #991b1b;       /* 📌 สีแดงสไตล์ NIA สำหรับไฮไลต์ */
     }
 
     *, *::before, *::after { 
@@ -71,7 +73,7 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
       background: rgba(255,255,255,.96);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(12px);
@@ -122,7 +124,7 @@
       font-weight: 600;
     }
 
-    .nav-links a:hover { color: var(--blue-hover); }
+    .nav-links > a:hover, .nav-item-dropdown > a:hover { color: var(--blue-hover); }
 
     /* Language Switcher */
     .lang-switch {
@@ -173,47 +175,94 @@
     html[lang="th"] .lang-label.en { color: #64748b; }
     html[lang="th"] .lang-label.th { color: #ffffff; }
 
-    /* 📌 สไตล์สำหรับ Navigation Dropdown */
+/* 📌 สไตล์ Mega Menu สไตล์ CATFISH BIORESOURCE (ปรับจาก NIA ให้เข้ากับแบรนด์เรา) */
     .nav-item-dropdown {
       position: relative;
       display: inline-block;
     }
 
-    .dropdown-menu {
+    .mega-menu {
       display: none;
       position: absolute;
       top: 100%;
-      left: 0;
-      min-width: 260px;
-      background-color: var(--white, #ffffff);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 620px;
+      background-color: #1e293b; /* ใช้สีน้ำเงินเข้มสไตล์วิชาการ */
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      z-index: 1000;
+      margin-top: 10px;
       border: 1px solid var(--line, #e2e8f0);
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      padding: 8px 0;
-      z-index: 100;
-      margin-top: 4px;
     }
 
-    /* แสดง Dropdown เมื่อเอาเมาส์ไปชี้ */
-    .nav-item-dropdown:hover .dropdown-menu {
-      display: block;
+    /* แสดง Mega Menu เมื่อเอาเมาส์ไปชี้ */
+    .nav-item-dropdown:hover .mega-menu {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
     }
 
-    .dropdown-item {
+    /* คอลัมน์ซ้าย (หัวข้อหลักธีมสีฟ้าอ่อน) */
+    .mega-menu-col-left {
+      background-color: #0f172a;
+      padding: 24px 20px;
+      border-right: 1px solid #334155;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .mega-menu-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #93c5fd; /* สีฟ้า พาสเทล */
+      margin: 0 0 6px 0;
+    }
+
+    .mega-menu-desc {
+      font-size: 12px;
+      color: #94a3b8;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* คอลัมน์ขวา (รายการเมนูย่อย สีฟ้าแบรนด์หลักเมื่อ Hover) */
+    .mega-menu-col-right {
+      background-color: #1e293b;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mega-menu-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--blue, #4876a3);
+      justify-content: space-between;
+      padding: 12px 16px;
+      color: #ffffff;
       text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
       transition: background-color 0.2s, color 0.2s;
     }
 
-    .dropdown-item:hover {
-      background-color: var(--blue-light, #eff6ff);
-      color: var(--blue-hover, #0b5394);
+    .mega-menu-item:hover {
+      background-color: var(--blue, #4876a3); /* ไฮไลต์ด้วยสีฟ้าแบรนด์หลักของเรา */
+      color: #ffffff;
+    }
+
+    .mega-menu-item i {
+      font-size: 12px;
+      color: #94a3b8;
+      transition: transform 0.2s;
+    }
+
+    .mega-menu-item:hover i {
+      color: #ffffff;
+      transform: translateX(3px);
     }
 
     .hero {
@@ -423,9 +472,9 @@
       gap: 56px;
     }
 
-    /* 📌 สไตล์ Footer แบบ NIA (ข้อมูลองค์กร | โซเชียล | ฟอร์มรับข่าวสาร) */
+    /* 📌 สไตล์ Footer แบบ NIA */
     .site-footer {
-      background-color: #242238; /* สีพื้นหลังเข้มสไตล์ NIA */
+      background-color: #242238;
       color: #ffffff;
       padding: 40px 0;
       font-size: 13px;
@@ -442,7 +491,6 @@
       flex-wrap: wrap;
     }
 
-    /* ข้อมูลองค์กร (ซ้าย) */
     .footer-info {
       flex: 1.2;
       min-width: 280px;
@@ -462,7 +510,6 @@
       color: #93c5fd;
     }
 
-    /* โซเชียลมีเดีย (กลาง) */
     .footer-social {
       display: flex;
       align-items: center;
@@ -499,7 +546,6 @@
       fill: currentColor;
     }
 
-    /* รับข่าวสาร (ขวา) */
     .footer-newsletter {
       flex: 1.2;
       min-width: 300px;
@@ -592,22 +638,44 @@
         <a href="#about" data-en="About" data-th="เกี่ยวกับ">About</a>
         <a href="all-news.html" data-en="News" data-th="ข่าวสาร">News</a>
         
-        <!-- 📌 เมนูดรอปดาวน์ Resources -->
+        <!-- 📌 เมนูดรอปดาวน์ Mega Menu คลังข้อมูล (สไตล์ CATFISH BIORESOURCE) -->
         <div class="nav-item-dropdown">
-          <a href="#resources" style="display: inline-flex; align-items: center; gap: 4px;">
+          <a href="#resources" style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
             <span data-en="Resources" data-th="คลังข้อมูล">Resources</span>
             <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i>
           </a>
-          <div class="dropdown-menu">
-            <a href="https://catfish-thermal-dashboard.streamlit.app/" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="dropdown-item">
-              <i class="fa-solid fa-chart-line" style="font-size: 13px;"></i>
-              <span data-en="Thermal Risk Dashboard ↗" data-th="แดชบอร์ดประเมินความเสี่ยง ↗">
-                แดชบอร์ดประเมินความเสี่ยง ↗
-              </span>
-            </a>
+          
+          <div class="mega-menu">
+            <!-- คอลัมน์ซ้าย -->
+            <div class="mega-menu-col-left">
+              <div class="mega-menu-title" data-en="Knowledge Library" data-th="คลังองค์ความรู้">Knowledge Library</div>
+              <p class="mega-menu-desc" 
+                 data-en="Interactive research dashboards, genomic data, and analytical tools." 
+                 data-th="ระบบแดชบอร์ดจำลองสถานการณ์ ข้อมูลจีโนมิกส์ และเครื่องมือวิเคราะห์">
+                Interactive research dashboards, genomic data, and analytical tools.
+              </p>
+            </div>
+            <!-- คอลัมน์ขวา (รายการเมนูย่อย) -->
+            <div class="mega-menu-col-right">
+              <a href="https://catfish-thermal-dashboard.streamlit.app/" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="mega-menu-item">
+                <span data-en="Thermal Risk & AquaMonitor Dashboard ↗" data-th="แดชบอร์ดประเมินความเสี่ยงและคุณภาพน้ำ ↗">
+                  แดชบอร์ดประเมินความเสี่ยงและคุณภาพน้ำ ↗
+                </span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="https://sites.google.com/ku.th/catfishbioresource-th" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="mega-menu-item">
+                <span data-en="Existing Resource Library ↗" data-th="คลังข้อมูลเว็บไซต์เดิม ↗">
+                  คลังข้อมูลเว็บไซต์เดิม ↗
+                </span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -680,7 +748,7 @@
                     นอกจากนี้ โครงการยังให้ความสำคัญกับการพัฒนาฐานข้อมูลทรัพยากรชีวภาพและจีโนมของปลาดุก เพื่อเป็นแหล่งรวบรวมและเผยแพร่องค์ความรู้ทางวิทยาศาสตร์สำหรับนักวิจัย นักศึกษา ผู้ประกอบการเพาะเลี้ยงสัตว์น้ำ และหน่วยงานที่เกี่ยวข้อง โดยสามารถนำข้อมูลไปประยุกต์ใช้ในการอนุรักษ์ปลาดุกพื้นเมือง การเฝ้าระวังผลกระทบจากปลาต่างถิ่น การปรับปรุงพันธุ์สัตว์น้ำ และการเพิ่มประสิทธิภาพการผลิตอย่างยั่งยืน
                     การดำเนินงานดังกล่าวจะช่วยสร้างรากฐานสำคัญในการเชื่อมโยง การอนุรักษ์ความหลากหลายทางชีวภาพ (Biodiversity Conservation) เข้ากับ การใช้ประโยชน์ทรัพยากรพันธุกรรมอย่างยั่งยืน (Sustainable Genetic Resource Utilization) เพื่อสนับสนุนการพัฒนาเศรษฐกิจฐานชีวภาพ (Bioeconomy) และความมั่นคงของทรัพยากรสัตว์น้ำในประเทศไทย">
                     <b>Catfish of the genus <i>Clarias</i></b> represent a vital freshwater bioresource in Thailand, playing key roles in biodiversity, food security, aquaculture economics, and the utilization of genetic resources. Particularly significant are the broadhead catfish (<i>Clarias macrocephalus</i>), a species native to Thailand, and the African sharptooth catfish (<i>Clarias gariepinus</i>), an introduced species widely farmed commercially due to its high growth rate and environmental adaptability. Furthermore, hybrid catfish are extensively produced to enhance efficiency in aquaculture systems.
-                    However, environmental changes, habitat loss, the introduction of non-native species, and the risk of genetic introgression between native and non-native catfish may impact genetic diversity and the long-term integrity of biological resources. Simultaneously, genomic data and genetic resource documentation for catfish in Thailand require further research and development to support conservation and sustainable utilization.
+                    However, environmental changes, habitat loss, the introduction of non-native species, and the risk of genetic intregression between native and non-native catfish may impact genetic diversity and the long-term integrity of biological resources. Simultaneously, genomic data and genetic resource documentation for catfish in Thailand require further research and development to support conservation and sustainable utilization.
                     <b>The CATFISH BIORESOURCE Project</b> focuses on studying, compiling, and advancing knowledge on the biodiversity and genetics of catfish. By integrating genomics, population genetics, comparative genomics, and bioinformatics, the project investigates genetic diversity, population structure, evolutionary relationships, genetic traits related to growth and sex determination, as well as the development of molecular tools for species identification and genetic contamination screening.
                     Additionally, the project emphasizes the development of a catfish bioresource and genomic database to serve as a scientific repository and dissemination platform for researchers, students, aquaculture operators, and relevant agencies. The data can be applied toward native catfish conservation, monitoring the impacts of non-native species, selective breeding, and enhancing sustainable production efficiency.
                     These efforts establish a crucial foundation connecting biodiversity conservation with sustainable genetic resource utilization, supporting the bioeconomy and the long-term security of aquatic resources in Thailand.
@@ -789,7 +857,7 @@
               <svg viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
             </a>
             <a href="https://www.instagram.com/siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Instagram">
-              <svg viewBox="0 0 448 512"><path d="M224.1 141.1c-43.6 0-78.9 35.3-78.9 78.9s35.3 78.9 78.9 78.9 78.9-35.3 78.9-78.9-35.3-78.9-78.9-78.9zm0 129.7c-28 0-50.8-22.8-50.8-50.8s22.8-50.8 50.8-50.8 50.8 22.8 50.8 50.8-22.8 50.8-50.8-50.8zm112.5-139c0 10.1-8.2 18.3-18.3 18.3s-18.3-8.2-18.3-18.3c0-10.1 8.2-18.3 18.3-18.3s18.3 8.2 18.3 18.3zm81.4 34.2c-1.6-33.8-9.4-63.7-34.2-88.5s-54.7-32.6-88.5-34.2c-35-2-139.9-2-174.9 0-33.8 1.6-63.7 9.4-88.5 34.2s-32.6 54.7-34.2 88.5c-2 35-2 139.9 0 174.9 1.6 33.8 9.4 63.7 34.2 88.5s54.7 32.6 88.5 34.2c35 2 139.9 2 174.9 0 33.8-1.6 63.7-9.4 88.5-34.2s32.6-54.7 34.2-88.5c2-35 2-139.9 0-174.9zm-41.1 233c-7.4 18.6-21.7 32.9-40.3 40.3-29.9 11.9-101 9.1-136.5 9.1s-106.6 2.8-136.5-9.1c-18.6-7.4-32.9-21.7-40.3-40.3-11.9-29.9-9.1-101-9.1-136.5s-2.8-106.6 9.1-136.5c7.4-18.6 21.7-32.9 40.3-40.3 29.9-11.9 101-9.1 136.5-9.1s106.6-2.8 136.5 9.1c18.6 7.4 32.9 21.7 40.3 40.3 11.9 29.9 9.1 101 9.1 136.5s2.8 106.6-9.1 136.5z"/></svg>
+              <svg viewBox="0 0 448 512"><path d="M224.1 141.1c-43.6 0-78.9 35.3-78.9 78.9s35.3 78.9 78.9 78.9 78.9-35.3 78.9-78.9-35.3-78.9-78.9-78.9zm0 129.7c-28 0-50.8-22.8-50.8-50.8s22.8-50.8 50.8-50.8 50.8 22.8 50.8 50.8-22.8 50.8-50.8 50.8zm112.5-139c0 10.1-8.2 18.3-18.3 18.3s-18.3-8.2-18.3-18.3c0-10.1 8.2-18.3 18.3-18.3s18.3 8.2 18.3 18.3zm81.4 34.2c-1.6-33.8-9.4-63.7-34.2-88.5s-54.7-32.6-88.5-34.2c-35-2-139.9-2-174.9 0-33.8 1.6-63.7 9.4-88.5 34.2s-32.6 54.7-34.2 88.5c-2 35-2 139.9 0 174.9 1.6 33.8 9.4 63.7 34.2 88.5s54.7 32.6 88.5 34.2c35 2 139.9 2 174.9 0 33.8-1.6 63.7-9.4 88.5-34.2s32.6-54.7 34.2-88.5c2-35 2-139.9 0-174.9zm-41.1 233c-7.4 18.6-21.7 32.9-40.3 40.3-29.9 11.9-101 9.1-136.5 9.1s-106.6 2.8-136.5-9.1c-18.6-7.4-32.9-21.7-40.3-40.3-11.9-29.9-9.1-101-9.1-136.5s-2.8-106.6 9.1-136.5c7.4-18.6 21.7-32.9 40.3-40.3 29.9-11.9 101-9.1 136.5-9.1s106.6-2.8 136.5 9.1c18.6 7.4 32.9 21.7 40.3 40.3 11.9 29.9 9.1 101 9.1 136.5s2.8 106.6-9.1 136.5z"/></svg>
             </a>
             <a href="https://www.tiktok.com/@.siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="TikTok">
               <svg viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h.06A122.18 122.18 0 0 0 381 84.86a121.2 121.2 0 0 0 67 20.05z"/></svg>
@@ -815,7 +883,6 @@
   <script>
     const toggle = document.getElementById("languageToggle");
 
-    // 📌 ฟังก์ชันดึง 3 ข่าวล่าสุดมาแสดงผลในการ์ดหน้าหลัก
     function renderHomeNewsCards(lang) {
       const track = document.getElementById("latestNewsTrack");
       if (!track) return;
@@ -896,7 +963,6 @@
       });
     }
 
-    // โหลดภาษาล่าสุดที่บันทึกไว้
     const savedLang = localStorage.getItem("preferred_lang") || "en";
     setLanguage(savedLang);
   </script>
