@@ -68,22 +68,6 @@
       margin-inline: auto;
     }
 
-    .topbar {
-      background: #4876a3;
-      color: white;
-      font-size: 12px;
-      padding: 8px 0;
-    }
-
-    .topbar-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      width: min(1120px, calc(100% - 40px));
-      margin-inline: auto;
-    }
-
     header {
       position: sticky;
       top: 0;
@@ -395,14 +379,6 @@
       gap: 56px;
     }
 
-    .site-footer {
-      background-color: #c1c1c1;
-      color: #1e293b;
-      padding: 50px 0 20px;
-      font-size: 13px;
-      border-top: 1px solid #d1d5db;
-    }
-
     /* 📌 สไตล์ Footer แบบ NIA (ข้อมูลองค์กร | โซเชียล | ฟอร์มรับข่าวสาร) */
     .site-footer {
       background-color: #242238; /* สีพื้นหลังเข้มสไตล์ NIA */
@@ -534,13 +510,6 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-    }
-
     @media (max-width: 800px) {
       .nav { padding: 13px 0; flex-wrap: wrap; }
       .nav-links { order: 3; width: 100%; gap: 16px; flex-wrap: wrap; }
@@ -560,16 +529,6 @@
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <span data-en="Academic Research Website"
-            data-th="เว็บไซต์ข้อมูลวิชาการและงานวิจัย">
-        Academic Research Website
-      </span>
-      <span>Kasetsart University</span>
-    </div>
-  </div>
-
   <header>
     <div class="container nav">
       <a class="brand" href="#home" aria-label="CATFISH BIORESOURCE Home">
@@ -801,7 +760,7 @@
         const dateStr = lang === "en" ? (news.dateEn || news.date) : news.date;
         const readMoreText = lang === "en" ? "Read More →" : "อ่านเพิ่มเติม →";
 
-        // 📌 แก้ไขตรงนี้: ดึงลิงก์ไฟล์เฉพาะข่าวตรงจาก news-data.js
+        // 📌 ดึงลิงก์ไฟล์เฉพาะข่าวตรงจาก news-data.js
         const targetLink = news.link;
 
         const cardHTML = `
@@ -825,31 +784,35 @@
 
     function setLanguage(language) {
       document.documentElement.lang = language;
+      localStorage.setItem("preferred_lang", language);
 
       document.querySelectorAll("[data-en][data-th]").forEach(element => {
         let text = element.dataset[language];
 
-        if (language === "en") {
-          text = text.replace(/Catfish of the genus Clarias/g, "<b>Catfish of the genus <i>Clarias</i></b>")
-                     .replace(/The CATFISH BIORESOURCE Project/g, "<b>The CATFISH BIORESOURCE Project</b>")
-                     .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
-                     .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
-                     .replace(/Clarias/g, "<i>Clarias</i>");
-        } else {
-          text = text.replace(/ปลาดุกสกุล Clarias/g, "<b>ปลาดุกสกุล <i>Clarias</i></b>")
-                     .replace(/โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก/g, "<b>โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก</b>")
-                     .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
-                     .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
-                     .replace(/Clarias/g, "<i>Clarias</i>");
+        if (text) {
+          if (language === "en") {
+            text = text.replace(/Catfish of the genus Clarias/g, "<b>Catfish of the genus <i>Clarias</i></b>")
+                       .replace(/The CATFISH BIORESOURCE Project/g, "<b>The CATFISH BIORESOURCE Project</b>")
+                       .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
+                       .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
+                       .replace(/Clarias/g, "<i>Clarias</i>");
+          } else {
+            text = text.replace(/ปลาดุกสกุล Clarias/g, "<b>ปลาดุกสกุล <i>Clarias</i></b>")
+                       .replace(/โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก/g, "<b>โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก</b>")
+                       .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
+                       .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
+                       .replace(/Clarias/g, "<i>Clarias</i>");
+          }
+          element.innerHTML = text;
         }
-
-        element.innerHTML = text;
       });
 
-      toggle.setAttribute(
-        "aria-label",
-        language === "en" ? "Switch to Thai" : "Switch to English"
-      );
+      if (toggle) {
+        toggle.setAttribute(
+          "aria-label",
+          language === "en" ? "Switch to Thai" : "Switch to English"
+        );
+      }
 
       document.title = language === "en"
         ? "CATFISH BIORESOURCE | Kasetsart University"
@@ -859,12 +822,16 @@
       renderHomeNewsCards(language);
     }
 
-    toggle.addEventListener("click", () => {
-      setLanguage(document.documentElement.lang === "en" ? "th" : "en");
-    });
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        const currentLang = document.documentElement.lang;
+        setLanguage(currentLang === "en" ? "th" : "en");
+      });
+    }
 
-    document.getElementById("year").textContent = new Date().getFullYear();
-    setLanguage("en");
+    // 📌 โหลดภาษาที่เลือกไว้ล่าสุดจาก localStorage (หรือภาษาเริ่มต้นคือ en)
+    const savedLang = localStorage.getItem("preferred_lang") || "en";
+    setLanguage(savedLang);
   </script>
 </body>
 </html>
