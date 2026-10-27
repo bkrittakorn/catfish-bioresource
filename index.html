@@ -15,16 +15,8 @@
 
   <style>
     :root {
-      --blue: #4876a3;          /* สีฟ้าหลัก (Primary Blue) สำหรับปุ่มและข้อความเด่น */
       --blue: #4876a3;
       --blue-hover: #0b5394;
-      --blue-light: #eff6ff;    /* สีฟ้าอ่อน สำหรับพื้นหลังกล่องหรือไฮไลต์ */
-      --accent: #93c5fd;        /* สีฟ้าพาสเทลเสริม (Accent) */
-      --ink: #1e293b;           /* สีตัวหนังสือหลัก (เข้ม อ่านง่าย) */
-      --muted: #64748b;         /* สีตัวหนังสือรอง (เทาเข้ม) */
-      --paper: #f8fafc;         /* สีพื้นหลังภาพรวมของเว็บไซต์ */
-      --white: #ffffff;         /* สีขาว */
-      --line: #e2e8f0;          /* สีเส้นขอบ */
       --ink: #1e293b;
       --muted: #64748b;
       --paper: #f8fafc;
@@ -33,66 +25,148 @@
     }
 
     *, *::before, *::after { 
-@@ -35,32 +33,12 @@
+      box-sizing: border-box; 
+      font-family: Arial, "Prompt", sans-serif !important;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
     body {
       margin: 0;
-      color: #4876a3;
       color: var(--ink);
       background: var(--paper);
-      font-family: Arial, "Prompt", sans-serif;
       line-height: 1.7;
     }
-
-    .body-copy {
-      text-align: justify;
-      white-space: pre-line;
-      line-height: 1.8;
-      color: var(--ink);
-      word-break: break-word;
-      line-break: relaxed;
-    }
-
-    .body-copy b, .body-copy strong {
-      font-weight: 700;
-      color: #1e293b;
-    }
-
-    .body-copy i, .body-copy em {
-      font-style: italic;
-    }
-
+     
     a { color: inherit; text-decoration: none; }
-
     button { font: inherit; cursor: pointer; }
 
     .container {
-@@ -87,7 +65,7 @@
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      background: #4876a3;
+      color: white;
+      font-size: 12px;
+      padding: 8px 0;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
       z-index: 100;
       background: rgba(255,255,255,.96);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(12px);
-@@ -127,7 +105,7 @@
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark-img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      line-height: 1.3;
+      color: var(--blue);
+    }
+
     .brand-sub {
       font-size: 11px;
       color: var(--muted);
-      margin-top: 4px;
       margin-top: 2px;
     }
 
     .nav-links {
-@@ -189,144 +167,194 @@
+      display: flex;
+      align-items: center;
+      gap: 21px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--blue-hover); }
+
+    /* Language Switcher */
+    .lang-switch {
+      position: relative;
+      width: 76px;
+      height: 32px;
+      background-color: #e2e8f0;
+      border-radius: 20px;
+      border: none;
+      padding: 0 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .lang-switch::before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 34px;
+      height: 26px;
+      background-color: var(--blue);
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    html[lang="th"] .lang-switch::before {
+      transform: translateX(36px);
+    }
+
+    .lang-label {
+      font-size: 11px;
+      font-weight: 800;
+      z-index: 1;
+      width: 30px;
+      text-align: center;
+      transition: color 0.3s ease;
+    }
+
+    .lang-label.en { color: #ffffff; }
+    .lang-label.th { color: #64748b; }
+
     html[lang="th"] .lang-label.en { color: #64748b; }
     html[lang="th"] .lang-label.th { color: #ffffff; }
 
-    .hero {
-      background: url('images/images.bg.png') center/cover no-repeat;
-      color: #ffffff;
-      padding: 100px 0 92px;
     /* 📌 Hero Slider สไตล์ NIA ด้านบนสุด */
     .hero-slider {
       position: relative;
@@ -102,7 +176,6 @@
       overflow: hidden;
     }
 
-    .hero-content { max-width: 760px; }
     .slide {
       position: absolute;
       top: 0;
@@ -117,14 +190,6 @@
       background-position: center;
     }
 
-    .hero .eyebrow {
-      display: inline-block;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: normal;
-      text-transform: none;
-      color: #c1c1c1;
-      margin-bottom: 20px;
     .slide.active {
       opacity: 1;
       z-index: 2;
@@ -146,31 +211,20 @@
       margin-left: max(20px, calc((100% - 1120px) / 2));
     }
 
-    .hero h1 {
-      font-size: clamp(38px, 6vw, 66px);
-      line-height: 1.12;
-      letter-spacing: -.045em;
-      margin: 0 0 24px;
     .slide-content h1 {
       font-size: clamp(32px, 5vw, 50px);
       line-height: 1.2;
       font-weight: 800;
-      color: #4876a3;
       margin: 0 0 16px 0;
       color: #ffffff;
     }
 
-    .hero p {
-      max-width: 640px;
-      color: #334155;
     .slide-content p {
       font-size: 16px;
-      margin: 0 0 30px;
       color: #e2e8f0;
       margin: 0 0 24px 0;
     }
 
-    .actions {
     /* Slider Dots (ปุ่มจุดด้านล่างสไลด์) */
     .slider-dots {
       position: absolute;
@@ -179,21 +233,9 @@
       transform: translateX(-50%);
       z-index: 10;
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
       gap: 10px;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 11px 18px;
-      border-radius: 9px;
-      font-size: 13px;
-      font-weight: 700;
-      border: 1px solid transparent;
     .dot {
       width: 12px;
       height: 12px;
@@ -204,20 +246,11 @@
       transition: background 0.3s;
     }
 
-    .hero .btn-light { 
-      background: #4876a3; 
-      color: white; 
-      transition: transform .2s, box-shadow .2s, background-color .2s;
     .dot.active {
       background: #ffffff;
       width: 28px;
       border-radius: 6px;
     }
-    
-    .hero .btn-light:hover {
-      background: #0b5394;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(22, 62, 48, 0.15);
 
     /* 📌 ส่วนข้อมูลสำหรับคุณ (Target Audience Icons แบบ NIA) */
     .audience-section {
@@ -226,12 +259,6 @@
       border-bottom: 1px solid var(--line);
       box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     }
-    
-    .hero .btn-outline { 
-      border-color: #4876a3; 
-      color: #4876a3; 
-      background: rgba(255, 255, 255, 0.7);
-      transition: transform .2s, box-shadow .2s, background-color .2s;
 
     .audience-title {
       text-align: center;
@@ -240,10 +267,6 @@
       color: var(--ink);
       margin-bottom: 40px;
     }
-    .hero .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.95);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(22, 62, 48, 0.15);
 
     .audience-grid {
       display: grid;
@@ -252,7 +275,6 @@
       text-align: center;
     }
 
-    section { padding: 76px 0; }
     .audience-item {
       display: flex;
       flex-direction: column;
@@ -264,18 +286,11 @@
       color: var(--ink);
     }
 
-    .section-head { max-width: 690px; margin-bottom: 32px; }
     .audience-item:hover {
       transform: translateY(-5px);
       background-color: var(--paper);
     }
 
-    .kicker {
-      color: #000000;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: normal;
-      text-transform: none;
     .audience-icon {
       width: 64px;
       height: 64px;
@@ -290,26 +305,17 @@
       transition: background 0.2s, color 0.2s;
     }
 
-    h2 {
-      font-size: clamp(27px, 4vw, 39px);
-      line-height: 1.25;
-      letter-spacing: -.035em;
-      margin: 9px 0 14px;
     .audience-item:hover .audience-icon {
       background: var(--blue);
       color: white;
     }
 
-    .section-head p {
-      color: var(--muted);
-      font-size: 15px;
     .audience-item span {
       font-size: 14px;
       font-weight: 600;
       line-height: 1.4;
     }
 
-    /* สไตล์สำหรับการ์ดข่าวสารในหน้าหลัก */
     section { padding: 70px 0; }
     .section-head { max-width: 690px; margin-bottom: 32px; }
     .kicker { color: var(--blue); font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -319,38 +325,26 @@
     .news-cards-track {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
       gap: 24px;
     }
 
     .news-card {
-      padding: 0 !important;
       background: white;
       border: 1px solid var(--line);
       border-radius: 14px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 15px;
-      transition: transform .2s, box-shadow .2s;
-      text-decoration: none;
-      color: inherit;
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .news-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(22, 62, 48, 0.1);
       transform: translateY(-4px);
       box-shadow: 0 12px 30px rgba(0,0,0,0.08);
     }
 
     .news-img-wrapper {
       width: 100%;
-      height: 180px;
-      overflow: hidden;
       height: 190px;
       background: #e2e8f0;
       overflow: hidden;
@@ -360,138 +354,88 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
       transition: transform 0.3s;
     }
 
     .news-card:hover .news-thumb {
-@@ -344,7 +372,6 @@
+      transform: scale(1.05);
+    }
+
+    .news-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .news-date {
       font-size: 12px;
       color: var(--muted);
       margin-bottom: 8px;
-      display: block;
     }
 
     .news-card h3 {
-@@ -374,40 +401,17 @@
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      color: var(--ink);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .news-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 16px 0;
+      flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .read-more-link {
       font-size: 13px;
       font-weight: 700;
       color: var(--blue);
-      text-decoration: none;
       margin-top: auto;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
     }
 
-    .news-card:hover .read-more-link {
-      color: var(--blue-hover);
-      text-decoration: underline;
-    }
-
-    .about { background: white; }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      align-items: start;
-      gap: 56px;
-    }
-
-    .site-footer {
-      background-color: #c1c1c1;
-      color: #1e293b;
-      padding: 50px 0 20px;
-      font-size: 13px;
-      border-top: 1px solid #d1d5db;
-    }
     .about { background: white; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .body-copy { text-align: justify; white-space: pre-line; line-height: 1.8; color: var(--ink); }
 
-    /* 📌 สไตล์ Footer แบบ NIA (ข้อมูลองค์กร | โซเชียล | ฟอร์มรับข่าวสาร) */
     /* 📌 Footer สไตล์ NIA 3 คอลัมน์ */
     .site-footer {
-      background-color: #242238; /* สีพื้นหลังเข้มสไตล์ NIA */
       background-color: #242238;
       color: #ffffff;
-      padding: 40px 0;
       padding: 45px 0 35px;
       font-size: 13px;
       border-top: 1px solid #3b3953;
     }
-@@ -417,155 +421,56 @@
+
+    .footer-container {
+      width: min(1120px, calc(100% - 40px));
       margin-inline: auto;
       display: flex;
       justify-content: space-between;
-      align-items: center;
       align-items: flex-start;
       gap: 30px;
       flex-wrap: wrap;
     }
 
-    /* ข้อมูลองค์กร (ซ้าย) */
-    .footer-info {
-      flex: 1.2;
-      min-width: 280px;
-    }
-    .footer-info h3 {
-      font-size: 15px;
-      font-weight: 700;
-      color: #ffffff;
-      margin: 0 0 8px 0;
-    }
-    .footer-info p {
-      margin: 0 0 4px 0;
-      line-height: 1.6;
-      color: #cbd5e1;
-    }
-    .footer-info a {
-      color: #93c5fd;
-    }
     .footer-info { flex: 1.2; min-width: 280px; }
     .footer-info h3 { font-size: 15px; font-weight: 700; color: #ffffff; margin: 0 0 10px 0; }
     .footer-info p { margin: 0 0 6px 0; line-height: 1.6; color: #cbd5e1; }
     .footer-info a { color: #93c5fd; text-decoration: none; }
     .footer-info a:hover { text-decoration: underline; }
 
-    /* โซเชียลมีเดีย (กลาง) */
-    .footer-social {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex: 0.8;
-      min-width: 220px;
-    }
-    .footer-social span {
-      font-weight: 600;
-      color: #ffffff;
-    }
-    .footer-social-icons {
-      display: flex;
-      gap: 8px;
-    }
     .footer-social { display: flex; align-items: center; gap: 12px; flex: 0.8; min-width: 220px; padding-top: 5px; }
     .footer-social span { font-weight: 600; color: #ffffff; }
     .footer-social-icons { display: flex; gap: 8px; }
     .footer-social-icon {
-      width: 32px;
-      height: 32px;
-      background-color: #3b3953;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-      color: white;
-      text-decoration: none;
-      transition: background-color 0.2s;
-    }
-    .footer-social-icon:hover {
-      background-color: #4876a3;
-    }
-    .footer-social-icon svg {
-      width: 14px;
-      height: 14px;
-      fill: currentColor;
       width: 32px; height: 32px; background-color: #3b3953;
       display: inline-flex; align-items: center; justify-content: center;
       border-radius: 4px; color: white; text-decoration: none; transition: background-color 0.2s;
@@ -499,54 +443,15 @@
     .footer-social-icon:hover { background-color: #4876a3; }
     .footer-social-icon svg { width: 14px; height: 14px; fill: currentColor; }
 
-    /* รับข่าวสาร (ขวา) */
-    .footer-newsletter {
-      flex: 1.2;
-      min-width: 300px;
-    }
-    .footer-newsletter label {
-      display: block;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 8px;
-    }
-    .newsletter-form {
-      display: flex;
-      gap: 0;
-    }
     .footer-newsletter { flex: 1.2; min-width: 300px; }
     .footer-newsletter label { display: block; font-weight: 600; color: #ffffff; margin-bottom: 10px; }
     .newsletter-form { display: flex; gap: 0; }
     .newsletter-input {
-      flex: 1;
-      background-color: #1e1c2e;
-      border: 1px solid #4a4863;
-      border-right: none;
-      padding: 9px 12px;
-      color: #ffffff;
-      font-size: 13px;
-      outline: none;
-      border-radius: 4px 0 0 4px;
-    }
-    .newsletter-input::placeholder {
-      color: #94a3b8;
       flex: 1; background-color: #1e1c2e; border: 1px solid #4a4863; border-right: none;
       padding: 10px 14px; color: #ffffff; font-size: 13px; outline: none; border-radius: 4px 0 0 4px;
     }
     .newsletter-input::placeholder { color: #94a3b8; }
     .newsletter-btn {
-      background-color: #b91c1c;
-      color: white;
-      border: none;
-      padding: 9px 18px;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      border-radius: 0 4px 4px 0;
-      transition: background-color 0.2s;
-    }
-    .newsletter-btn:hover {
-      background-color: #991b1b;
       background-color: #b91c1c; color: white; border: none; padding: 10px 20px;
       font-weight: 600; font-size: 13px; cursor: pointer; border-radius: 0 4px 4px 0; transition: background-color 0.2s;
     }
@@ -554,38 +459,8 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .footer-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-      }
-      .footer-newsletter {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-    }
-
-    @media (max-width: 800px) {
-      .nav { padding: 13px 0; flex-wrap: wrap; }
-      .nav-links { order: 3; width: 100%; gap: 16px; flex-wrap: wrap; }
-      .news-cards-track { grid-template-columns: 1fr 1fr; }
-      .about-grid { grid-template-columns: 1fr; gap: 25px; }
-      .hero { padding: 72px 0; }
-    }
-
-    @media (max-width: 520px) {
-      .container { width: min(100% - 28px, 1120px); }
       .audience-grid { grid-template-columns: repeat(2, 1fr); }
       .news-cards-track { grid-template-columns: 1fr; }
-      section { padding: 55px 0; }
-      .hero h1 { font-size: 39px; }
-      .brand-sub { font-size: 10px; }
       .footer-container { flex-direction: column; gap: 24px; }
       .hero-slider { height: 380px; }
     }
@@ -595,32 +470,37 @@
 <body>
   <div class="topbar">
     <div class="container topbar-inner">
-      <span data-en="Academic Research Website"
-            data-th="เว็บไซต์ข้อมูลวิชาการและงานวิจัย">
-        Academic Research Website
-      </span>
       <span data-en="Academic Research Website" data-th="เว็บไซต์ข้อมูลวิชาการและงานวิจัย">Academic Research Website</span>
       <span>Kasetsart University</span>
     </div>
   </div>
-@@ -576,11 +481,7 @@
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="CATFISH BIORESOURCE Home">
         <img src="images/Catfish Bioresource Logo.png" alt="CATFISH BIORESOURCE Logo" class="brand-mark-img">
         <div>
           <div class="brand-name">CATFISH BIORESOURCE</div>
-          <div class="brand-sub"
-               data-en="AGB Research Unit"
-               data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">
-            หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์
-          </div>
           <div class="brand-sub" data-en="AGB Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</div>
         </div>
       </a>
 
-@@ -600,194 +501,171 @@
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home" data-en="Home" data-th="หน้าหลัก">Home</a>
+        <a href="#about" data-en="About" data-th="เกี่ยวกับ">About</a>
+        <a href="all-news.html" data-en="News" data-th="ข่าวสาร">News</a>
+        <a href="#resources" data-en="Resources" data-th="คลังข้อมูล">Resources</a>
+        <a href="#contact" data-en="Contact" data-th="ติดต่อ">Contact</a>
+      </nav>
+
+      <button class="lang-switch" id="languageToggle" type="button" aria-label="Switch language">
+        <span class="lang-label en">EN</span>
+        <span class="lang-label th">TH</span>
+      </button>
+    </div>
   </header>
 
   <main>
-    <section class="hero" id="home">
     <!-- 📌 Hero Slider สไตล์ NIA (เลื่อนภาพอัตโนมัติ) -->
     <div class="hero-slider" id="home">
       <div class="slide active" style="background-image: url('images/images.bg.png');">
@@ -651,34 +531,6 @@
     <!-- 📌 ข้อมูลสำหรับคุณ (Target Audience Icons สไตล์ NIA) -->
     <div class="audience-section">
       <div class="container">
-        <div class="hero-content">
-          <span class="eyebrow"
-                data-en="Science · Biodiversity · Research"
-                data-th="วิทยาศาสตร์ · ความหลากหลายทางชีวภาพ · งานวิจัย">
-            Science · Biodiversity · Research
-          </span>
-
-          <h1>CATFISH<br>BIORESOURCE</h1>
-
-          <p data-en="Academic information on catfish bioresources, project data, study topics, and scientific resources regarding catfish."
-             data-th="ข้อมูลวิชาการด้านทรัพยากรชีวภาพปลาดุก ข้อมูลโครงการ หัวข้อการศึกษา และแหล่งข้อมูลทางวิทยาศาสตร์ เกี่ยวกับปลาดุก">
-             Academic information on catfish bioresources, project data, study topics, and scientific resources regarding catfish.
-          </p>
-
-          <div class="actions">
-            <a class="btn btn-light" href="#about"
-               data-en="Explore the Project"
-               data-th="รู้จักโครงการ">
-              Explore the Project
-            </a>
-            <a class="btn btn-outline"
-               href="https://sites.google.com/ku.th/catfishbioresource-th"
-               target="_blank" rel="noopener noreferrer"
-               data-en="Visit Current Website"
-               data-th="เว็บไซต์เดิม">
-              Visit Current Website
-            </a>
-          </div>
         <h2 class="audience-title" data-en="Information For You" data-th="ข้อมูลสำหรับคุณ">ข้อมูลสำหรับคุณ</h2>
         <div class="audience-grid">
           <a href="#about" class="audience-item">
@@ -703,40 +555,10 @@
           </a>
         </div>
       </div>
-    </section>
     </div>
 
     <!-- About Section -->
     <section class="about" id="about">
-      <div class="container about-grid">
-        <div>
-          <span class="kicker"
-                data-en="About"
-                data-th="เกี่ยวกับ">
-            About the Website
-          </span>
-          <h2 data-en="Knowledge for Catfish Bioresources"
-              data-th="องค์ความรู้ด้านทรัพยากรชีวภาพปลาดุก">
-            Knowledge for Catfish Bioresources
-          </h2>
-          <p class="body-copy"
-              data-en="Catfish of the genus Clarias represent a vital freshwater bioresource in Thailand, playing key roles in biodiversity, food security, aquaculture economics, and the utilization of genetic resources. Particularly significant are the broadhead catfish (Clarias macrocephalus), a species native to Thailand, and the African sharptooth catfish (Clarias gariepinus), an introduced species widely farmed commercially due to its high growth rate and environmental adaptability. Furthermore, hybrid catfish are extensively produced to enhance efficiency in aquaculture systems.
-                    However, environmental changes, habitat loss, the introduction of non-native species, and the risk of genetic introgression between native and non-native catfish may impact genetic diversity and the long-term integrity of biological resources. Simultaneously, genomic data and genetic resource documentation for catfish in Thailand require further research and development to support conservation and sustainable utilization.
-                    The CATFISH BIORESOURCE Project focuses on studying, compiling, and advancing knowledge on the biodiversity and genetics of catfish. By integrating genomics, population genetics, comparative genomics, and bioinformatics, the project investigates genetic diversity, population structure, evolutionary relationships, genetic traits related to growth and sex determination, as well as the development of molecular tools for species identification and genetic contamination screening.
-                    Additionally, the project emphasizes the development of a catfish bioresource and genomic database to serve as a scientific repository and dissemination platform for researchers, students, aquaculture operators, and relevant agencies. The data can be applied toward native catfish conservation, monitoring the impacts of non-native species, selective breeding, and enhancing sustainable production efficiency.
-                    These efforts establish a crucial foundation connecting biodiversity conservation with sustainable genetic resource utilization, supporting the bioeconomy and the long-term security of aquatic resources in Thailand."
-              data-th="<b>ปลาดุกสกุล <i>Clarias</i></b> เป็นทรัพยากรชีวภาพสัตว์น้ำจืดที่มีความสำคัญต่อประเทศไทย ทั้งในด้านความหลากหลายทางชีวภาพ ความมั่นคงทางอาหาร เศรษฐกิจการเพาะเลี้ยงสัตว์น้ำ และการใช้ประโยชน์จากทรัพยากรพันธุกรรม โดยเฉพาะปลาดุกอุย (<i>Clarias macrocephalus</i>) ซึ่งเป็นปลาพื้นเมืองของประเทศไทย และปลาดุกยักษ์ (<i>Clarias gariepinus</i>) ซึ่งเป็นปลาต่างถิ่นที่ได้รับความนิยมในการเพาะเลี้ยงเชิงพาณิชย์ เนื่องจากมีอัตราการเจริญเติบโตสูงและสามารถปรับตัวต่อสภาพแวดล้อมได้ดี นอกจากนี้ ยังมีการผลิตปลาดุกลูกผสมเพื่อเพิ่มประสิทธิภาพการผลิตในระบบเพาะเลี้ยงสัตว์น้ำ
-                    อย่างไรก็ตาม การเปลี่ยนแปลงของสภาพแวดล้อม การสูญเสียถิ่นอาศัย การนำชนิดต่างถิ่นเข้าสู่ระบบนิเวศ และความเสี่ยงจากการปะปนทางพันธุกรรมระหว่างปลาดุกพื้นเมืองกับปลาดุกต่างถิ่น อาจส่งผลกระทบต่อความหลากหลายทางพันธุกรรมและความสมบูรณ์ของทรัพยากรชีวภาพในระยะยาว ขณะเดียวกัน ข้อมูลระดับจีโนมและทรัพยากรพันธุกรรมของปลาดุกในประเทศไทยยังจำเป็นต้องได้รับการศึกษาและพัฒนาเพิ่มเติม เพื่อสนับสนุนการอนุรักษ์และการใช้ประโยชน์อย่างยั่งยืน
-                    <b>โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก</b> จึงมุ่งเน้นการศึกษา รวบรวม และพัฒนาองค์ความรู้ด้านความหลากหลายทางชีวภาพและพันธุกรรมของปลาดุก โดยบูรณาการเทคโนโลยีจีโนมิกส์ (Genomics) พันธุศาสตร์ประชากร (Population Genetics) การเปรียบเทียบจีโนมิกส์ (Comparative Genomics) และชีวสารสนเทศ (Bioinformatics) เพื่อศึกษาความหลากหลายทางพันธุกรรม โครงสร้างประชากร ความสัมพันธ์เชิงวิวัฒนาการ ลักษณะทางพันธุกรรมที่เกี่ยวข้องกับการเจริญเติบโตและการกำหนดเพศ ตลอดจนการพัฒนาเครื่องมือระดับโมเลกุลสำหรับการจำแนกชนิดและตรวจสอบการปะปนทางพันธุกรรม
-                    นอกจากนี้ โครงการยังให้ความสำคัญกับการพัฒนาฐานข้อมูลทรัพยากรชีวภาพและจีโนมของปลาดุก เพื่อเป็นแหล่งรวบรวมและเผยแพร่องค์ความรู้ทางวิทยาศาสตร์สำหรับนักวิจัย นักศึกษา ผู้ประกอบการเพาะเลี้ยงสัตว์น้ำ และหน่วยงานที่เกี่ยวข้อง โดยสามารถนำข้อมูลไปประยุกต์ใช้ในการอนุรักษ์ปลาดุกพื้นเมือง การเฝ้าระวังผลกระทบจากปลาต่างถิ่น การปรับปรุงพันธุ์สัตว์น้ำ และการเพิ่มประสิทธิภาพการผลิตอย่างยั่งยืน
-                    การดำเนินงานดังกล่าวจะช่วยสร้างรากฐานสำคัญในการเชื่อมโยง การอนุรักษ์ความหลากหลายทางชีวภาพ (Biodiversity Conservation) เข้ากับ การใช้ประโยชน์ทรัพยากรพันธุกรรมอย่างยั่งยืน (Sustainable Genetic Resource Utilization) เพื่อสนับสนุนการพัฒนาเศรษฐกิจฐานชีวภาพ (Bioeconomy) และความมั่นคงของทรัพยากรสัตว์น้ำในประเทศไทย">
-                    <b>Catfish of the genus <i>Clarias</i></b> represent a vital freshwater bioresource in Thailand, playing key roles in biodiversity, food security, aquaculture economics, and the utilization of genetic resources. Particularly significant are the broadhead catfish (<i>Clarias macrocephalus</i>), a species native to Thailand, and the African sharptooth catfish (<i>Clarias gariepinus</i>), an introduced species widely farmed commercially due to its high growth rate and environmental adaptability. Furthermore, hybrid catfish are extensively produced to enhance efficiency in aquaculture systems.
-                    However, environmental changes, habitat loss, the introduction of non-native species, and the risk of genetic introgression between native and non-native catfish may impact genetic diversity and the long-term integrity of biological resources. Simultaneously, genomic data and genetic resource documentation for catfish in Thailand require further research and development to support conservation and sustainable utilization.
-                    <b>The CATFISH BIORESOURCE Project</b> focuses on studying, compiling, and advancing knowledge on the biodiversity and genetics of catfish. By integrating genomics, population genetics, comparative genomics, and bioinformatics, the project investigates genetic diversity, population structure, evolutionary relationships, genetic traits related to growth and sex determination, as well as the development of molecular tools for species identification and genetic contamination screening.
-                    Additionally, the project emphasizes the development of a catfish bioresource and genomic database to serve as a scientific repository and dissemination platform for researchers, students, aquaculture operators, and relevant agencies. The data can be applied toward native catfish conservation, monitoring the impacts of non-native species, selective breeding, and enhancing sustainable production efficiency.
-                    These efforts establish a crucial foundation connecting biodiversity conservation with sustainable genetic resource utilization, supporting the bioeconomy and the long-term security of aquatic resources in Thailand.
-          </p>
-        </div>
       <div class="container">
         <span class="kicker" data-en="About" data-th="เกี่ยวกับ">About the Project</span>
         <h2 data-en="Knowledge for Catfish Bioresources" data-th="องค์ความรู้ด้านทรัพยากรชีวภาพปลาดุก">Knowledge for Catfish Bioresources</h2>
@@ -750,77 +572,26 @@
       </div>
     </section>
 
-    <!-- 📌 ส่วนแสดงผลข่าวสาร (ดึงข้อมูลอัตโนมัติจาก news-data.js) -->
     <!-- News & Updates Section -->
     <section id="research">
       <div class="container">
         <div class="section-head">
-          <span class="kicker"
-                data-en="News & Updates"
-                data-th="ข่าวสารและกิจกรรม">
-            News & Updates
-          </span>
-          <h2 data-en="Latest News & Announcements"
-              data-th="ข่าวสารและประกาศล่าสุด">
-            Latest News & Announcements
-          </h2>
-          <p data-en="Follow our latest activities, research announcements, and updates."
-             data-th="ติดตามความเคลื่อนไหว กิจกรรม และประกาศล่าสุดจากทางหน่วยวิจัย">
-            Follow our latest activities, research announcements, and updates.
-          </p>
           <span class="kicker" data-en="News & Updates" data-th="ข่าวสารและกิจกรรม">News & Updates</span>
           <h2 data-en="Latest News & Announcements" data-th="ข่าวสารและประกาศล่าสุด">Latest News & Announcements</h2>
           <p data-en="Follow our latest activities, research announcements, and updates." data-th="ติดตามความเคลื่อนไหว กิจกรรม และประกาศล่าสุดจากทางหน่วยวิจัย">Follow our latest activities, research announcements, and updates.</p>
         </div>
 
-        <div class="news-slider-container">
-          <div class="news-cards-track" id="latestNewsTrack">
-            <!-- 📌 การ์ดข่าวสาร 3 ข่าวล่าสุดจะถูก Render ผ่าน JavaScript อัตโนมัติ -->
-          </div>
         <div class="news-cards-track" id="latestNewsTrack">
           <!-- ข่าวจะถูก Render อัตโนมัติจาก news-data.js -->
         </div>
 
         <div style="text-align: center; margin-top: 40px;">
-          <a class="btn btn-light" href="all-news.html"
-             style="background: #4876a3; color: white; padding: 12px 28px; border-radius: 99px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;"
-             data-en="View All News →"
-             data-th="ดูข่าวทั้งหมด →">
-            View All News →
-          </a>
           <a class="btn" href="all-news.html" style="background: #4876a3; color: white; padding: 12px 28px; border-radius: 99px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;" data-en="View All News →" data-th="ดูข่าวทั้งหมด →">View All News →</a>
         </div>
-
       </div>
     </section>
   </main>
 
-    <section class="about" id="resources">
-      <div class="container">
-        <div class="section-head">
-          <span class="kicker"
-                data-en="Knowledge Library"
-                data-th="คลังองค์ความรู้">
-            Knowledge Library
-          </span>
-          <h2 data-en="Resources & Materials"
-              data-th="แหล่งข้อมูลและสื่อเผยแพร่">
-            Resources & Materials
-          </h2>
-          <p data-en="The existing website remains available while its content is reviewed and transferred."
-             data-th="เว็บไซต์เดิมยังคงเปิดให้เข้าชมระหว่างการตรวจสอบและย้ายเนื้อหา">
-            The existing website remains available while its content is reviewed and transferred.
-          </p>
-          <div class="actions">
-            <a class="btn btn-light"
-               href="https://sites.google.com/ku.th/catfishbioresource-th"
-               target="_blank" rel="noopener noreferrer"
-               data-en="Open Existing Resource Library ↗"
-               data-th="เปิดคลังข้อมูลเว็บไซต์เดิม ↗">
-              Open Existing Resource Library ↗
-            </a>
-          </div>
-        </div>
   <!-- 📌 Footer สไตล์ NIA -->
   <footer class="site-footer" id="contact">
     <div class="footer-container">
@@ -829,51 +600,7 @@
         <p data-en="Address: Faculty of Science, Kasetsart University, 50 Ngamwongwan Rd, Bangkok 10900" data-th="ที่อยู่: คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ 50 ถนนงามวงศ์วาน กทม. 10900">ที่อยู่: คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ 50 ถนนงามวงศ์วาน กทม. 10900</p>
         <p>Email: <a href="mailto:agb.sci@ku.th">agb.sci@ku.th</a></p>
       </div>
-    </section>
 
-    <footer class="site-footer" id="contact">
-      <div class="footer-container">
-        
-        <!-- 1. ข้อมูลหน่วยงาน (ฝั่งซ้าย) -->
-        <div class="footer-info">
-          <h3 data-en="CATFISH BIORESOURCE" data-th="ทรัพยากรชีวภาพปลาดุก">ทรัพยากรชีวภาพปลาดุก</h3>
-          <p data-en="AGB Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</p>
-          <p data-en="Address: Faculty of Science, Kasetsart University" data-th="ที่อยู่: คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์">คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
-          <p data-en="50 Ngamwongwan Rd, Catuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900">ที่อยู่: 50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900</p>
-          <p data-en="Phone: 0 2017 5555 ext. 740072" data-th="เบอร์โทรศัพท์: 0 2017 5555 ต่อ 740072">เบอร์โทรศัพท์: 0 2017 5555 ต่อ 740072</p>
-          <p>Email: <a href="mailto:agb.sci@ku.th">agb.sci@ku.th</a></p>
-        </div>
-    
-        <!-- 2. โซเชียลมีเดีย (ตรงกลาง) -->
-        <div class="footer-social">
-          <span data-en="Social :" data-th="Social :">Social :</span>
-          <div class="footer-social-icons">
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/AGBResearchCenterKU" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Facebook">
-              <svg viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
-            </a>
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/siamese-crocodile-project-1a2a143b4/?isSelfProfile=false" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="LinkedIn">
-              <svg viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
-            </a>
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Instagram">
-              <svg viewBox="0 0 448 512"><path d="M224.1 141.1c-43.6 0-78.9 35.3-78.9 78.9s35.3 78.9 78.9 78.9 78.9-35.3 78.9-78.9-35.3-78.9-78.9-78.9zm0 129.7c-28 0-50.8-22.8-50.8-50.8s22.8-50.8 50.8-50.8 50.8 22.8 50.8 50.8-22.8 50.8-50.8 50.8zm112.5-139c0 10.1-8.2 18.3-18.3 18.3s-18.3-8.2-18.3-18.3c0-10.1 8.2-18.3 18.3-18.3s18.3 8.2 18.3 18.3zm81.4 34.2c-1.6-33.8-9.4-63.7-34.2-88.5s-54.7-32.6-88.5-34.2c-35-2-139.9-2-174.9 0-33.8 1.6-63.7 9.4-88.5 34.2s-32.6 54.7-34.2 88.5c-2 35-2 139.9 0 174.9 1.6 33.8 9.4 63.7 34.2 88.5s54.7 32.6 88.5 34.2c35 2 139.9 2 174.9 0 33.8-1.6 63.7-9.4 88.5-34.2s32.6-54.7 34.2-88.5c2-35 2-139.9 0-174.9zm-41.1 233c-7.4 18.6-21.7 32.9-40.3 40.3-29.9 11.9-101 9.1-136.5 9.1s-106.6 2.8-136.5-9.1c-18.6-7.4-32.9-21.7-40.3-40.3-11.9-29.9-9.1-101-9.1-136.5s-2.8-106.6 9.1-136.5c7.4-18.6 21.7-32.9 40.3-40.3 29.9-11.9 101-9.1 136.5-9.1s106.6-2.8 136.5 9.1c18.6 7.4 32.9 21.7 40.3 40.3 11.9 29.9 9.1 101 9.1 136.5s2.8 106.6-9.1 136.5z"/></svg>
-            </a>
-            <!-- TikTok -->
-            <a href="https://www.tiktok.com/@.siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="TikTok">
-              <svg viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h.06A122.18 122.18 0 0 0 381 84.86a121.2 121.2 0 0 0 67 20.05z"/></svg>
-            </a>
-          </div>
-        </div>
-    
-        <!-- 3. ฟอร์มรับข่าวสาร (ฝั่งขวา) -->
-        <div class="footer-newsletter">
-          <label data-en="Subscribe to our newsletters" data-th="สมัครรับข่าวสารจดหมายข่าว">Subscribe to our newsletters</label>
-          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
-            <input type="email" class="newsletter-input" placeholder="Your E-mail" required>
-            <button type="submit" class="newsletter-btn" data-en="Submit" data-th="ส่งข้อมูล">Submit</button>
-          </form>
       <div class="footer-social">
         <span data-en="Social :" data-th="Social :">Social :</span>
         <div class="footer-social-icons">
@@ -891,10 +618,7 @@
           </a>
         </div>
       </div>
-    </footer>
-  </main>
 
-  <!-- 📌 ดึงไฟล์ข้อมูลข่าวสารกลาง -->
       <div class="footer-newsletter">
         <label data-en="Subscribe to our newsletters" data-th="สมัครรับจดหมายข่าว">Subscribe to our newsletters</label>
         <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
@@ -910,7 +634,6 @@
   <script>
     const toggle = document.getElementById("languageToggle");
 
-    // 📌 ฟังก์ชันดึง 3 ข่าวล่าสุดมาแสดงผลในการ์ดหน้าหลัก
     // 📌 สคริปต์ควบคุม Hero Slider (สลับภาพอัตโนมัติทุก 5 วินาที)
     let currentSlideIndex = 0;
     const slides = document.querySelectorAll(".hero-slider .slide");
@@ -946,16 +669,33 @@
     function renderHomeNewsCards(lang) {
       const track = document.getElementById("latestNewsTrack");
       if (!track) return;
-@@ -800,8 +678,6 @@
+      track.innerHTML = "";
+
+      const latestThree = (typeof newsData !== "undefined") ? newsData.slice(0, 3) : [];
+
+      latestThree.forEach(news => {
+        const title = lang === "en" ? news.titleEn : news.titleTh;
         const excerpt = lang === "en" ? news.excerptEn : news.excerptTh;
         const dateStr = lang === "en" ? (news.dateEn || news.date) : news.date;
         const readMoreText = lang === "en" ? "Read More →" : "อ่านเพิ่มเติม →";
-        
-        // 📌 แก้ไขตรงนี้: ดึงลิงก์ไฟล์เฉพาะข่าวตรงจาก news-data.js
         const targetLink = news.link;
 
         const cardHTML = `
-@@ -823,47 +699,27 @@
+          <article class="news-card">
+            <a href="${targetLink}">
+              <div class="news-img-wrapper">
+                <img src="${news.image}" alt="${title}" class="news-thumb" onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">
+              </div>
+            </a>
+            <div class="news-content">
+              <span class="news-date">${dateStr}</span>
+              <h3><a href="${targetLink}">${title}</a></h3>
+              <p>${excerpt}</p>
+              <a href="${targetLink}" class="read-more-link">${readMoreText}</a>
+            </div>
+          </article>
+        `;
+        track.insertAdjacentHTML("beforeend", cardHTML);
       });
     }
 
@@ -965,22 +705,6 @@
 
       document.querySelectorAll("[data-en][data-th]").forEach(element => {
         let text = element.dataset[language];
-        
-        if (language === "en") {
-          text = text.replace(/Catfish of the genus Clarias/g, "<b>Catfish of the genus <i>Clarias</i></b>")
-                     .replace(/The CATFISH BIORESOURCE Project/g, "<b>The CATFISH BIORESOURCE Project</b>")
-                     .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
-                     .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
-                     .replace(/Clarias/g, "<i>Clarias</i>");
-        } else {
-          text = text.replace(/ปลาดุกสกุล Clarias/g, "<b>ปลาดุกสกุล <i>Clarias</i></b>")
-                     .replace(/โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก/g, "<b>โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก</b>")
-                     .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
-                     .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
-                     .replace(/Clarias/g, "<i>Clarias</i>");
-        }
-                   
-        element.innerHTML = text;
         if (text) element.innerHTML = text;
       });
 
@@ -989,11 +713,6 @@
         language === "en" ? "Switch to Thai" : "Switch to English"
       );
 
-      document.title = language === "en"
-        ? "CATFISH BIORESOURCE | Kasetsart University"
-        : "CATFISH BIORESOURCE | มหาวิทยาลัยเกษตรศาสตร์";
-
-      // อัปเดตการ์ดข่าวตามภาษาที่เลือก
       renderHomeNewsCards(language);
     }
 
@@ -1001,7 +720,7 @@
       setLanguage(document.documentElement.lang === "en" ? "th" : "en");
     });
 
-    document.getElementById("year").textContent = new Date().getFullYear();
     setLanguage("en");
   </script>
 </body>
+</html>
