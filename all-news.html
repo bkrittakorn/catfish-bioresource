@@ -46,11 +46,11 @@
       flex: 1;
     }
 
-/* 📌 ล็อกระยะห่างด้านบนของ Footer ให้มีระยะตายตัวเสมอ เช่น 60px */
-footer.site-footer {
-  margin-top: auto; /* ดันลงล่างสุดอัตโนมัติเมื่อหน้าจอโล่ง */
-  /* หรือถ้าต้องการให้มีช่องว่างห่างจากเนื้อหาด้านบนตายตัวเสมอเมื่อเนื้อหายาว ให้ใช้ padding หรือ margin-top เพิ่มเติม เช่น: */
-}
+    /* 📌 ล็อกระยะห่างด้านบนของ Footer ให้มีระยะตายตัวเสมอ เช่น 60px */
+    footer.site-footer {
+      margin-top: auto; /* ดันลงล่างสุดอัตโนมัติเมื่อหน้าจอโล่ง */
+      /* หรือถ้าต้องการให้มีช่องว่างห่างจากเนื้อหาด้านบนตายตัวเสมอเมื่อเนื้อหายาว ให้ใช้ padding หรือ margin-top เพิ่มเติม เช่น: */
+    }
 
     a { color: inherit; text-decoration: none; }
     button { font: inherit; cursor: pointer; }
@@ -255,10 +255,12 @@ footer.site-footer {
       transform: translateX(3px);
     }
 
-    /* Page Header Section (ปรับให้ตรงกับ all-resource.html) */
+    /* Page Header Section (ปรับกึ่งกลาง + นำพื้นหลังสีขาวออก) */
     .page-header {
       padding: 60px 0 30px;
       text-align: center;
+      background: transparent; /* 📌 นำพื้นหลังสีขาวออก ให้โปร่งใสตามพื้นหลังหลัก */
+      border-bottom: none;     /* 📌 (ตัวเลือกเสริม) นำเส้นขอบล่างออก หากต้องการให้คล้ายหน้า Resources */
     }
 
     .page-header h1 {
