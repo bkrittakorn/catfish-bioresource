@@ -27,13 +27,22 @@
       font-family: Arial, "Prompt", sans-serif !important;
     }
 
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
 
     body {
-      margin: 0;
+      display: flex;
+      flex-direction: column;
       background: var(--paper);
       color: var(--blue);
       line-height: 1.7;
+    }
+    
+    /* 📌 กำหนดให้แท็ก main ยืดขยายพื้นที่ว่างที่เหลือทั้งหมดเพื่อดัน Footer ลงด้านล่าง */
+    main.container {
+      flex: 1;
     }
 
     a { color: inherit; text-decoration: none; }
