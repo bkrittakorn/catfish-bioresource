@@ -33,14 +33,21 @@
       font-family: Arial, "Prompt", sans-serif !important;
     }
 
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
-      color: #4876a3;
+    }
+    
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
       background: var(--paper);
-      font-family: Arial, "Prompt", sans-serif;
-      line-height: 1.7;
+    }
+    
+    /* ให้ส่วนเนื้อหาหลักยืดหยุ่นดัน Footer ลงล่างอัตโนมัติ */
+    main {
+      flex: 1;
     }
 
     a { color: inherit; text-decoration: none; }
