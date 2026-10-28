@@ -255,11 +255,24 @@ footer.site-footer {
       transform: translateX(3px);
     }
 
-    /* Page Header Section */
+    /* Page Header Section (ปรับให้ตรงกับ all-resource.html) */
     .page-header {
-      padding: 48px 0 28px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 36px;
+      padding: 60px 0 30px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 800;
+      color: var(--blue);
+      margin: 0 0 12px 0;
+    }
+
+    .page-header p {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .back-link {
@@ -616,14 +629,11 @@ footer.site-footer {
 
   <main class="container">
     <header class="page-header">
-      <a href="index.html#research" class="back-link">
-        <i class="fa-solid fa-arrow-left"></i>
-        <span data-en="Back to Home" data-th="กลับสู่หน้าหลัก">Back to Home</span>
-      </a>
-      <h1 class="page-title" data-en="News & Announcements" data-th="ข่าวสารและประกาศทั้งหมด">
+      <h1 data-en="News & Announcements" data-th="ข่าวสารและประกาศทั้งหมด">
         News & Announcements
       </h1>
-      <p class="page-subtitle" data-en="Latest updates, research activities, and official announcements." data-th="รวมข่าวสาร กิจกรรมวิจัย และประกาศความเคลื่อนไหวล่าสุด">
+      <p data-en="Latest updates, research activities, and official announcements." 
+         data-th="รวมข่าวสาร กิจกรรมวิจัย และประกาศความเคลื่อนไหวล่าสุด">
         Latest updates, research activities, and official announcements.
       </p>
     </header>
