@@ -43,12 +43,20 @@
       flex-direction: column;
       min-height: 100vh;
       background: var(--paper);
+      color: var(--blue);
+      line-height: 1.7;
     }
     
-    /* ให้ส่วนเนื้อหาหลักยืดหยุ่นดัน Footer ลงล่างอัตโนมัติ */
-    main {
+    /* ให้แท็ก main ขยายพื้นที่ยืดหยุ่น */
+    main, main.container {
       flex: 1;
     }
+
+/* 📌 ล็อกระยะห่างด้านบนของ Footer ให้มีระยะตายตัวเสมอ เช่น 60px */
+footer.site-footer {
+  margin-top: auto; /* ดันลงล่างสุดอัตโนมัติเมื่อหน้าจอโล่ง */
+  /* หรือถ้าต้องการให้มีช่องว่างห่างจากเนื้อหาด้านบนตายตัวเสมอเมื่อเนื้อหายาว ให้ใช้ padding หรือ margin-top เพิ่มเติม เช่น: */
+}
 
     a { color: inherit; text-decoration: none; }
     button { font: inherit; cursor: pointer; }
