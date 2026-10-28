@@ -486,18 +486,75 @@
   </header>
 
   <main class="container">
-    <header class="page-header">
-      <a href="index.html#research" class="back-link">
-        <i class="fa-solid fa-arrow-left"></i>
-        <span data-en="Back to Home" data-th="กลับสู่หน้าหลัก">Back to Home</span>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="CATFISH BIORESOURCE Home">
+        <img src="images/Catfish Bioresource Logo.png" alt="CATFISH BIORESOURCE Logo" class="brand-mark-img">
+        <div>
+          <div class="brand-name">CATFISH BIORESOURCE</div>
+          <div class="brand-sub"
+               data-en="AGB Research Unit"
+               data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">
+            หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์
+          </div>
+        </div>
       </a>
-      <h1 class="page-title" data-en="News & Announcements" data-th="ข่าวสารและประกาศทั้งหมด">
-        News & Announcements
-      </h1>
-      <p class="page-subtitle" data-en="Latest updates, research activities, and official announcements." data-th="รวมข่าวสาร กิจกรรมวิจัย และประกาศความเคลื่อนไหวล่าสุด">
-        Latest updates, research activities, and official announcements.
-      </p>
-    </header>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home" data-en="Home" data-th="หน้าหลัก">Home</a>
+        <a href="#about" data-en="About" data-th="เกี่ยวกับ">About</a>
+        <a href="all-news.html" data-en="News" data-th="ข่าวสาร">News</a>
+
+        <!-- 📌 เมนูดรอปดาวน์ Mega Menu คลังข้อมูล (สไตล์ CATFISH BIORESOURCE) -->
+        <div class="nav-item-dropdown">
+          <a href="all-resource.html" style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
+            <span data-en="Resources" data-th="คลังข้อมูล">Resources</span>
+            <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i>
+          </a>
+
+          <div class="mega-menu">
+            <!-- คอลัมน์ซ้าย -->
+            <div class="mega-menu-col-left">
+              <div class="mega-menu-title" data-en="Knowledge Library" data-th="คลังองค์ความรู้">Knowledge Library</div>
+              <p class="mega-menu-desc" 
+                 data-en="Interactive research dashboards, genomic data, and analytical tools." 
+                 data-th="ระบบแดชบอร์ดจำลองสถานการณ์ ข้อมูลจีโนมิกส์ และเครื่องมือวิเคราะห์">
+                Interactive research dashboards, genomic data, and analytical tools.
+              </p>
+            </div>
+            <!-- คอลัมน์ขวา (รายการเมนูย่อย) -->
+            <div class="mega-menu-col-right">
+              <a href="https://catfish-thermal-dashboard.streamlit.app/" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="mega-menu-item">
+                <span data-en="Thermal Risk & AquaMonitor Dashboard" data-th="แดชบอร์ดประเมินความเสี่ยงและคุณภาพน้ำ">
+                  แดชบอร์ดประเมินความเสี่ยงและคุณภาพน้ำ
+                </span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="http://210.72.95.48"
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="mega-menu-item">
+                <span data-en="DUKEOME" data-th="DUKEOME">
+                  DUKEOME
+                </span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" data-en="Contact" data-th="ติดต่อ">Contact</a>
+      </nav>
+
+      <button class="lang-switch" id="languageToggle" type="button" aria-label="Switch language">
+        <span class="lang-label en">EN</span>
+        <span class="lang-label th">TH</span>
+      </button>
+    </div>
+  </header>
 
     <div class="news-list" id="newsContainer">
       <!-- โค้ดรายการข่าวจะ Render ผ่าน JavaScript จากไฟล์กลาง news-data.js -->
