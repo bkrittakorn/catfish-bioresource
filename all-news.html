@@ -1,616 +1,634 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ข่าวสารและกิจกรรม | CATFISH BIORESOURCE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ข่าวสารและกิจกรรม | CATFISH BIORESOURCE</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <style>
-    :root {
-      --blue: #4876a3;
-      --blue-hover: #0b5394;
-      --blue-light: #eff6ff;
-      --ink: #1e293b;
-      --muted: #64748b;
-      --paper: #f8fafc;
-      --white: #ffffff;
-      --line: #e2e8f0;
-    }
+  <style>
+    :root {
+      --blue: #4876a3;
+      --blue-hover: #0b5394;
+      --blue-light: #eff6ff;
+      --ink: #1e293b;
+      --muted: #64748b;
+      --paper: #f8fafc;
+      --white: #ffffff;
+      --line: #e2e8f0;
+    }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      font-family: Arial, "Prompt", sans-serif !important;
-    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      font-family: Arial, "Prompt", sans-serif !important;
+    }
 
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--blue); /* 📌 ใช้สีฟ้าหลักเหมือนหน้า index.html */
-      line-height: 1.7;
-    }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--blue);
+      line-height: 1.7;
+    }
 
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
 
-    .container {
-      width: min(1120px, calc(100% - 40px));
-      margin-inline: auto;
-    }
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+    }
 
-    /* Header & Navigation */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(255,255,255,.96);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(12px);
-    }
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
 
-    .nav {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
 
-    .brand-mark-img {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      border-radius: 8px;
-      flex-shrink: 0;
-    }
+    .brand-mark-img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
 
-    .brand-name {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: .04em;
-      line-height: 1.3;
-      color: var(--blue);
-    }
+    .brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      line-height: 1.3;
+      color: var(--blue);
+    }
 
-    .brand-sub {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
+    .brand-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 21px;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--blue); /* 📌 ปรับสีข้อความเมนูเป็นสีฟ้าหลัก */
-    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 21px;
+      font-size: 15px;
+      font-weight: 600;
 
-    .nav-links a:hover { color: var(--blue-hover); }
+    }
 
-    /* Language Toggle Switch */
-    .lang-switch {
-      position: relative;
-      width: 76px;
-      height: 32px;
-      background-color: #e2e8f0;
-      border-radius: 20px;
-      border: none;
-      padding: 0 8px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
+    /* 📌 ปรับสีเมื่อเอาเมาส์ไปชี้ให้เป็นสีฟ้าเข้มเหมือนหน้าหลัก */
+    .nav-links a {
+      color: var(--blue);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
 
-    .lang-switch::before {
-      content: "";
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 34px;
-      height: 26px;
-      background-color: var(--blue);
-      border-radius: 16px;
-      transition: transform 0.3s ease;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    }
+    .nav-links a:hover { 
+      color: var(--blue-hover); 
+    }
 
-    html[lang="th"] .lang-switch::before {
-      transform: translateX(36px);
-    }
+    /* Language Toggle Switch */
+    .lang-switch {
+      position: relative;
+      width: 76px;
+      height: 32px;
+      background-color: #e2e8f0;
+      border-radius: 20px;
+      border: none;
+      padding: 0 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
 
-    .lang-label {
-      font-size: 11px;
-      font-weight: 800;
-      z-index: 1;
-      width: 30px;
-      text-align: center;
-      transition: color 0.3s ease;
-    }
+    .lang-switch::before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 34px;
+      height: 26px;
+      background-color: var(--blue);
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
 
-    .lang-label.en { color: #ffffff; }
-    .lang-label.th { color: #64748b; }
+    html[lang="th"] .lang-switch::before {
+      transform: translateX(36px);
+    }
 
-    html[lang="th"] .lang-label.en { color: #64748b; }
-    html[lang="th"] .lang-label.th { color: #ffffff; }
+    .lang-label {
+      font-size: 11px;
+      font-weight: 800;
+      z-index: 1;
+      width: 30px;
+      text-align: center;
+      transition: color 0.3s ease;
+    }
 
-    /* Page Header Section */
-    .page-header {
-      padding: 48px 0 28px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 36px;
-    }
+    .lang-label.en { color: #ffffff; }
+    .lang-label.th { color: #64748b; }
 
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--blue);
-      font-weight: 700;
-      font-size: 14px;
-      text-decoration: none;
-      margin-bottom: 16px;
-    }
+    html[lang="th"] .lang-label.en { color: #64748b; }
+    html[lang="th"] .lang-label.th { color: #ffffff; }
 
-    .back-link:hover {
-      text-decoration: underline;
-    }
+    /* Page Header Section */
+    .page-header {
+      padding: 48px 0 28px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 36px;
+    }
 
-    .page-title {
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 800;
-      color: var(--blue);
-      margin: 0 0 10px 0;
-    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 16px;
+    }
 
-    .page-subtitle {
-      color: var(--muted);
-      font-size: 16px;
-      margin: 0;
-    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
 
-    /* News List Container & Long Card */
-    .news-list {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      margin-bottom: 60px;
-    }
+    .page-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      color: var(--blue);
+      margin: 0 0 10px 0;
+    }
 
-    .news-long-card {
-      display: flex;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      text-decoration: none;
-      color: inherit;
-    }
+    .page-subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0;
+    }
 
-    .news-long-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(72, 118, 163, 0.12);
-    }
+    /* News List Container & Long Card */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
 
-    .news-card-media {
-      width: 320px;
-      min-width: 320px;
-      height: 220px;
-      position: relative;
-      overflow: hidden;
-      background: #e2e8f0;
-    }
+    .news-long-card {
+      display: flex;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
 
-    .news-card-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
+    .news-long-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(72, 118, 163, 0.12);
+    }
 
-    .news-long-card:hover .news-card-media img {
-      transform: scale(1.04);
-    }
+    .news-card-media {
+      width: 320px;
+      min-width: 320px;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      background: #e2e8f0;
+    }
 
-    .news-card-body {
-      padding: 24px 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex-grow: 1;
-    }
+    .news-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
 
-    .news-card-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
+    .news-long-card:hover .news-card-media img {
+      transform: scale(1.04);
+    }
 
-    .news-card-meta i {
-      color: var(--blue);
-    }
+    .news-card-body {
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
 
-    .news-card-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--blue);
-      margin: 0 0 10px 0;
-      line-height: 1.4;
-      transition: color 0.2s ease;
-    }
+    .news-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
 
-    .news-long-card:hover .news-card-title {
-      color: var(--blue-hover);
-    }
+    .news-card-meta i {
+      color: var(--blue);
+    }
 
-    .news-card-excerpt {
-      font-size: 14px;
-      color: var(--muted);
-      margin: 0 0 16px 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      line-height: 1.6;
-    }
+    .news-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 10px 0;
+      line-height: 1.4;
+      transition: color 0.2s ease;
+    }
 
-    .news-card-action {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--blue);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: auto;
-    }
+    .news-long-card:hover .news-card-title {
+      color: var(--blue);
+    }
 
-    /* 📌 สไตล์ Footer สไตล์ NIA */
-    .site-footer {
-      background-color: #242238;
-      color: #ffffff;
-      padding: 40px 0;
-      font-size: 13px;
-      border-top: 1px solid #3b3953;
-    }
+    .news-card-excerpt {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 16px 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.6;
+    }
 
-    .footer-container {
-      width: min(1120px, calc(100% - 40px));
-      margin-inline: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
+    .news-card-action {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+    }
 
-    .footer-info {
-      flex: 1.2;
-      min-width: 280px;
-    }
+    /* 📌 สไตล์ Footer สไตล์ NIA (ตรงกับหน้าหลัก) */
+    .site-footer {
+      background-color: #242238;
+      color: #ffffff;
+      padding: 40px 0;
+      font-size: 13px;
+      border-top: 1px solid #3b3953;
+    }
 
-    .footer-info h3 {
-      font-size: 15px;
-      font-weight: 700;
-      color: #ffffff;
-      margin: 0 0 8px 0;
-    }
+    .footer-container {
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
 
-    .footer-info p {
-      margin: 0 0 4px 0;
-      line-height: 1.6;
-      color: #cbd5e1;
-    }
+    /* ข้อมูลองค์กร (ซ้าย) */
+    .footer-info {
+      flex: 1.2;
+      min-width: 280px;
+    }
 
-    .footer-info a {
-      color: #93c5fd;
-    }
+    .footer-info h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 8px 0;
+    }
 
-    .footer-social {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex: 0.8;
-      min-width: 220px;
-    }
+    .footer-info p {
+      margin: 0 0 4px 0;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
 
-    .footer-social span {
-      font-weight: 600;
-      color: #ffffff;
-    }
+    .footer-info a {
+      color: #93c5fd;
+    }
 
-    .footer-social-icons {
-      display: flex;
-      gap: 8px;
-    }
+    /* โซเชียลมีเดีย (กลาง) */
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 0.8;
+      min-width: 220px;
+    }
 
-    .footer-social-icon {
-      width: 32px;
-      height: 32px;
-      background-color: #3b3953;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-      color: white;
-      text-decoration: none;
-      transition: background-color 0.2s;
-    }
+    .footer-social span {
+      font-weight: 600;
+      color: #ffffff;
+    }
 
-    .footer-social-icon:hover {
-      background-color: #4876a3;
-    }
+    .footer-social-icons {
+      display: flex;
+      gap: 8px;
+    }
 
-    .footer-social-icon svg {
-      width: 14px;
-      height: 14px;
-      fill: currentColor;
-    }
+    .footer-social-icon {
+      width: 32px;
+      height: 32px;
+      background-color: #3b3953;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
 
-    .footer-newsletter {
-      flex: 1.2;
-      min-width: 300px;
-    }
+    .footer-social-icon:hover {
+      background-color: #4876a3;
+    }
 
-    .footer-newsletter label {
-      display: block;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 8px;
-    }
+    .footer-social-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
 
-    .newsletter-form {
-      display: flex;
-      gap: 0;
-    }
+    /* รับข่าวสาร (ขวา) */
+    .footer-newsletter {
+      flex: 1.2;
+      min-width: 300px;
+    }
 
-    .newsletter-input {
-      flex: 1;
-      background-color: #1e1c2e;
-      border: 1px solid #4a4863;
-      border-right: none;
-      padding: 9px 12px;
-      color: #ffffff;
-      font-size: 13px;
-      outline: none;
-      border-radius: 4px 0 0 4px;
-    }
+    .footer-newsletter label {
+      display: block;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
 
-    .newsletter-input::placeholder {
-      color: #94a3b8;
-    }
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+    }
 
-    .newsletter-btn {
-      background-color: #b91c1c;
-      color: white;
-      border: none;
-      padding: 9px 18px;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      border-radius: 0 4px 4px 0;
-      transition: background-color 0.2s;
-    }
+    .newsletter-input {
+      flex: 1;
+      background-color: #1e1c2e;
+      border: 1px solid #4a4863;
+      border-right: none;
+      padding: 9px 12px;
+      color: #ffffff;
+      font-size: 13px;
+      outline: none;
+      border-radius: 4px 0 0 4px;
+    }
 
-    .newsletter-btn:hover {
-      background-color: #991b1b;
-    }
+    .newsletter-input::placeholder {
+      color: #94a3b8;
+    }
 
-    /* Responsive Styles */
-    @media (max-width: 900px) {
-      .footer-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-      }
-      .footer-newsletter {
-        width: 100%;
-      }
-    }
+    .newsletter-btn {
+      background-color: #b91c1c;
+      color: white;
+      border: none;
+      padding: 9px 18px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      border-radius: 0 4px 4px 0;
+      transition: background-color 0.2s;
+    }
 
-    @media (max-width: 800px) {
-      .nav { padding: 13px 0; flex-wrap: wrap; }
-      .nav-links { order: 3; width: 100%; gap: 16px; flex-wrap: wrap; }
-    }
+    .newsletter-btn:hover {
+      background-color: #991b1b;
+    }
 
-    @media (max-width: 768px) {
-      .news-long-card { flex-direction: column; }
-      .news-card-media { width: 100%; min-width: 100%; height: 200px; }
-      .news-card-body { padding: 20px; }
-    }
-  </style>
+    /* Responsive Styles */
+    @media (max-width: 900px) {
+      .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+      .footer-newsletter {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .nav { padding: 13px 0; flex-wrap: wrap; }
+      .nav-links { order: 3; width: 100%; gap: 16px; flex-wrap: wrap; }
+    }
+
+    @media (max-width: 768px) {
+      .news-long-card { flex-direction: column; }
+      .news-card-media { width: 100%; min-width: 100%; height: 200px; }
+      .news-card-body { padding: 20px; }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Header Section -->
-  <header>
-    <div class="container nav">
-      <a class="brand" href="index.html#home" aria-label="CATFISH BIORESOURCE Home">
-        <img src="images/Catfish Bioresource Logo.png" alt="CATFISH BIORESOURCE Logo" class="brand-mark-img">
-        <div>
-          <div class="brand-name">CATFISH BIORESOURCE</div>
-          <div class="brand-sub"
-               data-en="AGB Research Unit"
-               data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">
-            หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์
-          </div>
-        </div>
-      </a>
+  
+  <!-- Header Section -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html#home" aria-label="CATFISH BIORESOURCE Home">
+        <img src="images/Catfish Bioresource Logo.png" alt="CATFISH BIORESOURCE Logo" class="brand-mark-img">
+        <div>
+          <div class="brand-name">CATFISH BIORESOURCE</div>
+          <div class="brand-sub"
+               data-en="AGB Research Unit"
+               data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">
+            หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์
+          </div>
+        </div>
+      </a>
 
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html#home" data-en="Home" data-th="หน้าหลัก">Home</a>
-        <a href="index.html#about" data-en="About" data-th="เกี่ยวกับ">About</a>
-        <a href="all-news.html" data-en="News" data-th="ข่าวสาร">News</a>
-        <a href="index.html#resources" data-en="Resources" data-th="คลังข้อมูล">Resources</a>
-        <a href="#contact" data-en="Contact" data-th="ติดต่อ">Contact</a>
-      </nav>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#home" data-en="Home" data-th="หน้าหลัก">Home</a>
+        <a href="index.html#about" data-en="About" data-th="เกี่ยวกับ">About</a>
+        <a href="all-news.html" data-en="News" data-th="ข่าวสาร">News</a>
+        <a href="index.html#resources" data-en="Resources" data-th="คลังข้อมูล">Resources</a>
+        <a href="#contact" data-en="Contact" data-th="ติดต่อ">Contact</a>
+      </nav>
 
-      <button class="lang-switch" id="languageToggle" type="button" aria-label="Switch language">
-        <span class="lang-label en">EN</span>
-        <span class="lang-label th">TH</span>
-      </button>
-    </div>
-  </header>
+      <button class="lang-switch" id="languageToggle" type="button" aria-label="Switch language">
+        <span class="lang-label en">EN</span>
+        <span class="lang-label th">TH</span>
+      </button>
+    </div>
+  </header>
 
-  <main class="container">
-    <header class="page-header">
-      <a href="index.html#research" class="back-link">
-        <i class="fa-solid fa-arrow-left"></i>
-        <span data-en="Back to Home" data-th="กลับสู่หน้าหลัก">Back to Home</span>
-      </a>
-      <h1 class="page-title" data-en="News & Announcements" data-th="ข่าวสารและประกาศทั้งหมด">
-        News & Announcements
-      </h1>
-      <p class="page-subtitle" data-en="Latest updates, research activities, and official announcements." data-th="รวมข่าวสาร กิจกรรมวิจัย และประกาศความเคลื่อนไหวล่าสุด">
-        Latest updates, research activities, and official announcements.
-      </p>
-    </header>
+  <main class="container">
+    <header class="page-header">
+      <a href="index.html#research" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span data-en="Back to Home" data-th="กลับสู่หน้าหลัก">Back to Home</span>
+      </a>
+      <h1 class="page-title" data-en="News & Announcements" data-th="ข่าวสารและประกาศทั้งหมด">
+        News & Announcements
+      </h1>
+      <p class="page-subtitle" data-en="Latest updates, research activities, and official announcements." data-th="รวมข่าวสาร กิจกรรมวิจัย และประกาศความเคลื่อนไหวล่าสุด">
+        Latest updates, research activities, and official announcements.
+      </p>
+    </header>
 
-    <div class="news-list" id="newsContainer">
-      <!-- โค้ดรายการข่าวจะ Render ผ่าน JavaScript จากไฟล์กลาง news-data.js -->
-    </div>
-  </main>
+    <div class="news-list" id="newsContainer">
+      <!-- โค้ดรายการข่าวจะ Render ผ่าน JavaScript จากไฟล์กลาง news-data.js -->
+    </div>
+  </main>
 
-  <!-- 📌 Footer สไตล์ NIA -->
-  <footer class="site-footer" id="contact">
-    <div class="footer-container">
+  <!-- 📌 Footer สไตล์ NIA (ตรงกับหน้าหลัก) -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-container">
 
-      <!-- 1. ข้อมูลหน่วยงาน (ฝั่งซ้าย) -->
-      <div class="footer-info">
-        <h3 data-en="CATFISH BIORESOURCE" data-th="ทรัพยากรชีวภาพปลาดุก">ทรัพยากรชีวภาพปลาดุก</h3>
-        <p data-en="AGB Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</p>
-        <p data-en="Address: Faculty of Science, Kasetsart University" data-th="ที่อยู่: คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์">คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
-        <p data-en="50 Ngamwongwan Rd, Catuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900">ที่อยู่: 50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900</p>
-        <p data-en="Phone: 0 2017 5555 ext. 740072" data-th="เบอร์โทรศัพท์: 0 2017 5555 ต่อ 740072">เบอร์โทรศัพท์: 0 2017 5555 ต่อ 740072</p>
-        <p>Email: <a href="mailto:agb.sci@ku.th">agb.sci@ku.th</a></p>
-      </div>
+      <!-- 1. ข้อมูลหน่วยงาน (ฝั่งซ้าย) -->
+      <div class="footer-info">
+        <h3 data-en="CATFISH BIORESOURCE" data-th="ทรัพยากรชีวภาพปลาดุก">ทรัพยากรชีวภาพปลาดุก</h3>
+        <p data-en="AGB Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</p>
+        <p data-en="Address: Faculty of Science, Kasetsart University" data-th="ที่อยู่: คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์">คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
+        <p data-en="50 Ngamwongwan Rd, Catuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900">ที่อยู่: 50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900</p>
+        <p data-en="Phone: 0 2017 5555 ext. 740072" data-th="เบอร์โทรศัพท์: 0 2017 5555 ต่อ 740072">เบอร์โทรศัพท์: 0 2017 5555 ต่อ 740072</p>
+        <p>Email: <a href="mailto:agb.sci@ku.th">agb.sci@ku.th</a></p>
+      </div>
 
-      <!-- 2. โซเชียลมีเดีย (ตรงกลาง) -->
-      <div class="footer-social">
-        <span data-en="Social :" data-th="Social :">Social :</span>
-        <div class="footer-social-icons">
-          <a href="https://www.facebook.com/AGBResearchCenterKU" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Facebook">
-            <svg viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/siamese-crocodile-project-1a2a143b4/?isSelfProfile=false" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="LinkedIn">
-            <svg viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Instagram">
-            <svg viewBox="0 0 448 512"><path d="M224.1 141.1c-43.6 0-78.9 35.3-78.9 78.9s35.3 78.9 78.9 78.9 78.9-35.3 78.9-78.9-35.3-78.9-78.9-78.9zm0 129.7c-28 0-50.8-22.8-50.8-50.8s22.8-50.8 50.8-50.8 50.8 22.8 50.8 50.8-22.8 50.8-50.8-50.8zm112.5-139c0 10.1-8.2 18.3-18.3 18.3s-18.3-8.2-18.3-18.3c0-10.1 8.2-18.3 18.3-18.3s18.3 8.2 18.3 18.3zm81.4 34.2c-1.6-33.8-9.4-63.7-34.2-88.5s-54.7-32.6-88.5-34.2c-35-2-139.9-2-174.9 0-33.8 1.6-63.7 9.4-88.5 34.2s-32.6 54.7-34.2 88.5c-2 35-2 139.9 0 174.9 1.6 33.8 9.4 63.7 34.2 88.5s54.7 32.6 88.5 34.2c35 2 139.9 2 174.9 0 33.8-1.6 63.7-9.4 88.5-34.2s32.6-54.7 34.2-88.5c2-35 2-139.9 0-174.9zm-41.1 233c-7.4 18.6-21.7 32.9-40.3 40.3-29.9 11.9-101 9.1-136.5 9.1s-106.6 2.8-136.5-9.1c-18.6-7.4-32.9-21.7-40.3-40.3-11.9-29.9-9.1-101-9.1-136.5s-2.8-106.6 9.1-136.5c7.4-18.6 21.7-32.9 40.3-40.3 29.9-11.9 101-9.1 136.5-9.1s106.6-2.8 136.5 9.1c18.6 7.4 32.9 21.7 40.3 40.3 11.9 29.9 9.1 101 9.1 136.5s2.8 106.6-9.1 136.5z"/></svg>
-          </a>
-          <a href="https://www.tiktok.com/@.siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="TikTok">
-            <svg viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h.06A122.18 122.18 0 0 0 381 84.86a121.2 121.2 0 0 0 67 20.05z"/></svg>
-          </a>
-        </div>
-      </div>
+      <!-- 2. โซเชียลมีเดีย (ตรงกลาง) -->
+      <div class="footer-social">
+        <span data-en="Social :" data-th="Social :">Social :</span>
+        <div class="footer-social-icons">
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/AGBResearchCenterKU" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Facebook">
+            <svg viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/siamese-crocodile-project-1a2a143b4/?isSelfProfile=false" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="LinkedIn">
+            <svg viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Instagram">
+            <svg viewBox="0 0 448 512"><path d="M224.1 141.1c-43.6 0-78.9 35.3-78.9 78.9s35.3 78.9 78.9 78.9 78.9-35.3 78.9-78.9-35.3-78.9-78.9-78.9zm0 129.7c-28 0-50.8-22.8-50.8-50.8s22.8-50.8 50.8-50.8 50.8 22.8 50.8 50.8-22.8 50.8-50.8 50.8zm112.5-139c0 10.1-8.2 18.3-18.3 18.3s-18.3-8.2-18.3-18.3c0-10.1 8.2-18.3 18.3-18.3s18.3 8.2 18.3 18.3zm81.4 34.2c-1.6-33.8-9.4-63.7-34.2-88.5s-54.7-32.6-88.5-34.2c-35-2-139.9-2-174.9 0-33.8 1.6-63.7 9.4-88.5 34.2s-32.6 54.7-34.2 88.5c-2 35-2 139.9 0 174.9 1.6 33.8 9.4 63.7 34.2 88.5s54.7 32.6 88.5 34.2c35 2 139.9 2 174.9 0 33.8-1.6 63.7-9.4 88.5-34.2s32.6-54.7 34.2-88.5c2-35 2-139.9 0-174.9zm-41.1 233c-7.4 18.6-21.7 32.9-40.3 40.3-29.9 11.9-101 9.1-136.5 9.1s-106.6 2.8-136.5-9.1c-18.6-7.4-32.9-21.7-40.3-40.3-11.9-29.9-9.1-101-9.1-136.5s-2.8-106.6 9.1-136.5c7.4-18.6 21.7-32.9 40.3-40.3 29.9-11.9 101-9.1 136.5-9.1s106.6-2.8 136.5 9.1c18.6 7.4 32.9 21.7 40.3 40.3 11.9 29.9 9.1 101 9.1 136.5s2.8 106.6-9.1 136.5z"/></svg>
+          </a>
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com/@.siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="TikTok">
+            <svg viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h.06A122.18 122.18 0 0 0 381 84.86a121.2 121.2 0 0 0 67 20.05z"/></svg>
+          </a>
+        </div>
+      </div>
 
-      <!-- 3. ฟอร์มรับข่าวสาร (ฝั่งขวา) -->
-      <div class="footer-newsletter">
-        <label data-en="Subscribe to our newsletters" data-th="สมัครรับข่าวสารจดหมายข่าว">Subscribe to our newsletters</label>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
-          <input type="email" class="newsletter-input" placeholder="Your E-mail" required>
-          <button type="submit" class="newsletter-btn" data-en="Submit" data-th="ส่งข้อมูล">Submit</button>
-        </form>
-      </div>
+      <!-- 3. ฟอร์มรับข่าวสาร (ฝั่งขวา) -->
+      <div class="footer-newsletter">
+        <label data-en="Subscribe to our newsletters" data-th="สมัครรับข่าวสารจดหมายข่าว">Subscribe to our newsletters</label>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+          <input type="email" class="newsletter-input" placeholder="Your E-mail" required>
+          <button type="submit" class="newsletter-btn" data-en="Submit" data-th="ส่งข้อมูล">Submit</button>
+        </form>
+      </div>
 
-    </div>
-  </footer>
+    </div>
+  </footer>
 
-  <!-- 📌 ดึงข้อมูลข่าวจากไฟล์กลางภายนอก (news-data.js) -->
-  <script src="news-data.js"></script>
+  <!-- 📌 ดึงข้อมูลข่าวจากไฟล์กลางภายนอก (news-data.js) -->
+  <script src="news-data.js"></script>
 
-  <script>
-    const toggle = document.getElementById("languageToggle");
+  <script>
+    const toggle = document.getElementById("languageToggle");
 
-    function renderNewsList(lang) {
-      const container = document.getElementById("newsContainer");
-      if (!container) return;
-      container.innerHTML = "";
-      
-      const displayNews = typeof newsData !== "undefined" ? newsData.slice(0, 10) : [];
+    function renderNewsList(lang) {
+      const container = document.getElementById("newsContainer");
+      if (!container) return;
+      container.innerHTML = "";
 
-      displayNews.forEach(news => {
-        const title = lang === "en" ? news.titleEn : news.titleTh;
-        const excerpt = lang === "en" ? news.excerptEn : news.excerptTh;
-        const dateStr = lang === "en" ? news.dateEn : news.date;
-        const actionText = lang === "en" ? "Read More" : "อ่านรายละเอียด";
+      const displayNews = typeof newsData !== "undefined" ? newsData.slice(0, 10) : [];
 
-        const cardHTML = `
-          <a href="${news.link}" class="news-long-card">
-            <div class="news-card-media">
-              <img src="${news.image}" alt="${title}" onerror="this.src='https://via.placeholder.com/320x220?text=No+Image'">
-            </div>
-            <div class="news-card-body">
-              <div>
-                <div class="news-card-meta">
-                  <i class="fa-regular fa-calendar"></i>
-                  <span>${dateStr}</span>
-                </div>
-                <h2 class="news-card-title">${title}</h2>
-                <p class="news-card-excerpt">${excerpt}</p>
-              </div>
-              <div class="news-card-action">
-                ${actionText} <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
-              </div>
-            </div>
-          </a>
-        `;
-        container.insertAdjacentHTML("beforeend", cardHTML);
-      });
-    }
+      displayNews.forEach(news => {
+        const title = lang === "en" ? news.titleEn : news.titleTh;
+        const excerpt = lang === "en" ? news.excerptEn : news.excerptTh;
+        const dateStr = lang === "en" ? news.dateEn : news.date;
+        const actionText = lang === "en" ? "Read More" : "อ่านรายละเอียด";
 
-    function setLanguage(language) {
-      document.documentElement.lang = language;
-      localStorage.setItem("preferred_lang", language);
+        const cardHTML = `
+          <a href="${news.link}" class="news-long-card">
+            <div class="news-card-media">
+              <img src="${news.image}" alt="${title}" onerror="this.src='https://via.placeholder.com/320x220?text=No+Image'">
+            </div>
+            <div class="news-card-body">
+              <div>
+                <div class="news-card-meta">
+                  <i class="fa-regular fa-calendar"></i>
+                  <span>${dateStr}</span>
+                </div>
+                <h2 class="news-card-title">${title}</h2>
+                <p class="news-card-excerpt">${excerpt}</p>
+              </div>
+              <div class="news-card-action">
+                ${actionText} <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+              </div>
+            </div>
+          </a>
+        `;
+        container.insertAdjacentHTML("beforeend", cardHTML);
+      });
+    }
 
-      document.querySelectorAll("[data-en][data-th]").forEach(element => {
-        let text = element.dataset[language];
-        if (text) element.innerHTML = text;
-      });
+    function setLanguage(language) {
+      document.documentElement.lang = language;
+      localStorage.setItem("preferred_lang", language);
 
-      if (toggle) {
-        toggle.setAttribute(
-          "aria-label",
-          language === "en" ? "Switch to Thai" : "Switch to English"
-        );
-      }
+      document.querySelectorAll("[data-en][data-th]").forEach(element => {
+        let text = element.dataset[language];
+        if (text) element.innerHTML = text;
+      });
 
-      document.title = language === "en"
-        ? "News & Announcements | CATFISH BIORESOURCE"
-        : "ข่าวสารและกิจกรรม | CATFISH BIORESOURCE";
+      if (toggle) {
+        toggle.setAttribute(
+          "aria-label",
+          language === "en" ? "Switch to Thai" : "Switch to English"
+        );
+      }
 
-      renderNewsList(language);
-    }
+      document.title = language === "en"
+        ? "News & Announcements | CATFISH BIORESOURCE"
+        : "ข่าวสารและกิจกรรม | CATFISH BIORESOURCE";
 
-    if (toggle) {
-      toggle.addEventListener("click", () => {
-        const currentLang = document.documentElement.lang;
-        setLanguage(currentLang === "en" ? "th" : "en");
-      });
-    }
+      renderNewsList(language);
+    }
 
-    const savedLang = localStorage.getItem("preferred_lang") || "en";
-    setLanguage(savedLang);
-  </script>
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        const currentLang = document.documentElement.lang;
+        setLanguage(currentLang === "en" ? "th" : "en");
+      });
+    }
+
+    // 📌 โหลดภาษาที่ผู้ใช้เลือกไว้ล่าสุดจากหน้าอื่นๆ
+    const savedLang = localStorage.getItem("preferred_lang") || "en";
+    setLanguage(savedLang);
+  </script>
 </body>
 </html>
