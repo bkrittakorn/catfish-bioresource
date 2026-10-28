@@ -44,7 +44,6 @@
     }
 
     a { color: inherit; text-decoration: none; }
-
     button { font: inherit; cursor: pointer; }
 
     .container {
@@ -104,6 +103,7 @@
       gap: 21px;
       font-size: 15px;
       font-weight: 600;
+      color: var(--blue);
     }
 
     .nav-links > a:hover, .nav-item-dropdown > a:hover { color: var(--blue-hover); }
@@ -157,7 +157,7 @@
     html[lang="th"] .lang-label.en { color: #64748b; }
     html[lang="th"] .lang-label.th { color: #ffffff; }
 
-    /* 📌 สไตล์ Mega Menu */
+    /* 📌 Mega Menu */
     .nav-item-dropdown {
       position: relative;
       display: inline-block;
@@ -339,7 +339,7 @@
       background: var(--blue-hover);
     }
 
-    /* 📌 สไตล์ Footer แบบ NIA */
+    /* 📌 Footer สไตล์ NIA */
     .site-footer {
       background-color: #242238;
       color: #ffffff;
@@ -471,15 +471,11 @@
       .nav { padding: 13px 0; flex-wrap: wrap; }
       .nav-links { order: 3; width: 100%; gap: 16px; flex-wrap: wrap; }
     }
-
-    @media (max-width: 520px) {
-      .container { width: min(100% - 28px, 1120px); }
-      .brand-sub { font-size: 10px; }
-    }
   </style>
 </head>
 
 <body>
+  <!-- Header พร้อม Mega Menu -->
   <header>
     <div class="container nav">
       <a class="brand" href="index.html#home" aria-label="CATFISH BIORESOURCE Home">
@@ -499,7 +495,7 @@
         <a href="index.html#about" data-en="About" data-th="เกี่ยวกับ">About</a>
         <a href="all-news.html" data-en="News" data-th="ข่าวสาร">News</a>
 
-        <!-- 📌 เมนูดรอปดาวน์ Mega Menu คลังข้อมูล -->
+        <!-- 📌 Mega Menu คลังข้อมูล -->
         <div class="nav-item-dropdown">
           <a href="all-resource.html" style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
             <span data-en="Resources" data-th="คลังข้อมูล">Resources</span>
@@ -598,7 +594,7 @@
     </section>
   </main>
 
-  <!-- 📌 ส่วน Footer แบบ NIA -->
+  <!-- 📌 Footer -->
   <footer class="site-footer" id="contact">
     <div class="footer-container">
       <div class="footer-info">
@@ -606,27 +602,24 @@
         <p data-en="AGB Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</p>
         <p data-en="Address: Faculty of Science, Kasetsart University" data-th="ที่อยู่: คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์">คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
         <p data-en="50 Ngamwongwan Rd, Catuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900">ที่อยู่: 50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900</p>
-        <p data-en="Phone: 0 2017 5555 ext. 740072" data-th="เบอร์โทรศัพท์: 0 2017 5555 ต่อ 740072">เบอร์โทรศัพท์: 0 2017 5555 ต่อ 740072</p>
+        <p data-en="Phone: +66 2 017 5555 ext. 740072" data-th="เบอร์โทรศัพท์: +66 2 017 5555 ต่อ 740072">เบอร์โทรศัพท์: +66 2 017 5555 ต่อ 740072</p>
         <p>Email: <a href="mailto:agb.sci@ku.th">agb.sci@ku.th</a></p>
       </div>
 
       <div class="footer-social">
         <span data-en="Social :" data-th="Social :">Social :</span>
         <div class="footer-social-icons">
-          <a href="https://sites.google.com/ku.th/catfishbioresource-th" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Website">
-            <svg viewBox="0 0 512 512"><path d="M352 256c0 22.2-1.2 43.9-3.5 65-13.3 3.8-27.5 6-42.5 6-70.7 0-130.6-45.7-151.7-109 23.3-15.1 51.5-24 81.7-24 18.5 0 36.3 2.5 53.2 7.1C347.1 216 352 235.6 352 256zm-192 0c0-22.2 1.2-43.9 3.5-65 13.3-3.8 27.5-6 42.5-6 70.7 0 130.6 45.7 151.7 109-23.3 15.1-51.5 24-81.7 24-18.5 0-36.3-2.5-53.2-7.1C164.9 296 160 276.4 160 256zM256 512C114.6 512 0 397.4 0 256S114.6 0 256 0s256 114.6 256 256-114.6 256-256 256zm0-448C150 64 64 150 64 256s86 192 192 192 192-86 192-192S362 64 256 64z"/></svg>
+          <a href="https://www.facebook.com/AGBResearchCenterKU" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Facebook">
+            <svg viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/siamese-crocodile-project-1a2a143b4/?isSelfProfile=false" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="LinkedIn">
+            <svg viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
           </a>
           <a href="https://www.instagram.com/siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Instagram">
             <svg viewBox="0 0 448 512"><path d="M224.1 141.1c-43.6 0-78.9 35.3-78.9 78.9s35.3 78.9 78.9 78.9 78.9-35.3 78.9-78.9-35.3-78.9-78.9-78.9zm0 129.7c-28 0-50.8-22.8-50.8-50.8s22.8-50.8 50.8-50.8 50.8 22.8 50.8 50.8-22.8 50.8-50.8 50.8zm112.5-139c0 10.1-8.2 18.3-18.3 18.3s-18.3-8.2-18.3-18.3c0-10.1 8.2-18.3 18.3-18.3s18.3 8.2 18.3 18.3zm81.4 34.2c-1.6-33.8-9.4-63.7-34.2-88.5s-54.7-32.6-88.5-34.2c-35-2-139.9-2-174.9 0-33.8 1.6-63.7 9.4-88.5 34.2s-32.6 54.7-34.2 88.5c-2 35-2 139.9 0 174.9 1.6 33.8 9.4 63.7 34.2 88.5s54.7 32.6 88.5 34.2c35 2 139.9 2 174.9 0 33.8-1.6 63.7-9.4 88.5-34.2s32.6-54.7 34.2-88.5c2-35 2-139.9 0-174.9zm-41.1 233c-7.4 18.6-21.7 32.9-40.3 40.3-29.9 11.9-101 9.1-136.5 9.1s-106.6 2.8-136.5-9.1c-18.6-7.4-32.9-21.7-40.3-40.3-11.9-29.9-9.1-101-9.1-136.5s-2.8-106.6 9.1-136.5c7.4-18.6 21.7-32.9 40.3-40.3 29.9-11.9 101-9.1 136.5-9.1s106.6-2.8 136.5 9.1c18.6 7.4 32.9 21.7 40.3 40.3 11.9 29.9 9.1 101 9.1 136.5s2.8 106.6-9.1 136.5z"/></svg>
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="X (Twitter)">
-            <svg viewBox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
-          </a>
-          <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="YouTube">
-            <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.387-42.276-47.76-48.597-40.584-10.911-203.34-10.911-203.34-10.911s-162.756 0-203.34 10.911c-23.373 6.321-41.479 24.947-47.76 48.597-10.911 39.33-10.911 121.334-10.911 121.334s0 82.004 10.911 121.334c6.281 23.65 24.387 42.276 47.76 48.597 40.584 10.911 203.34 10.911 203.34 10.911s162.756 0 203.34-10.911c23.373-6.321 41.479-24.947 47.76-48.597 10.911-39.33 10.911-121.334 10.911-121.334s0-82.004-10.911-121.334zM317.51 292.17l-117.47-62.63v125.26l117.47-62.63z"/></svg>
-          </a>
-          <a href="https://www.facebook.com/AGBResearchCenterKU" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Facebook">
-            <svg viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+          <a href="https://www.tiktok.com/@.siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="TikTok">
+            <svg viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h.06A122.18 122.18 0 0 0 381 84.86a121.2 121.2 0 0 0 67 20.05z"/></svg>
           </a>
         </div>
       </div>
