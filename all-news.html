@@ -702,7 +702,7 @@
         const dateStr = lang === "en" ? news.dateEn : news.date;
         const actionText = lang === "en" ? "Read More" : "อ่านรายละเอียด";
 
-        const cardHTML = `
+      const cardHTML = `
           <a href="${news.link}" class="news-long-card">
             <div class="news-card-media">
               <img src="${news.image}" alt="${title}" onerror="this.src='https://via.placeholder.com/320x220?text=No+Image'">
@@ -710,7 +710,7 @@
             <div class="news-card-body">
               <div>
                 <div class="news-card-meta">
-                  <i class="fa-regular fa-calendar"></i>
+                  <i class="fa-solid fa-calendar"></i>
                   <span>${dateStr}</span>
                 </div>
                 <h2 class="news-card-title">${title}</h2>
