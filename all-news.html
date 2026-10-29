@@ -46,11 +46,11 @@
       flex: 1;
     }
 
-/* 📌 ล็อกระยะห่างด้านบนของ Footer ให้มีระยะตายตัวเสมอ เช่น 60px */
-footer.site-footer {
-  margin-top: auto; /* ดันลงล่างสุดอัตโนมัติเมื่อหน้าจอโล่ง */
-  /* หรือถ้าต้องการให้มีช่องว่างห่างจากเนื้อหาด้านบนตายตัวเสมอเมื่อเนื้อหายาว ให้ใช้ padding หรือ margin-top เพิ่มเติม เช่น: */
-}
+    /* 📌 ล็อกระยะห่างด้านบนของ Footer ให้มีระยะตายตัวเสมอ เช่น 60px */
+    footer.site-footer {
+      margin-top: auto; /* ดันลงล่างสุดอัตโนมัติเมื่อหน้าจอโล่ง */
+      /* หรือถ้าต้องการให้มีช่องว่างห่างจากเนื้อหาด้านบนตายตัวเสมอเมื่อเนื้อหายาว ให้ใช้ padding หรือ margin-top เพิ่มเติม เช่น: */
+    }
 
     a { color: inherit; text-decoration: none; }
     button { font: inherit; cursor: pointer; }
@@ -255,10 +255,13 @@ footer.site-footer {
       transform: translateX(3px);
     }
 
-    /* Page Header Section (ปรับให้ตรงกับ all-resource.html) */
+    /* Page Header Section */
     .page-header {
       padding: 60px 0 30px;
       text-align: center;
+      background: transparent;
+      position: static;
+      border-bottom: none;
     }
 
     .page-header h1 {
@@ -628,19 +631,15 @@ footer.site-footer {
   </header>
 
   <main class="container">
-    <header class="page-header">
+    <div class="page-header">
       <h1 data-en="News & Announcements" data-th="ข่าวสารและประกาศทั้งหมด">
-
-
-
-
         News & Announcements
       </h1>
       <p data-en="Latest updates, research activities, and official announcements." 
          data-th="รวมข่าวสาร กิจกรรมวิจัย และประกาศความเคลื่อนไหวล่าสุด">
         Latest updates, research activities, and official announcements.
       </p>
-    </header>
+    </div>
 
     <div class="news-list" id="newsContainer">
       <!-- โค้ดรายการข่าวจะ Render ผ่าน JavaScript จากไฟล์กลาง news-data.js -->
