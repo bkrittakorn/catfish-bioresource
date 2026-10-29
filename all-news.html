@@ -27,15 +27,11 @@
       font-family: Arial, "Prompt", sans-serif !important;
     }
 
-    i, .fa, .fa-solid, .fa-regular, .fa-brands {
-      font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", Arial, "Prompt", sans-serif !important;
-    }
-
     html, body {
       height: 100%;
       margin: 0;
     }
-    
+
     body {
       display: flex;
       flex-direction: column;
@@ -44,17 +40,17 @@
       color: var(--blue);
       line-height: 1.7;
     }
-    
+
     /* ให้แท็ก main ขยายพื้นที่ยืดหยุ่น */
     main, main.container {
       flex: 1;
     }
 
-    /* 📌 ล็อกระยะห่างด้านบนของ Footer ให้มีระยะตายตัวเสมอ เช่น 60px */
-    footer.site-footer {
-      margin-top: auto; /* ดันลงล่างสุดอัตโนมัติเมื่อหน้าจอโล่ง */
-      /* หรือถ้าต้องการให้มีช่องว่างห่างจากเนื้อหาด้านบนตายตัวเสมอเมื่อเนื้อหายาว ให้ใช้ padding หรือ margin-top เพิ่มเติม เช่น: */
-    }
+/* 📌 ล็อกระยะห่างด้านบนของ Footer ให้มีระยะตายตัวเสมอ เช่น 60px */
+footer.site-footer {
+  margin-top: auto; /* ดันลงล่างสุดอัตโนมัติเมื่อหน้าจอโล่ง */
+  /* หรือถ้าต้องการให้มีช่องว่างห่างจากเนื้อหาด้านบนตายตัวเสมอเมื่อเนื้อหายาว ให้ใช้ padding หรือ margin-top เพิ่มเติม เช่น: */
+}
 
     a { color: inherit; text-decoration: none; }
     button { font: inherit; cursor: pointer; }
@@ -68,19 +64,18 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 9999; /* 📌 ล็อกให้อยู่ชั้นบนสุดเสมอ */
-      background: rgba(255, 255, 255, .96);
+      z-index: 100;
+      background: rgba(255,255,255,.96);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(12px);
     }
-    
+
     .nav {
       min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      position: relative;
     }
 
     .brand {
@@ -176,12 +171,14 @@
     .nav-item-dropdown {
       position: relative;
       display: inline-block;
+      padding-bottom: 15px;
+      margin-bottom: -12px;
     }
 
     .mega-menu {
       display: none;
       position: absolute;
-      top: calc(100% + 12px);
+      top: 100%;
       left: 50%;
       transform: translateX(-50%);
       width: 620px;
@@ -189,10 +186,10 @@
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
       overflow: hidden;
-      z-index: 10000;
-      border: 1px solid var(--line, #e2e8f0);
+      z-index: 1000;
+      border: 1px solid var(--line);
     }
-    
+
     .nav-item-dropdown:hover .mega-menu {
       display: grid;
       grid-template-columns: 1fr 1.5fr;
@@ -258,12 +255,12 @@
       transform: translateX(3px);
     }
 
-    /* Page Header Section (ปรับกึ่งกลาง + นำพื้นหลังสีขาวออก) */
+    /* Page Header Section (ปรับให้ตรงกับ all-resource.html) */
     .page-header {
       padding: 60px 0 30px;
       text-align: center;
-      background: transparent; /* 📌 นำพื้นหลังสีขาวออก ให้โปร่งใสตามพื้นหลังหลัก */
-      border-bottom: none;     /* 📌 (ตัวเลือกเสริม) นำเส้นขอบล่างออก หากต้องการให้คล้ายหน้า Resources */
+
+
     }
 
     .page-header h1 {
@@ -696,7 +693,7 @@
       const container = document.getElementById("newsContainer");
       if (!container) return;
       container.innerHTML = "";
-      
+
       const displayNews = typeof newsData !== "undefined" ? newsData.slice(0, 10) : [];
 
       displayNews.forEach(news => {
@@ -705,7 +702,7 @@
         const dateStr = lang === "en" ? news.dateEn : news.date;
         const actionText = lang === "en" ? "Read More" : "อ่านรายละเอียด";
 
-      const cardHTML = `
+        const cardHTML = `
           <a href="${news.link}" class="news-long-card">
             <div class="news-card-media">
               <img src="${news.image}" alt="${title}" onerror="this.src='https://via.placeholder.com/320x220?text=No+Image'">
@@ -713,7 +710,7 @@
             <div class="news-card-body">
               <div>
                 <div class="news-card-meta">
-                  <i class="fa-solid fa-calendar"></i>
+                  <i class="fa-regular fa-calendar"></i>
                   <span>${dateStr}</span>
                 </div>
                 <h2 class="news-card-title">${title}</h2>
