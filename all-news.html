@@ -176,14 +176,12 @@
     .nav-item-dropdown {
       position: relative;
       display: inline-block;
-      padding-bottom: 15px;
-      margin-bottom: -12px;
     }
 
     .mega-menu {
       display: none;
       position: absolute;
-      top: 100%;
+      top: calc(100% + 12px);
       left: 50%;
       transform: translateX(-50%);
       width: 620px;
@@ -191,7 +189,7 @@
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
       overflow: hidden;
-      z-index: 10000; /* 📌 ให้อยู่เหนือทุกองค์ประกอบในหน้าเว็บ */
+      z-index: 10000;
       border: 1px solid var(--line, #e2e8f0);
     }
     
