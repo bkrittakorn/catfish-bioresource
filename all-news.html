@@ -64,12 +64,11 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 9999;
-      background: rgba(255,255,255,.96);
+      z-index: 9999; /* ปรับค่าให้สูงมากๆ เพื่อไม่ให้มีอะไรมาบัง */
+      background: rgba(255, 255, 255, .96);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(12px);
     }
-
     .nav {
       min-height: 78px;
       display: flex;
@@ -186,10 +185,10 @@
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
       overflow: hidden;
-      z-index: 10000;
+      z-index: 10000; /* ให้อยู่เหนือ Header และเนื้อหาทั้งหมด */
       border: 1px solid var(--line, #e2e8f0);
     }
-
+    
     .nav-item-dropdown:hover .mega-menu {
       display: grid;
       grid-template-columns: 1fr 1.5fr;
