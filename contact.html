@@ -251,11 +251,12 @@
       transform: translateX(3px);
     }
 
-    /* Page Header */
+    /* Page Header (เลื่อนตามการ Scroll ปกติ ไม่ตรึงไว้) */
     .page-header {
       padding: 60px 0 30px;
       text-align: center;
       background: transparent;
+      position: static; /* 📌 ให้เลื่อนตามเนื้อหาปกติ ไม่ตรึง */
     }
 
     .page-header h1 {
@@ -271,7 +272,7 @@
       max-width: 600px;
       margin: 0 auto;
     }
-
+    
     /* Contact Content Layout */
     .contact-grid {
       display: grid;
@@ -590,13 +591,13 @@
 
   <!-- Main Content -->
   <main class="container">
-    <header class="page-header">
+    <div class="page-header">
       <h1 data-en="Contact Us" data-th="ติดต่อเรา">Contact Us</h1>
       <p data-en="Get in touch with the Animal Genomics and Bioresource Research Unit." 
          data-th="ติดต่อสอบถามข้อมูลเพิ่มเติมกับหน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">
         Get in touch with the Animal Genomics and Bioresource Research Unit.
       </p>
-    </header>
+    </div>
 
     <div class="contact-grid">
       <!-- ข้อมูลที่อยู่และการติดต่อ -->
