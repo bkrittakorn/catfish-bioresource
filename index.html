@@ -194,33 +194,32 @@
     html[lang="th"] .lang-label.en { color: #64748b; }
     html[lang="th"] .lang-label.th { color: #ffffff; }
 
-    /* 📌 สไตล์สำหรับเมนูที่มี Dropdown */
+/* 📌 สไตล์สำหรับเมนูที่มี Dropdown และสะพานเชื่อมล่องหน */
     .nav-item-dropdown {
       position: relative;
       display: inline-flex;
       align-items: center;
-      padding-top: 10px;    /* เพิ่มพื้นที่รับการ Hover ด้านบน-ล่าง */
-      padding-bottom: 15px; 
+      padding-top: 10px;
+      padding-bottom: 15px;
       margin-top: -10px;
       margin-bottom: -15px;
     }
 
-    /* 📌 เพิ่มสะพานเชื่อมล่องหน ป้องกัน Mega Menu หายเมื่อเลื่อนเมาส์ลง */
     .nav-item-dropdown::before {
       content: "";
       position: absolute;
       top: 100%;
       left: 0;
       width: 100%;
-      height: 20px; /* ระยะความหนาของสะพานเชื่อมล่องหน */
+      height: 20px;
       display: block;
     }
 
-    /* 📌 Mega Menu */
+    /* 📌 Mega Menu Style */
     .mega-menu {
       display: none;
       position: absolute;
-      top: calc(100% + 5px); /* ขยับระยะห่างลงมาให้พอดีสวยงาม */
+      top: calc(100% + 5px);
       left: 50%;
       transform: translateX(-50%);
       width: 620px;
@@ -680,15 +679,43 @@
 
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html#home" data-en="Home" data-th="หน้าหลัก">Home</a>
-        <a href="about.html" data-en="About" data-th="เกี่ยวกับ">About</a>
+
+        <!-- 📌 Mega Menu: About (About Project & About AGB) -->
+        <div class="nav-item-dropdown">
+          <a href="about.html" style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
+            <span data-en="About" data-th="เกี่ยวกับ">About</span>
+            <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i>
+          </a>
+          <div class="mega-menu">
+            <div class="mega-menu-col-left">
+              <div class="mega-menu-title" data-en="About Overview" data-th="ภาพรวมเกี่ยวกับเรา">About Overview</div>
+              <p class="mega-menu-desc" 
+                 data-en="Learn more about our research initiatives, objectives, and the research unit." 
+                 data-th="เรียนรู้เพิ่มเติมเกี่ยวกับโครงการวิจัย วัตถุประสงค์ และหน่วยวิจัยของเรา">
+                Learn more about our research initiatives, objectives, and the research unit.
+              </p>
+            </div>
+            <div class="mega-menu-col-right">
+              <a href="about.html#project" class="mega-menu-item">
+                <span data-en="About Project" data-th="เกี่ยวกับโครงการ (About Project)">เกี่ยวกับโครงการ (About Project)</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="about.html#agb" class="mega-menu-item">
+                <span data-en="About AGB Research Unit" data-th="เกี่ยวกับหน่วยวิจัย AGB">เกี่ยวกับหน่วยวิจัย AGB</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
         <a href="all-news.html" data-en="News" data-th="ข่าวสาร">News</a>
 
-        <!-- Mega Menu คลังข้อมูล -->
+        <!-- Mega Menu: Resources -->
         <div class="nav-item-dropdown">
           <a href="all-resource.html" style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
             <span data-en="Resources" data-th="คลังข้อมูล">Resources</span>
+            <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i>
           </a>
-
           <div class="mega-menu">
             <div class="mega-menu-col-left">
               <div class="mega-menu-title" data-en="Knowledge Library" data-th="คลังองค์ความรู้">Knowledge Library</div>
@@ -699,21 +726,13 @@
               </p>
             </div>
             <div class="mega-menu-col-right">
-              <a href="https://catfish-thermal-dashboard.streamlit.app/" 
-                 target="_blank" 
-                 rel="noopener noreferrer" 
-                 class="mega-menu-item">
-                <span data-en="Thermal Risk & AquaMonitor Dashboard" data-th="แดชบอร์ดประเมินความเสี่ยงและคุณภาพน้ำ">
-                  แดชบอร์ดประเมินความเสี่ยงและคุณภาพน้ำ
-                </span>
+              <a href="https://catfish-thermal-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" class="mega-menu-item">
+                <span data-en="Thermal Risk & AquaMonitor Dashboard" data-th="แดชบอร์ดประเมินความเสี่ยงและคุณภาพน้ำ">แดชบอร์ดประเมินความเสี่ยงและคุณภาพน้ำ</span>
+                <i class="fa-solid fa-arrow-right"></i>
               </a>
-              <a href="http://210.72.95.48"
-                 target="_blank" 
-                 rel="noopener noreferrer" 
-                 class="mega-menu-item">
-                <span data-en="DUKEOME" data-th="DUKEOME">
-                  DUKEOME
-                </span>
+              <a href="http://210.72.95.48" target="_blank" rel="noopener noreferrer" class="mega-menu-item">
+                <span data-en="DUKEOME" data-th="DUKEOME">DUKEOME</span>
+                <i class="fa-solid fa-arrow-right"></i>
               </a>
             </div>
           </div>
