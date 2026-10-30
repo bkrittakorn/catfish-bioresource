@@ -24,8 +24,8 @@
       --paper: #f8fafc;         
       --white: #ffffff;         
       --line: #e2e8f0;          
-      --nia-dark: #242238;      /* 📌 สีม่วงเข้ม */
-      --nia-red: #991b1b;       /* 📌 สีแดง */
+      --nia-dark: #242238;      
+      --nia-red: #991b1b;       
     }
 
     *, *::before, *::after { 
@@ -33,7 +33,7 @@
       font-family: Arial, "Prompt", sans-serif !important;
     }
 
-/* 📌 บังคับให้โครงสร้าง Scrollbar มีขนาดคงที่ ป้องกัน Header ขยับซ้าย-ขวาเมื่อสลับหน้า */
+    /* 📌 บังคับ Scrollbar ให้คงที่ ป้องกัน Header ขยับขวา-ซ้าย */
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 90px;
@@ -67,7 +67,6 @@
     }
 
     a { color: inherit; text-decoration: none; }
-
     button { font: inherit; cursor: pointer; }
 
     .container {
@@ -75,7 +74,7 @@
       margin-inline: auto;
     }
 
-    /* 📌 Standardized Header Structure (ตำแหน่งตรงกันทุกหน้า) */
+    /* Header Structure */
     header {
       position: sticky;
       top: 0;
@@ -89,7 +88,7 @@
 
     .nav {
       min-height: 78px;
-      height: 78px; /* ล็อกความสูงมาตรฐานเท่ากันทุกหน้า */
+      height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -295,100 +294,7 @@
       transform: translateX(3px);
     }
 
-    .hero {
-      background: url('images/images.bg.png') center/cover no-repeat;
-      color: #ffffff;
-      padding: 100px 0 92px;
-      overflow: hidden;
-    }
-
-    .hero-content { max-width: 760px; }
-
-    .hero .eyebrow {
-      display: inline-block;
-      font-size: 16px;
-      font-weight: 700;
-      color: #c1c1c1;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-size: clamp(38px, 6vw, 66px);
-      line-height: 1.12;
-      letter-spacing: -.045em;
-      margin: 0 0 24px;
-      font-weight: 800;
-      color: #4876a3;
-    }
-
-    .hero p {
-      max-width: 640px;
-      color: #334155;
-      font-size: 16px;
-      margin: 0 0 30px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 11px 18px;
-      border-radius: 99px;
-      font-weight: 700;
-      border: 1px solid transparent;
-    }
-
-    .hero .btn-light { 
-      background: #4876a3; 
-      color: white; 
-      transition: transform .2s, box-shadow .2s, background-color .2s;
-    }
-
-    .hero .btn-light:hover {
-      background: #0b5394;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(22, 62, 48, 0.15);
-    }
-
-    .hero .btn-outline { 
-      border-color: #4876a3; 
-      color: #4876a3; 
-      background: rgba(255, 255, 255, 0.7);
-      transition: transform .2s, box-shadow .2s, background-color .2s;
-    }
-
-    .hero .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.95);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(22, 62, 48, 0.15);
-    }
-
-    .btn-light-custom {
-      background: #4876a3; 
-      color: white; 
-      padding: 12px 28px;
-      border-radius: 99px;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      transition: transform .2s, box-shadow .2s, background-color .2s;
-    }
-
-    .btn-light-custom:hover {
-      background: #0b5394;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(22, 62, 48, 0.15);
-    }
-
+    /* 📌 สไตล์ Hero Carousel สไลด์อัตโนมัติ */
     .hero-carousel-section {
       background: url('images/images.bg.png') center/cover no-repeat;
       padding: 60px 0 80px;
@@ -399,9 +305,6 @@
       position: relative;
       max-width: 900px;
       margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .carousel-track-wrapper {
@@ -415,7 +318,7 @@
 
     .carousel-track {
       display: flex;
-      transition: transform 0.4s ease-in-out;
+      transition: transform 0.5s ease-in-out;
       width: 100%;
     }
 
@@ -423,6 +326,7 @@
       min-width: 100%;
       box-sizing: border-box;
       position: relative;
+      cursor: pointer;
     }
 
     .carousel-slide img {
@@ -432,7 +336,6 @@
       display: block;
     }
 
-    /* กล่องข้อความพาดหัวบนรูป */
     .carousel-caption {
       position: absolute;
       bottom: 0;
@@ -440,53 +343,31 @@
       right: 0;
       background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
       color: white;
-      padding: 30px 24px 20px;
-      text-align: center;
+      padding: 40px 24px 24px;
+      text-align: left;
     }
 
     .carousel-caption h3 {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
-      margin: 0 0 6px 0;
+      margin: 0 0 8px 0;
       color: #ffffff;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .carousel-caption p {
-      font-size: 13px;
+      font-size: 14px;
       margin: 0;
       color: #cbd5e1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
-    /* ปุ่มลูกศรซ้าย-ขวา */
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--ink);
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      z-index: 10;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .carousel-btn:hover {
-      background: #ffffff;
-      transform: translateY(-50%) scale(1.08);
-    }
-
-    .carousel-btn.prev { left: -22px; }
-    .carousel-btn.next { right: -22px; }
-
-    /* จุดวงกลมด้านล่าง (Indicators) */
     .carousel-dots {
       display: flex;
       justify-content: center;
@@ -509,7 +390,77 @@
       width: 24px;
       border-radius: 6px;
     }
-    
+
+    /* Buttons */
+    .btn-light-custom {
+      background: #4876a3; 
+      color: white; 
+      padding: 12px 28px;
+      border-radius: 99px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s, background-color .2s;
+    }
+
+    .btn-light-custom:hover {
+      background: #0b5394;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(22, 62, 48, 0.15);
+    }
+
+    /* 📌 สไตล์ Grid และกรอบการ์ดเป้าหมาย (NIA Style) */
+    .targets-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .target-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    }
+
+    .target-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .target-icon-box {
+      width: 72px;
+      height: 72px;
+      background-color: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--blue);
+      font-size: 26px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .target-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+      margin: 0;
+    }
+
     section { padding: 76px 0; }
 
     .section-head { max-width: 690px; margin-bottom: 32px; }
@@ -532,7 +483,7 @@
       font-size: 15px;
     }
 
-    /* สไตล์สำหรับการ์ดข่าวสารในหน้าหลัก */
+    /* สไตล์สำหรับการ์ดข่าวสาร */
     .news-cards-track {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -637,7 +588,7 @@
       gap: 56px;
     }
 
-    /* 📌 สไตล์ Footer แบบ NIA */
+    /* Footer สไตล์ NIA */
     .site-footer {
       background-color: #242238;
       color: #ffffff;
@@ -656,147 +607,51 @@
       flex-wrap: wrap;
     }
 
-    .footer-info {
-      flex: 1.2;
-      min-width: 280px;
-    }
-    .footer-info h3 {
-      font-size: 15px;
-      font-weight: 700;
-      color: #ffffff;
-      margin: 0 0 8px 0;
-    }
-    .footer-info p {
-      margin: 0 0 4px 0;
-      line-height: 1.6;
-      color: #cbd5e1;
-    }
-    .footer-info a {
-      color: #93c5fd;
-    }
+    .footer-info { flex: 1.2; min-width: 280px; }
+    .footer-info h3 { font-size: 15px; font-weight: 700; color: #ffffff; margin: 0 0 8px 0; }
+    .footer-info p { margin: 0 0 4px 0; line-height: 1.6; color: #cbd5e1; }
+    .footer-info a { color: #93c5fd; }
 
-    .footer-social {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex: 0.8;
-      min-width: 220px;
-    }
-    .footer-social span {
-      font-weight: 600;
-      color: #ffffff;
-    }
-    .footer-social-icons {
-      display: flex;
-      gap: 8px;
-    }
-    .footer-social-icon {
-      width: 32px;
-      height: 32px;
-      background-color: #3b3953;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-      color: white;
-      text-decoration: none;
-      transition: background-color 0.2s;
-    }
-    .footer-social-icon:hover {
-      background-color: #4876a3;
-    }
-    .footer-social-icon svg {
-      width: 14px;
-      height: 14px;
-      fill: currentColor;
-    }
+    .footer-social { display: flex; align-items: center; gap: 12px; flex: 0.8; min-width: 220px; }
+    .footer-social span { font-weight: 600; color: #ffffff; }
+    .footer-social-icons { display: flex; gap: 8px; }
+    .footer-social-icon { width: 32px; height: 32px; background-color: #3b3953; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; color: white; text-decoration: none; transition: background-color 0.2s; }
+    .footer-social-icon:hover { background-color: #4876a3; }
+    .footer-social-icon svg { width: 14px; height: 14px; fill: currentColor; }
 
-    .footer-newsletter {
-      flex: 1.2;
-      min-width: 300px;
-    }
-    .footer-newsletter label {
-      display: block;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 8px;
-    }
-    .newsletter-form {
-      display: flex;
-      gap: 0;
-    }
-    .newsletter-input {
-      flex: 1;
-      background-color: #1e1c2e;
-      border: 1px solid #4a4863;
-      border-right: none;
-      padding: 9px 12px;
-      color: #ffffff;
-      font-size: 13px;
-      outline: none;
-      border-radius: 4px 0 0 4px;
-    }
-    .newsletter-input::placeholder {
-      color: #94a3b8;
-    }
-    .newsletter-btn {
-      background-color: #b91c1c;
-      color: white;
-      border: none;
-      padding: 9px 18px;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      border-radius: 0 4px 4px 0;
-      transition: background-color 0.2s;
-    }
-    .newsletter-btn:hover {
-      background-color: #991b1b;
-    }
+    .footer-newsletter { flex: 1.2; min-width: 300px; }
+    .footer-newsletter label { display: block; font-weight: 600; color: #ffffff; margin-bottom: 8px; }
+    .newsletter-form { display: flex; gap: 0; }
+    .newsletter-input { flex: 1; background-color: #1e1c2e; border: 1px solid #4a4863; border-right: none; padding: 9px 12px; color: #ffffff; font-size: 13px; outline: none; border-radius: 4px 0 0 4px; }
+    .newsletter-input::placeholder { color: #94a3b8; }
+    .newsletter-btn { background-color: #b91c1c; color: white; border: none; padding: 9px 18px; font-weight: 600; font-size: 13px; cursor: pointer; border-radius: 0 4px 4px 0; transition: background-color 0.2s; }
+    .newsletter-btn:hover { background-color: #991b1b; }
 
     @media (max-width: 900px) {
-      .footer-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-      }
-      .footer-newsletter {
-        width: 100%;
-      }
+      .footer-container { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .footer-newsletter { width: 100%; }
+      .targets-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 800px) {
-      .nav { 
-        padding: 12px 0; 
-        flex-wrap: wrap; 
-        height: auto; 
-        min-height: auto; 
-      }
-      .nav-links { 
-        order: 3; 
-        width: 100%; 
-        gap: 16px; 
-        flex-wrap: wrap; 
-        padding-top: 8px;
-        padding-bottom: 8px;
-      }
+      .nav { padding: 12px 0; flex-wrap: wrap; height: auto; min-height: auto; }
+      .nav-links { order: 3; width: 100%; gap: 16px; flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; }
       .news-cards-track { grid-template-columns: 1fr 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 25px; }
-      .hero { padding: 72px 0; }
     }
 
     @media (max-width: 520px) {
       .container { width: min(100% - 28px, 1120px); }
       .news-cards-track { grid-template-columns: 1fr; }
+      .targets-grid { grid-template-columns: 1fr; }
       section { padding: 55px 0; }
-      .hero h1 { font-size: 39px; }
       .brand-sub { font-size: 10px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Header Section กลางสำหรับทุกหน้า -->
+  <!-- Header Section -->
   <header>
     <div class="container nav">
       <a class="brand" href="index.html#home" aria-label="CATFISH BIORESOURCE Home">
@@ -814,11 +669,10 @@
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html#home" data-en="Home" data-th="หน้าหลัก">Home</a>
 
-        <!-- 📌 Mega Menu: About (About Project & About AGB) -->
+        <!-- Mega Menu: About -->
         <div class="nav-item-dropdown">
           <a href="about.html" style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
             <span data-en="About" data-th="เกี่ยวกับ">About</span>
-
           </a>
           <div class="mega-menu">
             <div class="mega-menu-col-left">
@@ -832,15 +686,12 @@
             <div class="mega-menu-col-right">
               <a href="about.html#project" class="mega-menu-item">
                 <span data-en="About Project" data-th="เกี่ยวกับโครงการ">เกี่ยวกับโครงการ</span>
-
               </a>
               <a href="about.html#agb" class="mega-menu-item">
                 <span data-en="AGB Research Unit" data-th="หน่วยวิจัย AGB">หน่วยวิจัย AGB</span>
-
               </a>
               <a href="about-privacy-policy.html" class="mega-menu-item">
                 <span data-en="Privacy Policy" data-th="นโยบายความเป็นส่วนตัว">นโยบายความเป็นส่วนตัว</span>                
-
               </a>
             </div>
           </div>
@@ -852,7 +703,6 @@
         <div class="nav-item-dropdown">
           <a href="all-resource.html" style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
             <span data-en="Resources" data-th="คลังข้อมูล">Resources</span>
-
           </a>
           <div class="mega-menu">
             <div class="mega-menu-col-left">
@@ -866,11 +716,9 @@
             <div class="mega-menu-col-right">
               <a href="https://catfish-thermal-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" class="mega-menu-item">
                 <span data-en="Thermal Risk & AquaMonitor Dashboard" data-th="แดชบอร์ดประเมินความเสี่ยงและคุณภาพน้ำ">แดชบอร์ดประเมินความเสี่ยงและคุณภาพน้ำ</span>
-
               </a>
               <a href="http://210.72.95.48" target="_blank" rel="noopener noreferrer" class="mega-menu-item">
                 <span data-en="DUKEOME" data-th="DUKEOME">DUKEOME</span>
-
               </a>
             </div>
           </div>
@@ -887,87 +735,97 @@
   </header>
 
   <main>
-<!-- 📌 ส่วน Hero Carousel สไตล์แบนเนอร์สไลด์ -->
+    <!-- 📌 ส่วน Hero Banner Carousel ดึงข่าวสารอัตโนมัติ (ไม่มีปุ่มซ้าย-ขวา) -->
     <section class="hero-carousel-section" id="home">
       <div class="container">
         <div class="carousel-container">
-          <!-- แทร็กรูปภาพสไลด์ -->
           <div class="carousel-track-wrapper">
-            <div class="carousel-track" id="carouselTrack">
-              <!-- สไลด์ที่ 1 -->
-              <div class="carousel-slide">
-                <img src="images/Catfish Bioresource Logo.png" alt="Slide 1">
-                <div class="carousel-caption">
-                  <h3 data-en="CATFISH BIORESOURCE PROJECT" data-th="โครงการทรัพยากรชีวภาพปลาดุก">CATFISH BIORESOURCE PROJECT</h3>
-                  <p data-en="Academic information on catfish bioresources and research." data-th="ข้อมูลวิชาการด้านทรัพยากรชีวภาพปลาดุกและงานวิจัย">Academic information on catfish bioresources and research.</p>
-                </div>
-              </div>
-              <!-- สไลด์ที่ 2 -->
-              <div class="carousel-slide">
-                <img src="images/images.bg.png" alt="Slide 2">
-                <div class="carousel-caption">
-                  <h3 data-en="Genomic and Biodiversity Research" data-th="การวิจัยด้านจีโนมิกส์และความหลากหลายทางชีวภาพ">Genomic and Biodiversity Research</h3>
-                  <p data-en="Advanced scientific study for sustainable aquatic resources." data-th="การศึกษาวิทยาศาสตร์ขั้นสูงเพื่อทรัพยากรสัตว์น้ำที่ยั่งยืน">Advanced scientific study for sustainable aquatic resources.</p>
-                </div>
-              </div>
+            <div class="carousel-track" id="heroCarouselTrack">
+              <!-- ข้อมูลข่าวจะถูกดึงมาใส่ที่นี่ผ่าน JS -->
             </div>
           </div>
         </div>
-        <!-- จุดบอกสถานะหน้า (Dots) -->
-        <div class="carousel-dots" id="carouselDots">
-          <button class="carousel-dot active" data-index="0"></button>
-          <button class="carousel-dot" data-index="1"></button>
+        <div class="carousel-dots" id="heroCarouselDots"></div>
+      </div>
+    </section>
+
+    <!-- 📌 ส่วนกลุ่มเป้าหมาย (OUR TARGETS) -->
+    <section style="padding: 50px 0; background: #ffffff;">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <h2 data-en="OUR TARGETS" data-th="กลุ่มเป้าหมายของเรา" style="font-size: 28px; font-weight: 800; color: var(--ink);">OUR TARGETS</h2>
+        </div>
+
+        <div class="targets-grid">
+          <div class="target-card">
+            <div class="target-icon-box">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3 class="target-title" data-en="Youth/Young Innovator" data-th="เยาวชน / นักนวัตกรรมรุ่นใหม่">Youth/Young Innovator</h3>
+          </div>
+
+          <div class="target-card">
+            <div class="target-icon-box">
+              <i class="fa-solid fa-rocket"></i>
+            </div>
+            <h3 class="target-title" data-en="Startup/Smart SMEs/Social Enterprise" data-th="สตาร์ทอัพ / วิสาหกิจขนาดกลางและย่อม">Startup/Smart SMEs/Social Enterprise</h3>
+          </div>
+
+          <div class="target-card">
+            <div class="target-icon-box">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <h3 class="target-title" data-en="Corporate/Investor" data-th="ภาคธุรกิจ / นักลงทุน">Corporate/Investor</h3>
+          </div>
+
+          <div class="target-card">
+            <div class="target-icon-box">
+              <i class="fa-solid fa-landmark"></i>
+            </div>
+            <h3 class="target-title" data-en="Government Sector" data-th="ภาครัฐและหน่วยงานรัฐ">Government Sector</h3>
+          </div>
+
+          <div class="target-card">
+            <div class="target-icon-box">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h3 class="target-title" data-en="Global Organization" data-th="องค์กรระดับสากล">Global Organization</h3>
+          </div>
         </div>
       </div>
     </section>
 
-
+    <!-- 📌 ส่วนเกี่ยวกับโครงการ -->
     <section class="about" id="about">
       <div class="container about-grid">
         <div>
-          <span class="kicker"
-                data-en="About"
-                data-th="เกี่ยวกับ">
-            About the Website
-          </span>
-          <h2 data-en="Knowledge for Catfish Bioresources"
-              data-th="องค์ความรู้ด้านทรัพยากรชีวภาพปลาดุก">
+          <span class="kicker" data-en="About" data-th="เกี่ยวกับ">About the Website</span>
+          <h2 data-en="Knowledge for Catfish Bioresources" data-th="องค์ความรู้ด้านทรัพยากรชีวภาพปลาดุก">
             Knowledge for Catfish Bioresources
           </h2>
           <p class="body-copy"
-              data-en="Catfish of the genus Clarias represent a vital freshwater bioresource in Thailand, playing key roles in biodiversity, food security, aquaculture economics, and the utilization of genetic resources. Particularly significant are the broadhead catfish (Clarias macrocephalus), a species native to Thailand, and the African sharptooth catfish (Clarias gariepinus), an introduced species widely farmed commercially due to its high growth rate and environmental adaptability. Furthermore, hybrid catfish are extensively produced to enhance efficiency in aquaculture systems.
-                    However, environmental changes, habitat loss, the introduction of non-native species, and the risk of genetic introgression between native and non-native catfish may impact genetic diversity and the long-term integrity of biological resources. Simultaneously, genomic data and genetic resource documentation for catfish in Thailand require further research and development to support conservation and sustainable utilization.
-                    The CATFISH BIORESOURCE Project focuses on studying, compiling, and advancing knowledge on the biodiversity and genetics of catfish. By integrating genomics, population genetics, comparative genomics, and bioinformatics, the project investigates genetic diversity, population structure, evolutionary relationships, genetic traits related to growth and sex determination, as well as the development of molecular tools for species identification and genetic contamination screening.
-                    Additionally, the project emphasizes the development of a catfish bioresource and genomic database to serve as a scientific repository and dissemination platform for researchers, students, aquaculture operators, and relevant agencies. The data can be applied toward native catfish conservation, monitoring the impacts of non-native species, selective breeding, and enhancing sustainable production efficiency.
-                    These efforts establish a crucial foundation connecting biodiversity conservation with sustainable genetic resource utilization, supporting the bioeconomy and the long-term security of aquatic resources in Thailand."
               data-th="<b>ปลาดุกสกุล <i>Clarias</i></b> เป็นทรัพยากรชีวภาพสัตว์น้ำจืดที่มีความสำคัญต่อประเทศไทย ทั้งในด้านความหลากหลายทางชีวภาพ ความมั่นคงทางอาหาร เศรษฐกิจการเพาะเลี้ยงสัตว์น้ำ และการใช้ประโยชน์จากทรัพยากรพันธุกรรม โดยเฉพาะปลาดุกอุย (<i>Clarias macrocephalus</i>) ซึ่งเป็นปลาพื้นเมืองของประเทศไทย และปลาดุกยักษ์ (<i>Clarias gariepinus</i>) ซึ่งเป็นปลาต่างถิ่นที่ได้รับความนิยมในการเพาะเลี้ยงเชิงพาณิชย์ เนื่องจากมีอัตราการเจริญเติบโตสูงและสามารถปรับตัวต่อสภาพแวดล้อมได้ดี นอกจากนี้ ยังมีการผลิตปลาดุกลูกผสมเพื่อเพิ่มประสิทธิภาพการผลิตในระบบเพาะเลี้ยงสัตว์น้ำ
                     อย่างไรก็ตาม การเปลี่ยนแปลงของสภาพแวดล้อม การสูญเสียถิ่นอาศัย การนำชนิดต่างถิ่นเข้าสู่ระบบนิเวศ และความเสี่ยงจากการปะปนทางพันธุกรรมระหว่างปลาดุกพื้นเมืองกับปลาดุกต่างถิ่น อาจส่งผลกระทบต่อความหลากหลายทางพันธุกรรมและความสมบูรณ์ของทรัพยากรชีวภาพในระยะยาว ขณะเดียวกัน ข้อมูลระดับจีโนมและทรัพยากรพันธุกรรมของปลาดุกในประเทศไทยยังจำเป็นต้องได้รับการศึกษาและพัฒนาเพิ่มเติม เพื่อสนับสนุนการอนุรักษ์และการใช้ประโยชน์อย่างยั่งยืน
                     <b>โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก</b> จึงมุ่งเน้นการศึกษา รวบรวม และพัฒนาองค์ความรู้ด้านความหลากหลายทางชีวภาพและพันธุกรรมของปลาดุก โดยบูรณาการเทคโนโลยีจีโนมิกส์ (Genomics) พันธุศาสตร์ประชากร (Population Genetics) การเปรียบเทียบจีโนมิกส์ (Comparative Genomics) และชีวสารสนเทศ (Bioinformatics) เพื่อศึกษาความหลากหลายทางพันธุกรรม โครงสร้างประชากร ความสัมพันธ์เชิงวิวัฒนาการ ลักษณะทางพันธุกรรมที่เกี่ยวข้องกับการเจริญเติบโตและการกำหนดเพศ ตลอดจนการพัฒนาเครื่องมือระดับโมเลกุลสำหรับการจำแนกชนิดและตรวจสอบการปะปนทางพันธุกรรม
                     นอกจากนี้ โครงการยังให้ความสำคัญกับการพัฒนาฐานข้อมูลทรัพยากรชีวภาพและจีโนมของปลาดุก เพื่อเป็นแหล่งรวบรวมและเผยแพร่องค์ความรู้ทางวิทยาศาสตร์สำหรับนักวิจัย นักศึกษา ผู้ประกอบการเพาะเลี้ยงสัตว์น้ำ และหน่วยงานที่เกี่ยวข้อง โดยสามารถนำข้อมูลไปประยุกต์ใช้ในการอนุรักษ์ปลาดุกพื้นเมือง การเฝ้าระวังผลกระทบจากปลาต่างถิ่น การปรับปรุงพันธุ์สัตว์น้ำ และการเพิ่มประสิทธิภาพการผลิตอย่างยั่งยืน
-                    การดำเนินงานดังกล่าวจะช่วยสร้างรากฐานสำคัญในการเชื่อมโยง การอนุรักษ์ความหลากหลายทางชีวภาพ (Biodiversity Conservation) เข้ากับ การใช้ประโยชน์ทรัพยากรพันธุกรรมอย่างยั่งยืน (Sustainable Genetic Resource Utilization) เพื่อสนับสนุนการพัฒนาเศรษฐกิจฐานชีวภาพ (Bioeconomy) และความมั่นคงของทรัพยากรสัตว์น้ำในประเทศไทย">
-                    <b>Catfish of the genus <i>Clarias</i></b> represent a vital freshwater bioresource in Thailand, playing key roles in biodiversity, food security, aquaculture economics, and the utilization of genetic resources. Particularly significant are the broadhead catfish (<i>Clarias macrocephalus</i>), a species native to Thailand, and the African sharptooth catfish (<i>Clarias gariepinus</i>), an introduced species widely farmed commercially due to its high growth rate and environmental adaptability. Furthermore, hybrid catfish are extensively produced to enhance efficiency in aquaculture systems.
-                    However, environmental changes, habitat loss, the introduction of non-native species, and the risk of genetic intregression between native and non-native catfish may impact genetic diversity and the long-term integrity of biological resources. Simultaneously, genomic data and genetic resource documentation for catfish in Thailand require further research and development to support conservation and sustainable utilization.
-                    <b>The CATFISH BIORESOURCE Project</b> focuses on studying, compiling, and advancing knowledge on the biodiversity and genetics of catfish. By integrating genomics, population genetics, comparative genomics, and bioinformatics, the project investigates genetic diversity, population structure, evolutionary relationships, genetic traits related to growth and sex determination, as well as the development of molecular tools for species identification and genetic contamination screening.
+                    การดำเนินงานดังกล่าวจะช่วยสร้างรากฐานสำคัญในการเชื่อมโยง การอนุรักษ์ความหลากหลายทางชีวภาพ (Biodiversity Conservation) เข้ากับ การใช้ประโยชน์ทรัพยากรพันธุกรรมอย่างยั่งยืน (Sustainable Genetic Resource Utilization) เพื่อสนับสนุนการพัฒนาเศรษฐกิจฐานชีวภาพ (Bioeconomy) และความมั่นคงของทรัพยากรสัตว์น้ำในประเทศไทย"
+              data-en="Catfish of the genus Clarias represent a vital freshwater bioresource in Thailand, playing key roles in biodiversity, food security, aquaculture economics, and the utilization of genetic resources. Particularly significant are the broadhead catfish (Clarias macrocephalus), a species native to Thailand, and the African sharptooth catfish (Clarias gariepinus), an introduced species widely farmed commercially due to its high growth rate and environmental adaptability. Furthermore, hybrid catfish are extensively produced to enhance efficiency in aquaculture systems.
+                    However, environmental changes, habitat loss, the introduction of non-native species, and the risk of genetic introgression between native and non-native catfish may impact genetic diversity and the long-term integrity of biological resources. Simultaneously, genomic data and genetic resource documentation for catfish in Thailand require further research and development to support conservation and sustainable utilization.
+                    The CATFISH BIORESOURCE Project focuses on studying, compiling, and advancing knowledge on the biodiversity and genetics of catfish. By integrating genomics, population genetics, comparative genomics, and bioinformatics, the project investigates genetic diversity, population structure, evolutionary relationships, genetic traits related to growth and sex determination, as well as the development of molecular tools for species identification and genetic contamination screening.
                     Additionally, the project emphasizes the development of a catfish bioresource and genomic database to serve as a scientific repository and dissemination platform for researchers, students, aquaculture operators, and relevant agencies. The data can be applied toward native catfish conservation, monitoring the impacts of non-native species, selective breeding, and enhancing sustainable production efficiency.
-                    These efforts establish a crucial foundation connecting biodiversity conservation with sustainable genetic resource utilization, supporting the bioeconomy and the long-term security of aquatic resources in Thailand.
+                    These efforts establish a crucial foundation connecting biodiversity conservation with sustainable genetic resource utilization, supporting the bioeconomy and the long-term security of aquatic resources in Thailand.">
+              <b>Catfish of the genus <i>Clarias</i></b> represent a vital freshwater bioresource in Thailand...
           </p>
         </div>
       </div>
     </section>
 
-    <!-- 📌 ส่วนแสดงผลข่าวสาร -->
+    <!-- 📌 ส่วนข่าวสารและกิจกรรม -->
     <section id="research">
       <div class="container">
         <div class="section-head">
-          <span class="kicker"
-                data-en="News & Updates"
-                data-th="ข่าวสารและกิจกรรม">
-            News & Updates
-          </span>
-          <h2 data-en="Latest News & Announcements"
-              data-th="ข่าวสารและประกาศล่าสุด">
-            Latest News & Announcements
-          </h2>
+          <span class="kicker" data-en="News & Updates" data-th="ข่าวสารและกิจกรรม">News & Updates</span>
+          <h2 data-en="Latest News & Announcements" data-th="ข่าวสารและประกาศล่าสุด">Latest News & Announcements</h2>
           <p data-en="Follow our latest activities, research announcements, and updates."
              data-th="ติดตามความเคลื่อนไหว กิจกรรม และประกาศล่าสุดจากทางหน่วยวิจัย">
             Follow our latest activities, research announcements, and updates.
@@ -976,226 +834,239 @@
 
         <div class="news-slider-container">
           <div class="news-cards-track" id="latestNewsTrack">
-            <!-- Render ผ่าน JavaScript จาก news-data.js -->
+            <!-- ดึงข้อมูลข่าว 3 รายการจาก news-data.js -->
           </div>
         </div>
 
         <div style="text-align: center; margin-top: 40px;">
-          <a class="btn-light-custom"
-             href="all-news.html"
-             data-en="View All News →"
-             data-th="ดูข่าวทั้งหมด →">
+          <a class="btn-light-custom" href="all-news.html" data-en="View All News →" data-th="ดูข่าวทั้งหมด →">
             View All News →
           </a>
         </div>
       </div>
     </section>
 
-    <!-- 📌 ส่วน Resources (คลังข้อมูล) พร้อมปุ่มเปิด Dashboard -->
+    <!-- 📌 ส่วน Resources -->
     <section class="about" id="resources">
       <div class="container">
         <div class="section-head">
-          <span class="kicker"
-                data-en="Knowledge Library"
-                data-th="คลังองค์ความรู้">
-            Knowledge Library
-          </span>
-          <h2 data-en="Resources & Materials"
-              data-th="แหล่งข้อมูลและสื่อเผยแพร่">
-            Resources & Materials
-          </h2>
+          <span class="kicker" data-en="Knowledge Library" data-th="คลังองค์ความรู้">Knowledge Library</span>
+          <h2 data-en="Resources & Materials" data-th="แหล่งข้อมูลและสื่อเผยแพร่">Resources & Materials</h2>
           <p data-en="Explore scientific dashboards, interactive tools, and external research repositories."
              data-th="เข้าสู่ระบบแดชบอร์ดวิเคราะห์ประเมินความเสี่ยง แหล่งข้อมูล และสื่อเผยแพร่ทางวิชาการ">
             Explore scientific dashboards, interactive tools, and external research repositories.
           </p>
           <div class="actions" style="margin-top: 20px;">
-            <a class="btn-light-custom"
-               href="all-resource.html"
-               data-en="All Resource"
-               data-th="องค์ความรู้ทั้งหมด">
+            <a class="btn-light-custom" href="all-resource.html" data-en="All Resource" data-th="องค์ความรู้ทั้งหมด">
               All Resource
             </a>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- 📌 Footer -->
-    <footer class="site-footer" id="contact">
-      <div class="footer-container">
-
-        <!-- 1. ข้อมูลหน่วยงาน (ฝั่งซ้าย) -->
-        <div class="footer-info">
-          <h3 data-en="CATFISH BIORESOURCE" data-th="ทรัพยากรชีวภาพปลาดุก">ทรัพยากรชีวภาพปลาดุก</h3>
-          <p data-en="AGB Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</p>
-          <p data-en="Address: Faculty of Science, Kasetsart University" data-th="ที่อยู่: คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์">คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
-          <p data-en="50 Ngamwongwan Rd, Catuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900">ที่อยู่: 50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900</p>
-          <p data-en="Phone: +66 2 562 5555 ext. 740072" data-th="เบอร์โทรศัพท์: +66 2 562 5555 ต่อ 740072">เบอร์โทรศัพท์: +66 2 562 5555 ต่อ 740072</p>
-          <p>Email: <a href="mailto:agb.sci@ku.th">agb.sci@ku.th</a></p>
-        </div>
-
-        <!-- 2. โซเชียลมีเดีย (ตรงกลาง) -->
-        <div class="footer-social">
-          <span data-en="Social :" data-th="Social :">Social :</span>
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/AGBResearchCenterKU" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Facebook">
-              <svg viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/siamese-crocodile-project-1a2a143b4/?isSelfProfile=false" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="LinkedIn">
-              <svg viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Instagram">
-              <svg viewBox="0 0 448 512"><path d="M224.1 141.1c-43.6 0-78.9 35.3-78.9 78.9s35.3 78.9 78.9 78.9 78.9-35.3 78.9-78.9-35.3-78.9-78.9-78.9zm0 129.7c-28 0-50.8-22.8-50.8-50.8s22.8-50.8 50.8-50.8 50.8 22.8 50.8 50.8-22.8 50.8-50.8 50.8zm112.5-139c0 10.1-8.2 18.3-18.3 18.3s-18.3-8.2-18.3-18.3c0-10.1 8.2-18.3 18.3-18.3s18.3 8.2 18.3 18.3zm81.4 34.2c-1.6-33.8-9.4-63.7-34.2-88.5s-54.7-32.6-88.5-34.2c-35-2-139.9-2-174.9 0-33.8 1.6-63.7 9.4-88.5 34.2s-32.6 54.7-34.2 88.5c-2 35-2 139.9 0 174.9 1.6 33.8 9.4 63.7 34.2 88.5s54.7 32.6 88.5 34.2c35 2 139.9 2 174.9 0 33.8-1.6 63.7-9.4 88.5-34.2s32.6-54.7 34.2-88.5c2-35 2-139.9 0-174.9zm-41.1 233c-7.4 18.6-21.7 32.9-40.3 40.3-29.9 11.9-101 9.1-136.5 9.1s-106.6 2.8-136.5-9.1c-18.6-7.4-32.9-21.7-40.3-40.3-11.9-29.9-9.1-101-9.1-136.5s-2.8-106.6 9.1-136.5c7.4-18.6 21.7-32.9 40.3-40.3 29.9-11.9 101-9.1 136.5-9.1s106.6-2.8 136.5 9.1c18.6 7.4 32.9 21.7 40.3 40.3 11.9 29.9 9.1 101 9.1 136.5s2.8 106.6-9.1 136.5z"/></svg>
-            </a>
-            <a href="https://www.tiktok.com/@.siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="TikTok">
-              <svg viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h.06A122.18 122.18 0 0 0 381 84.86a121.2 121.2 0 0 0 67 20.05z"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- 3. ฟอร์มรับข่าวสาร (ฝั่งขวา) -->
-        <div class="footer-newsletter">
-          <label data-en="Subscribe to our newsletters" data-th="สมัครรับข่าวสารจดหมายข่าว">Subscribe to our newsletters</label>
-          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
-            <input type="email" class="newsletter-input" placeholder="Your E-mail" required>
-            <button type="submit" class="newsletter-btn" data-en="Submit" data-th="ส่งข้อมูล">Submit</button>
-          </form>
-        </div>
-      </div>
-    </footer>
   </main>
 
-  <!-- 📌 ดึงไฟล์ข้อมูลข่าวสารกลาง -->
-  <script src="news-data.js"></script>
+  <!-- Footer -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3 data-en="CATFISH BIORESOURCE" data-th="ทรัพยากรชีวภาพปลาดุก">ทรัพยากรชีวภาพปลาดุก</h3>
+        <p data-en="AGB Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</p>
+        <p data-en="Address: Faculty of Science, Kasetsart University" data-th="ที่อยู่: คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์">คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
+        <p data-en="50 Ngamwongwan Rd, Catuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900">50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900</p>
+        <p data-en="Phone: +66 2 562 5555 ext. 740072" data-th="เบอร์โทรศัพท์: +66 2 562 5555 ต่อ 740072">เบอร์โทรศัพท์: +66 2 562 5555 ต่อ 740072</p>
+        <p>Email: <a href="mailto:agb.sci@ku.th">agb.sci@ku.th</a></p>
+      </div>
 
+      <div class="footer-social">
+        <span data-en="Social :" data-th="Social :">Social :</span>
+        <div class="footer-social-icons">
+          <a href="https://www.facebook.com/AGBResearchCenterKU" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Facebook">
+            <svg viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/siamese-crocodile-project-1a2a143b4/?isSelfProfile=false" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="LinkedIn">
+            <svg viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="Instagram">
+            <svg viewBox="0 0 448 512"><path d="M224.1 141.1c-43.6 0-78.9 35.3-78.9 78.9s35.3 78.9 78.9 78.9 78.9-35.3 78.9-78.9-35.3-78.9-78.9-78.9zm0 129.7c-28 0-50.8-22.8-50.8-50.8s22.8-50.8 50.8-50.8 50.8 22.8 50.8 50.8-22.8 50.8-50.8 50.8zm112.5-139c0 10.1-8.2 18.3-18.3 18.3s-18.3-8.2-18.3-18.3c0-10.1 8.2-18.3 18.3-18.3s18.3 8.2 18.3 18.3zm81.4 34.2c-1.6-33.8-9.4-63.7-34.2-88.5s-54.7-32.6-88.5-34.2c-35-2-139.9-2-174.9 0-33.8 1.6-63.7 9.4-88.5 34.2s-32.6 54.7-34.2 88.5c-2 35-2 139.9 0 174.9 1.6 33.8 9.4 63.7 34.2 88.5s54.7 32.6 88.5 34.2c35 2 139.9 2 174.9 0 33.8-1.6 63.7-9.4 88.5-34.2s32.6-54.7 34.2-88.5c2-35 2-139.9 0-174.9zm-41.1 233c-7.4 18.6-21.7 32.9-40.3 40.3-29.9 11.9-101 9.1-136.5 9.1s-106.6 2.8-136.5-9.1c-18.6-7.4-32.9-21.7-40.3-40.3-11.9-29.9-9.1-101-9.1-136.5s-2.8-106.6 9.1-136.5c7.4-18.6 21.7-32.9 40.3-40.3 29.9-11.9 101-9.1 136.5-9.1s106.6-2.8 136.5 9.1c18.6 7.4 32.9 21.7 40.3 40.3 11.9 29.9 9.1 101 9.1 136.5s2.8 106.6-9.1 136.5z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@.siamesecroc" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="TikTok">
+            <svg viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h.06A122.18 122.18 0 0 0 381 84.86a121.2 121.2 0 0 0 67 20.05z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-newsletter">
+        <label data-en="Subscribe to our newsletters" data-th="สมัครรับข่าวสารจดหมายข่าว">Subscribe to our newsletters</label>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+          <input type="email" class="newsletter-input" placeholder="Your E-mail" required>
+          <button type="submit" class="newsletter-btn" data-en="Submit" data-th="ส่งข้อมูล">Submit</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 📌 สคริปต์สลับภาษา + ดึงข้อมูลข่าวเข้า Carousel และการ์ดข่าวสาร -->
+  <script src="news-data.js"></script>
   <script>
-      // ควบคุมการทำงานของ Hero Carousel
-      const track = document.getElementById('carouselTrack');
+    const toggle = document.getElementById("languageToggle");
+    let carouselInterval;
+
+    // 1. เรนเดอร์ Hero Banner Carousel
+    function renderHeroCarousel(lang) {
+      const track = document.getElementById("heroCarouselTrack");
+      const dotsContainer = document.getElementById("heroCarouselDots");
+      if (!track || !dotsContainer || typeof newsData === "undefined" || newsData.length === 0) return;
+
+      const heroNews = newsData.slice(0, 5); // ดึงข่าว 5 ข่าวแรก
+      const isEn = lang === "en";
+
+      track.innerHTML = "";
+      dotsContainer.innerHTML = "";
+
+      heroNews.forEach((news, index) => {
+        const title = isEn ? news.titleEn : news.titleTh;
+        const excerpt = isEn ? (news.excerptEn || news.titleEn) : (news.excerptTh || news.titleTh);
+        const targetLink = news.link || `news-detail.html?id=${news.id}`;
+
+        const slideHTML = `
+          <div class="carousel-slide" onclick="window.location.href='${targetLink}'">
+            <img src="${news.image}" alt="${title}" onerror="this.src='https://via.placeholder.com/900x420?text=No+Image'">
+            <div class="carousel-caption">
+              <h3>${title}</h3>
+              <p>${excerpt}</p>
+            </div>
+          </div>
+        `;
+        track.insertAdjacentHTML("beforeend", slideHTML);
+
+        const dotHTML = `<button class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></button>`;
+        dotsContainer.insertAdjacentHTML("beforeend", dotHTML);
+      });
+
+      initCarouselEngine();
+    }
+
+    // 2. ตัวควบคุมสไลด์ Carousel อัตโนมัติ
+    function initCarouselEngine() {
+      if (carouselInterval) clearInterval(carouselInterval);
+
+      const track = document.getElementById("heroCarouselTrack");
+      if (!track) return;
       const slides = Array.from(track.children);
-      const nextButton = document.getElementById('nextBtn');
-      const prevButton = document.getElementById('prevBtn');
-      const dotsNav = document.getElementById('carouselDots');
-      const dots = Array.from(dotsNav.children);
-  
+      const dots = Array.from(document.getElementById("heroCarouselDots").children);
       let currentIndex = 0;
-  
-      function updateCarousel(index) {
+
+      function updateSlide(index) {
         track.style.transform = `translateX(-${index * 100}%)`;
         dots.forEach((dot, i) => {
           dot.classList.toggle('active', i === index);
         });
         currentIndex = index;
       }
-  
-      nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel(currentIndex);
+
+      function startAutoSlide() {
+        carouselInterval = setInterval(() => {
+          currentIndex = (currentIndex + 1) % slides.length;
+          updateSlide(currentIndex);
+        }, 5000); // เปลี่ยนสไลด์ทุก 5 วินาที
+      }
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          clearInterval(carouselInterval);
+          updateSlide(index);
+          startAutoSlide();
+        });
       });
-  
-      prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateCarousel(currentIndex);
-      });
-  
-      dotsNav.addEventListener('click', e => {
-        const targetDot = e.target.closest('button');
-        if (!targetDot) return;
-        const index = parseInt(targetDot.dataset.index);
-        updateCarousel(index);
-      });
-  
-      // เลื่อนอัตโนมัติทุกๆ 5 วินาที
-      setInterval(() => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel(currentIndex);
-      }, 5000);
-    </script>
-    
-    <script>
-      const toggle = document.getElementById("languageToggle");
-  
-      function renderHomeNewsCards(lang) {
-        const track = document.getElementById("latestNewsTrack");
-        if (!track) return;
-        track.innerHTML = "";
-  
-        const latestThree = (typeof newsData !== "undefined") ? newsData.slice(0, 3) : [];
-  
-        latestThree.forEach(news => {
-          const title = lang === "en" ? news.titleEn : news.titleTh;
-          const excerpt = lang === "en" ? news.excerptEn : news.excerptTh;
-          const dateStr = lang === "en" ? (news.dateEn || news.date) : news.date;
-          const readMoreText = lang === "en" ? "Read More →" : "อ่านเพิ่มเติม →";
-  
-          const targetLink = news.link;
-  
-          const cardHTML = `
-            <article class="news-card">
-              <a href="${targetLink}">
-                <div class="news-img-wrapper">
-                  <img src="${news.image}" alt="${title}" class="news-thumb" onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">
-                </div>
-              </a>
-              <div class="news-content">
-                <span class="news-date">${dateStr}</span>
-                <h3><a href="${targetLink}">${title}</a></h3>
-                <p>${excerpt}</p>
-                <a href="${targetLink}" class="read-more-link">${readMoreText}</a>
+
+      startAutoSlide();
+    }
+
+    // 3. เรนเดอร์การ์ดข่าวสาร 3 อันล่าง
+    function renderHomeNewsCards(lang) {
+      const track = document.getElementById("latestNewsTrack");
+      if (!track) return;
+      track.innerHTML = "";
+
+      const latestThree = (typeof newsData !== "undefined") ? newsData.slice(0, 3) : [];
+
+      latestThree.forEach(news => {
+        const title = lang === "en" ? news.titleEn : news.titleTh;
+        const excerpt = lang === "en" ? news.excerptEn : news.excerptTh;
+        const dateStr = lang === "en" ? (news.dateEn || news.date) : news.date;
+        const readMoreText = lang === "en" ? "Read More →" : "อ่านเพิ่มเติม →";
+        const targetLink = news.link || `news-detail.html?id=${news.id}`;
+
+        const cardHTML = `
+          <article class="news-card">
+            <a href="${targetLink}">
+              <div class="news-img-wrapper">
+                <img src="${news.image}" alt="${title}" class="news-thumb" onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">
               </div>
-            </article>
-          `;
-          track.insertAdjacentHTML("beforeend", cardHTML);
-        });
-      }
-  
-      function setLanguage(language) {
-        document.documentElement.lang = language;
-        localStorage.setItem("preferred_lang", language);
-  
-        document.querySelectorAll("[data-en][data-th]").forEach(element => {
-          let text = element.dataset[language];
-  
-          if (text) {
-            if (language === "en") {
-              text = text.replace(/Catfish of the genus Clarias/g, "<b>Catfish of the genus <i>Clarias</i></b>")
-                         .replace(/The CATFISH BIORESOURCE Project/g, "<b>The CATFISH BIORESOURCE Project</b>")
-                         .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
-                         .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
-                         .replace(/Clarias/g, "<i>Clarias</i>");
-            } else {
-              text = text.replace(/ปลาดุกสกุล Clarias/g, "<b>ปลาดุกสกุล <i>Clarias</i></b>")
-                         .replace(/โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก/g, "<b>โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก</b>")
-                         .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
-                         .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
-                         .replace(/Clarias/g, "<i>Clarias</i>");
-            }
-            element.innerHTML = text;
+            </a>
+            <div class="news-content">
+              <span class="news-date">${dateStr}</span>
+              <h3><a href="${targetLink}">${title}</a></h3>
+              <p>${excerpt}</p>
+              <a href="${targetLink}" class="read-more-link">${readMoreText}</a>
+            </div>
+          </article>
+        `;
+        track.insertAdjacentHTML("beforeend", cardHTML);
+      });
+    }
+
+    // 4. ระบบสลับภาษา
+    function setLanguage(language) {
+      document.documentElement.lang = language;
+      localStorage.setItem("preferred_lang", language);
+
+      document.querySelectorAll("[data-en][data-th]").forEach(element => {
+        let text = element.dataset[language];
+
+        if (text) {
+          if (language === "en") {
+            text = text.replace(/Catfish of the genus Clarias/g, "<b>Catfish of the genus <i>Clarias</i></b>")
+                       .replace(/The CATFISH BIORESOURCE Project/g, "<b>The CATFISH BIORESOURCE Project</b>")
+                       .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
+                       .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
+                       .replace(/Clarias/g, "<i>Clarias</i>");
+          } else {
+            text = text.replace(/ปลาดุกสกุล Clarias/g, "<b>ปลาดุกสกุล <i>Clarias</i></b>")
+                       .replace(/โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก/g, "<b>โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก</b>")
+                       .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
+                       .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
+                       .replace(/Clarias/g, "<i>Clarias</i>");
           }
-        });
-  
-        if (toggle) {
-          toggle.setAttribute(
-            "aria-label",
-            language === "en" ? "Switch to Thai" : "Switch to English"
-          );
+          element.innerHTML = text;
         }
-  
-        document.title = language === "en"
-          ? "CATFISH BIORESOURCE | Kasetsart University"
-          : "CATFISH BIORESOURCE | มหาวิทยาลัยเกษตรศาสตร์";
-  
-        renderHomeNewsCards(language);
-      }
-  
+      });
+
       if (toggle) {
-        toggle.addEventListener("click", () => {
-          const currentLang = document.documentElement.lang;
-          setLanguage(currentLang === "en" ? "th" : "en");
-        });
+        toggle.setAttribute(
+          "aria-label",
+          language === "en" ? "Switch to Thai" : "Switch to English"
+        );
       }
-  
-      const savedLang = localStorage.getItem("preferred_lang") || "en";
-      setLanguage(savedLang);
-    </script>
-  </body>
+
+      document.title = language === "en"
+        ? "CATFISH BIORESOURCE | Kasetsart University"
+        : "CATFISH BIORESOURCE | มหาวิทยาลัยเกษตรศาสตร์";
+
+      renderHeroCarousel(language);
+      renderHomeNewsCards(language);
+    }
+
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        const currentLang = document.documentElement.lang;
+        setLanguage(currentLang === "en" ? "th" : "en");
+      });
+    }
+
+    const savedLang = localStorage.getItem("preferred_lang") || "en";
+    setLanguage(savedLang);
+  </script>
+</body>
 </html>
