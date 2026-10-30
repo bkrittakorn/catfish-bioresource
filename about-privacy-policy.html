@@ -64,14 +64,14 @@
       margin-inline: auto;
     }
 
-    /* Header & Navigation */
+    /* Header & Navigation (บังคับทึบแสงและขนาดคงที่) */
     header {
       position: sticky;
       top: 0;
       z-index: 99999;
-      background: rgba(255, 255, 255, .96);
+      background: #ffffff;
       border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       width: 100%;
     }
     
@@ -184,6 +184,10 @@
       position: relative;
       display: inline-flex;
       align-items: center;
+      padding-top: 10px;
+      padding-bottom: 15px;
+      margin-top: -10px;
+      margin-bottom: -15px;
     }
 
     .nav-item-dropdown::before {
@@ -205,9 +209,9 @@
       width: 620px;
       background-color: #1e293b;
       border-radius: 12px;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
       overflow: hidden;
-      z-index: 999999;
+      z-index: 1000;
       border: 1px solid var(--line);
     }
     
@@ -493,23 +497,21 @@
     }
 
     @media (max-width: 800px) {
-      .nav { padding: 13px 0; flex-wrap: wrap; height: auto; }
-      .nav-links { order: 3; width: 100%; gap: 16px; flex-wrap: wrap; }
+      .nav { padding: 12px 0; flex-wrap: wrap; height: auto; min-height: auto; }
+      .nav-links { order: 3; width: 100%; gap: 16px; flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Header Section พร้อม Mega Menu -->
+  <!-- Header Section -->
   <header>
     <div class="container nav">
       <a class="brand" href="index.html#home" aria-label="CATFISH BIORESOURCE Home">
         <img src="images/Catfish Bioresource Logo.png" alt="CATFISH BIORESOURCE Logo" class="brand-mark-img">
         <div>
           <div class="brand-name">CATFISH BIORESOURCE</div>
-          <div class="brand-sub"
-               data-en="AGB Research Unit"
-               data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">
+          <div class="brand-sub" data-en="AGB Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">
             หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์
           </div>
         </div>
@@ -522,22 +524,27 @@
         <div class="nav-item-dropdown">
           <a href="about.html" style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
             <span data-en="About" data-th="เกี่ยวกับ">About</span>
+            <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i>
           </a>
           <div class="mega-menu">
             <div class="mega-menu-col-left">
               <div class="mega-menu-title" data-en="About Overview" data-th="ภาพรวมเกี่ยวกับเรา">About Overview</div>
-              <p class="mega-menu-desc" 
-                 data-en="Learn more about our research initiatives, objectives, and the research unit." 
-                 data-th="เรียนรู้เพิ่มเติมเกี่ยวกับโครงการวิจัย วัตถุประสงค์ และหน่วยวิจัยของเรา">
+              <p class="mega-menu-desc" data-en="Learn more about our research initiatives, objectives, and the research unit." data-th="เรียนรู้เพิ่มเติมเกี่ยวกับโครงการวิจัย วัตถุประสงค์ และหน่วยวิจัยของเรา">
                 Learn more about our research initiatives, objectives, and the research unit.
               </p>
             </div>
             <div class="mega-menu-col-right">
               <a href="about.html#project" class="mega-menu-item">
-                <span data-en="About Project" data-th="เกี่ยวกับโครงการ (About Project)">เกี่ยวกับโครงการ (About Project)</span>
+                <span data-en="About Project" data-th="เกี่ยวกับโครงการ">เกี่ยวกับโครงการ</span>
+                <i class="fa-solid fa-arrow-right"></i>
               </a>
               <a href="about.html#agb" class="mega-menu-item">
-                <span data-en="About AGB Research Unit" data-th="เกี่ยวกับหน่วยวิจัย AGB">เกี่ยวกับหน่วยวิจัย AGB</span>
+                <span data-en="AGB Research Unit" data-th="หน่วยวิจัย AGB">หน่วยวิจัย AGB</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="about-privacy-policy.html" class="mega-menu-item">
+                <span data-en="Privacy Policy" data-th="นโยบายความเป็นส่วนตัว">นโยบายความเป็นส่วนตัว</span>
+                <i class="fa-solid fa-arrow-right"></i>
               </a>
             </div>
           </div>
@@ -549,22 +556,23 @@
         <div class="nav-item-dropdown">
           <a href="all-resource.html" style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
             <span data-en="Resources" data-th="คลังข้อมูล">Resources</span>
+            <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i>
           </a>
           <div class="mega-menu">
             <div class="mega-menu-col-left">
               <div class="mega-menu-title" data-en="Knowledge Library" data-th="คลังองค์ความรู้">Knowledge Library</div>
-              <p class="mega-menu-desc" 
-                 data-en="Interactive research dashboards, genomic data, and analytical tools." 
-                 data-th="ระบบแดชบอร์ดจำลองสถานการณ์ ข้อมูลจีโนมิกส์ และเครื่องมือวิเคราะห์">
+              <p class="mega-menu-desc" data-en="Interactive research dashboards, genomic data, and analytical tools." data-th="ระบบแดชบอร์ดจำลองสถานการณ์ ข้อมูลจีโนมิกส์ และเครื่องมือวิเคราะห์">
                 Interactive research dashboards, genomic data, and analytical tools.
               </p>
             </div>
             <div class="mega-menu-col-right">
               <a href="https://catfish-thermal-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" class="mega-menu-item">
                 <span data-en="Thermal Risk & AquaMonitor Dashboard" data-th="แดชบอร์ดประเมินความเสี่ยงและคุณภาพน้ำ">แดชบอร์ดประเมินความเสี่ยงและคุณภาพน้ำ</span>
+                <i class="fa-solid fa-arrow-right"></i>
               </a>
               <a href="http://210.72.95.48" target="_blank" rel="noopener noreferrer" class="mega-menu-item">
                 <span data-en="DUKEOME" data-th="DUKEOME">DUKEOME</span>
+                <i class="fa-solid fa-arrow-right"></i>
               </a>
             </div>
           </div>
@@ -584,106 +592,88 @@
   <main class="container">
     <div class="page-header">
       <h1 data-en="Privacy Policy" data-th="นโยบายความเป็นส่วนตัว">นโยบายความเป็นส่วนตัว</h1>
-      <p data-en="Privacy Policy for CATFISH BIORESOURCE website and research activities." 
-         data-th="นโยบายการคุ้มครองข้อมูลส่วนบุคคลของเว็บไซต์และกิจกรรมการดำเนินงานวิจัย ทรัพยากรชีวภาพปลาดุก">
+      <p data-en="Privacy Policy for CATFISH BIORESOURCE website and research activities." data-th="นโยบายการคุ้มครองข้อมูลส่วนบุคคลของเว็บไซต์และกิจกรรมการดำเนินงานวิจัย ทรัพยากรชีวภาพปลาดุก">
         นโยบายการคุ้มครองข้อมูลส่วนบุคคลของเว็บไซต์และกิจกรรมการดำเนินงานวิจัย ทรัพยากรชีวภาพปลาดุก
       </p>
     </div>
 
     <div class="policy-section">
       <div class="policy-card">
-        <h2 data-en="Introduction:" data-th="บทนำ">
-          <i class="fa-solid fa-shield-halved"></i> บทนำ
+        <h2 data-en="1. Introduction" data-th="1. บทนำ">
+          <i class="fa-solid fa-shield-halved"></i> 1. บทนำ
         </h2>
-        <p data-en="The Faculty of Science, Kasetsart University, is committed to protecting your personal information. This Privacy Policy (“Policy”) describes how we collect, use, and disclose your personal information when you use our website (“Website”) or our other services (“Services”)."
-           data-th="คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ มุ่งมั่นที่จะปกป้องข้อมูลส่วนบุคคลของคุณ นโยบายความเป็นส่วนตัวนี้ (“นโยบาย”) อธิบายวิธีการที่เราเก็บรวบรวม ใช้ และเปิดเผย ข้อมูลส่วนบุคคลของคุณเมื่อคุณใช้เว็บไซต์ของเรา (“เว็บไซต์”) หรือบริการอื่นๆ ของเรา (“บริการ”)">
-          คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ มุ่งมั่นที่จะปกป้องข้อมูลส่วนบุคคลของคุณ นโยบายความเป็นส่วนตัวนี้ (“นโยบาย”) อธิบายวิธีการที่เราเก็บรวบรวม ใช้ และเปิดเผย ข้อมูลส่วนบุคคลของคุณเมื่อคุณใช้เว็บไซต์ของเรา (“เว็บไซต์”) หรือบริการอื่นๆ ของเรา (“บริการ”)
+        <p data-en="The Animal Genomics and Bioresource Research Unit (AGB), Kasetsart University, recognizes the importance of protecting your personal data. This Privacy Policy outlines how we collect, use, disclose, and protect your personal information in accordance with relevant data protection standards."
+           data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์ (AGB) คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ ตระหนักถึงความสำคัญของการคุ้มครองข้อมูลส่วนบุคคล นโยบายความเป็นส่วนตัวนี้อธิบายถึงวิธีการที่เราจัดเก็บ ใช้ เปิดเผย และปกป้องข้อมูลส่วนบุคคลของคุณตามมาตรฐานสากลและกฎหมายที่เกี่ยวข้อง">
+          หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์ (AGB) คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ ตระหนักถึงความสำคัญของการคุ้มครองข้อมูลส่วนบุคคล นโยบายความเป็นส่วนตัวนี้อธิบายถึงวิธีการที่เราจัดเก็บ ใช้ เปิดเผย และปกป้องข้อมูลส่วนบุคคลของคุณตามมาตรฐานสากลและกฎหมายที่เกี่ยวข้อง
         </p>
-            
-        <h2 data-en="Information we collect:" data-th="ข้อมูลที่เรารวบรวม">
-          <i class="fa-solid fa-database"></i> ข้อมูลที่เรารวบรวม
+      </div>
+
+      <div class="policy-card">
+        <h2 data-en="2. Data Collection" data-th="2. การเก็บรวบรวมข้อมูลส่วนบุคคล">
+          <i class="fa-solid fa-database"></i> 2. การเก็บรวบรวมข้อมูลส่วนบุคคล
         </h2>
-        <p data-en="We may collect various types of personal information about you, including:"
-           data-th="เราอาจรวบรวมข้อมูลส่วนบุคคลประเภทต่างๆ เกี่ยวกับคุณ รวมถึง:">
-          เราอาจรวบรวมข้อมูลส่วนบุคคลประเภทต่างๆ เกี่ยวกับคุณ รวมถึง:
+        <p data-en="We may collect personal data when you interact with our website, subscribe to newsletters, or contact our research team. This includes:"
+           data-th="เราอาจเก็บรวบรวมข้อมูลส่วนบุคคลเมื่อคุณใช้งานเว็บไซต์ สมัครรับจดหมายข่าว หรือติดต่อประสานงานกับทีมงานวิจัย ซึ่งรวมถึง:">
+          เราอาจเก็บรวบรวมข้อมูลส่วนบุคคลเมื่อคุณใช้งานเว็บไซต์ สมัครรับจดหมายข่าว หรือติดต่อประสานงานกับทีมงานวิจัย ซึ่งรวมถึง:
         </p>
         <ul>
-          <li data-en="Contact information: such as name, address, phone number, and email address." data-th="ข้อมูลติดต่อ: เช่น ชื่อ ที่อยู่ เบอร์โทรศัพท์ และที่อยู่อีเมล">ข้อมูลติดต่อ: เช่น ชื่อ ที่อยู่ เบอร์โทรศัพท์ และที่อยู่อีเมล</li>
-          <li data-en="Demographic data: such as gender, age, and ethnicity." data-th="ข้อมูลประชากร: เช่น เพศ อายุ และเชื้อชาติ">ข้อมูลประชากร: เช่น เพศ อายุ และเชื้อชาติ</li>
-          <li data-en="Educational information: such as courses enrolled in, grades, and qualifications." data-th="ข้อมูลการศึกษา: เช่น หลักสูตรที่ลงทะเบียนเรียน ผลการเรียน และวุฒิการศึกษา">ข้อมูลการศึกษา: เช่น หลักสูตรที่ลงทะเบียนเรียน ผลการเรียน และวุฒิการศึกษา</li>
-          <li data-en="Usage data: such as your IP address, browser, and operating system." data-th="ข้อมูลการใช้งาน: เช่น ที่อยู่ IP ของคุณ เบราว์เซอร์ และระบบปฏิบัติการ">ข้อมูลการใช้งาน: เช่น ที่อยู่ IP ของคุณ เบราว์เซอร์ และระบบปฏิบัติการ</li>
-          <li data-en="Activity data: such as the web pages you visit, the time you spend on the website, and the actions you take on the website." data-th="ข้อมูลกิจกรรม: เช่น หน้าเว็บที่คุณเยี่ยมชม เวลาที่คุณใช้บนเว็บไซต์ และการดำเนินการที่คุณดำเนินการบนเว็บไซต์">ข้อมูลกิจกรรม: เช่น หน้าเว็บที่คุณเยี่ยมชม เวลาที่คุณใช้บนเว็บไซต์ และการดำเนินการที่คุณดำเนินการบนเว็บไซต์</li>
-          <li data-en="Content information: Such as the text, images, and videos you upload to the website." data-th="ข้อมูลเนื้อหา: เช่น ข้อความ รูปภาพ และวิดีโอที่คุณอัปโหลดไปยังเว็บไซต์">ข้อมูลเนื้อหา: เช่น ข้อความ รูปภาพ และวิดีโอที่คุณอัปโหลดไปยังเว็บไซต์</li>
+          <li data-en="Contact information (such as name, email address, and phone number)." data-th="ข้อมูลติดต่อ (เช่น ชื่อ-นามสกุล, ที่อยู่อีเมล, และเบอร์โทรศัพท์)">ข้อมูลติดต่อ (เช่น ชื่อ-นามสกุล, ที่อยู่อีเมล, และเบอร์โทรศัพท์)</li>
+          <li data-en="Technical data (such as IP address, browser type, and interaction logs)." data-th="ข้อมูลทางเทคนิค (เช่น หมายเลข IP address, ประเภทของเบราว์เซอร์, และประวัติการเข้าใช้งานเว็บไซต์)">ข้อมูลทางเทคนิค (เช่น หมายเลข IP address, ประเภทของเบราว์เซอร์, และประวัติการเข้าใช้งานเว็บไซต์)</li>
         </ul>
-        <p data-en="We may collect personal information from you in a variety of ways, including:"
-           data-th="เราอาจรวบรวมข้อมูลส่วนบุคคลจากคุณในหลากหลายวิธี รวมถึง:">
-          เราอาจรวบรวมข้อมูลส่วนบุคคลจากคุณในหลากหลายวิธี รวมถึง:
-        </p>
-        <ul>
-          <li data-en="When you provide us with information directly: for example, when you create an account, sign up for a newsletter, or contact us." data-th="เมื่อคุณให้ข้อมูลแก่เราโดยตรง: เช่น เมื่อคุณสร้างบัญชีผู้ใช้ ลงทะเบียนรับจดหมายข่าว หรือติดต่อเรา">เมื่อคุณให้ข้อมูลแก่เราโดยตรง: เช่น เมื่อคุณสร้างบัญชีผู้ใช้ ลงทะเบียนรับจดหมายข่าว หรือติดต่อเรา</li>
-          <li data-en="When you use our website or services: such as when you visit a webpage, click a link, or download a document." data-th="เมื่อคุณใช้เว็บไซต์หรือบริการของเรา: เช่น เมื่อคุณเยี่ยมชมหน้าเว็บ คลิกลิงก์ หรือดาวน์โหลดเอกสาร">เมื่อคุณใช้เว็บไซต์หรือบริการของเรา: เช่น เมื่อคุณเยี่ยมชมหน้าเว็บ คลิกลิงก์ หรือดาวน์โหลดเอกสาร</li>
-          <li data-en="From a third party: for example, from your educational institution or from a public source." data-th="จากบุคคลที่สาม: เช่น จากสถาบันการศึกษาของคุณ หรือจากแหล่งข้อมูลสาธารณะ">จากบุคคลที่สาม: เช่น จากสถาบันการศึกษาของคุณ หรือจากแหล่งข้อมูลสาธารณะ</li>
-        </ul>
-      
+      </div>
+
+      <div class="policy-card">
         <h2 data-en="Use of your information:" data-th="การใช้ข้อมูลของคุณ">
-          <i class="fa-solid fa-bullseye"></i> การใช้ข้อมูลของคุณ</h2>
+          <i class="fa-solid fa-bullseye"></i> การใช้ข้อมูลของคุณ
+        </h2>
         <p data-en="We may use your personal information for various purposes, including:"
-           data-th="เราอาจเปิดเผยข้อมูลส่วนบุคคลของคุณแก่บุคคลที่สามในบางกรณี รวมถึง:">
-          เราอาจเปิดเผยข้อมูลส่วนบุคคลของคุณแก่บุคคลที่สามในบางกรณี รวมถึง:
-          </p>
-        <ul>
-          <li data-en="To serve you: for example, to give you access to our website and services, to fulfill your requests, and to inform you of news and updates." data-th="เพื่อให้บริการแก่คุณ: เช่น เพื่อให้คุณเข้าถึงเว็บไซต์และบริการของเรา เพื่อตอบสนองคำขอของคุณ และเพื่อแจ้งข่าวสารและการอัปเดตแก่คุณ">เพื่อให้บริการแก่คุณ: เช่น เพื่อให้คุณเข้าถึงเว็บไซต์และบริการของเรา เพื่อตอบสนองคำขอของคุณ และเพื่อแจ้งข่าวสารและการอัปเดตแก่คุณ</li>
-          <li data-en="To improve our website and services: for example, to analyze your usage and to identify and fix errors." data-th="เพื่อปรับปรุงเว็บไซต์และบริการของเรา: เช่น เพื่อวิเคราะห์การใช้งานของคุณและเพื่อระบุและแก้ไขข้อผิดพลาด">เพื่อปรับปรุงเว็บไซต์และบริการของเรา: เช่น เพื่อวิเคราะห์การใช้งานของคุณและเพื่อระบุและแก้ไขข้อผิดพลาด</li>
-          <li data-en="To contact you: for example, to answer your questions or to send you information about our website and services." data-th="เพื่อติดต่อคุณ: เช่น เพื่อตอบคำถามของคุณ หรือเพื่อส่งข้อมูลเกี่ยวกับเว็บไซต์และบริการของเรา">เพื่อติดต่อคุณ: เช่น เพื่อตอบคำถามของคุณ หรือเพื่อส่งข้อมูลเกี่ยวกับเว็บไซต์และบริการของเรา</li>
-          <li data-en="For marketing purposes: such as sending you special offers and advertisements relevant to you." data-th="เพื่อวัตถุประสงค์ทางการตลาด: เช่น เพื่อส่งข้อเสนอพิเศษและโฆษณาที่เกี่ยวข้องกับคุณ">เพื่อวัตถุประสงค์ทางการตลาด: เช่น เพื่อส่งข้อเสนอพิเศษและโฆษณาที่เกี่ยวข้องกับคุณ</li>
-          <li data-en="For legal or regulatory purposes: such as to comply with a legal request or to protect our rights." data-th="เพื่อวัตถุประสงค์ทางกฎหมายหรือข้อบังคับ: เช่น เพื่อปฏิบัติตามคำขอทางกฎหมายหรือเพื่อปกป้องสิทธิ์ของเรา">เพื่อวัตถุประสงค์ทางกฎหมายหรือข้อบังคับ: เช่น เพื่อปฏิบัติตามคำขอทางกฎหมายหรือเพื่อปกป้องสิทธิ์ของเรา</li>
-        </ul>
-
-        <h2 data-en="Disclosure of your information:" data-th="การเปิดเผยข้อมูลของคุณ">
-          <i class="fa-solid fa-address-book"></i> การเปิดเผยข้อมูลของคุณ
-        </h2>
-        <p data-en="We may disclose your personal information to third parties in certain cases, including:"
-           data-th="เราอาจเปิดเผยข้อมูลส่วนบุคคลของคุณแก่บุคคลที่สามในบางกรณี รวมถึง:">
-          เราอาจเปิดเผยข้อมูลส่วนบุคคลของคุณแก่บุคคลที่สามในบางกรณี รวมถึง:
+           data-th="เราอาจใช้ข้อมูลส่วนบุคคลของคุณเพื่อวัตถุประสงค์ต่างๆ รวมถึง:">
+          เราอาจใช้ข้อมูลส่วนบุคคลของคุณเพื่อวัตถุประสงค์ต่างๆ รวมถึง:
         </p>
         <ul>
-          <li data-en="Our service providers: such as companies that provide us with website hosting or data analytics services." data-th="ผู้ให้บริการของเรา: เช่น บริษัทที่ให้บริการโฮสติ้ง เว็บไซต์ หรือการวิเคราะห์ข้อมูลแก่เรา">ผู้ให้บริการของเรา: เช่น บริษัทที่ให้บริการโฮสติ้ง เว็บไซต์ หรือการวิเคราะห์ข้อมูลแก่เรา</li>
-          <li data-en="Our business partners: such as companies that offer products or services in partnership with us." data-th="พันธมิตรทางธุรกิจของเรา: เช่น บริษัทที่เสนอผลิตภัณฑ์หรือบริการร่วมกับเรา">พันธมิตรทางธุรกิจของเรา: เช่น บริษัทที่เสนอผลิตภัณฑ์หรือบริการร่วมกับเรา</li>
-          <li data-en="Other third parties: such as law enforcement agencies or government agencies, when necessary by law or to protect our rights." data-th="บุคคลที่สามอื่นๆ: เช่น หน่วยงานบังคับใช้กฎหมาย หรือหน่วยงานรัฐบาล เมื่อจำเป็นตามกฎหมายหรือเพื่อปกป้องสิทธิ์ของเรา">บุคคลที่สามอื่นๆ: เช่น หน่วยงานบังคับใช้กฎหมาย หรือหน่วยงานรัฐบาล เมื่อจำเป็นตามกฎหมายหรือเพื่อปกป้องสิทธิ์ของเรา</li>
+          <li data-en="To serve you: for example, to give you access to our website and services, to fulfill your requests, and to inform you of news and updates." 
+              data-th="เพื่อให้บริการแก่คุณ: เช่น เพื่อให้คุณเข้าถึงเว็บไซต์และบริการของเรา เพื่อตอบสนองคำขอของคุณ และเพื่อแจ้งข่าวสารและการอัปเดตแก่คุณ">
+            เพื่อให้บริการแก่คุณ: เช่น เพื่อให้คุณเข้าถึงเว็บไซต์และบริการของเรา เพื่อตอบสนองคำขอของคุณ และเพื่อแจ้งข่าวสารและการอัปเดตแก่คุณ
+          </li>
+          <li data-en="To improve our website and services: for example, to analyze your usage and to identify and fix errors." 
+              data-th="เพื่อปรับปรุงเว็บไซต์และบริการของเรา: เช่น เพื่อวิเคราะห์การใช้งานของคุณและเพื่อระบุและแก้ไขข้อผิดพลาด">
+            เพื่อปรับปรุงเว็บไซต์และบริการของเรา: เช่น เพื่อวิเคราะห์การใช้งานของคุณและเพื่อระบุและแก้ไขข้อผิดพลาด
+          </li>
+          <li data-en="To contact you: for example, to answer your questions or to send you information about our website and services." 
+              data-th="เพื่อติดต่อคุณ: เช่น เพื่อตอบคำถามของคุณ หรือเพื่อส่งข้อมูลเกี่ยวกับเว็บไซต์และบริการของเรา">
+            เพื่อติดต่อคุณ: เช่น เพื่อตอบคำถามของคุณ หรือเพื่อส่งข้อมูลเกี่ยวกับเว็บไซต์และบริการของเรา
+          </li>
+          <li data-en="For marketing purposes: such as sending you special offers and advertisements relevant to you." 
+              data-th="เพื่อวัตถุประสงค์ทางการตลาด: เช่น เพื่อส่งข้อเสนอพิเศษและโฆษณาที่เกี่ยวข้องกับคุณ">
+            เพื่อวัตถุประสงค์ทางการตลาด: เช่น เพื่อส่งข้อเสนอพิเศษและโฆษณาที่เกี่ยวข้องกับคุณ
+          </li>
+          <li data-en="For legal or regulatory purposes: such as to comply with a legal request or to protect our rights." 
+              data-th="เพื่อวัตถุประสงค์ทางกฎหมายหรือข้อบังคับ: เช่น เพื่อปฏิบัติตามคำขอทางกฎหมายหรือเพื่อปกป้องสิทธิ์ของเรา">
+            เพื่อวัตถุประสงค์ทางกฎหมายหรือข้อบังคับ: เช่น เพื่อปฏิบัติตามคำขอทางกฎหมายหรือเพื่อปกป้องสิทธิ์ของเรา
+          </li>
         </ul>
+      </div>
 
-        <h2 data-en="Your data security:" data-th="ความปลอดภัยของข้อมูลของคุณ">
-          <i class="fa-solid fa-address-book"></i> ความปลอดภัยของข้อมูลของคุณ
+      <div class="policy-card">
+        <h2 data-en="4. Contact Us" data-th="4. ช่องทางการติดต่อ">
+          <i class="fa-solid fa-address-book"></i> 4. ช่องทางการติดต่อ
         </h2>
-        <p data-en="We employ appropriate technical and organizational safeguards to protect your personal data from unauthorized access, use, or disclosure. These measures may include firewalls, encryption, and physical access controls."
-           data-th="เราใช้มาตรการป้องกันทางเทคนิคและองค์กรที่เหมาะสมเพื่อปกป้องข้อมูลส่วนบุคคลของคุณจากการเข้าถึง การใช้ หรือการเปิดเผยโดยไม่ได้รับอนุญาต มาตรการเหล่านี้อาจรวมถึง ไฟร์วอลล์ การเข้ารหัส และการควบคุมการเข้าถึงทางกายภาพ">
-          เราใช้มาตรการป้องกันทางเทคนิคและองค์กรที่เหมาะสมเพื่อปกป้องข้อมูลส่วนบุคคลของคุณจากการเข้าถึง การใช้ หรือการเปิดเผยโดยไม่ได้รับอนุญาต มาตรการเหล่านี้อาจรวมถึง ไฟร์วอลล์ การเข้ารหัส และการควบคุมการเข้าถึงทางกายภาพ
+        <p data-en="If you have any questions regarding this Privacy Policy, please contact us at agb.sci@ku.th."
+           data-th="หากคุณมีข้อสงสัยหรือข้อเสนอแนะเกี่ยวกับนโยบายความเป็นส่วนตัวนี้ สามารถติดต่อเราได้ที่อีเมล agb.sci@ku.th">
+          หากคุณมีข้อสงสัยหรือข้อเสนอแนะเกี่ยวกับนโยบายความเป็นส่วนตัวนี้ สามารถติดต่อเราได้ที่อีเมล agb.sci@ku.th
         </p>
-
-        <h2 data-en="Your choices:" data-th="ตัวเลือกของคุณ">
-          <i class="fa-solid fa-address-book"></i> ตัวเลือกของคุณ
-        </h2>
-        <p data-en="You have several choices regarding your personal data, including:"
-           data-th="คุณมีตัวเลือกบางอย่างเกี่ยวกับข้อมูลส่วนบุคคลของคุณ รวมถึง:">
-          คุณมีตัวเลือกบางอย่างเกี่ยวกับข้อมูลส่วนบุคคลของคุณ รวมถึง:
-        </p>
-        <ul>
-          <li data-en="Accessing and correcting your information: You can access and correct your personal information by contacting us." data-th="การเข้าถึงและแก้ไขข้อมูลของคุณ: คุณสามารถเข้าถึงและแก้ไขข้อมูลส่วนบุคคลของคุณได้โดยติดต่อเรา">การเข้าถึงและแก้ไขข้อมูลของคุณ: คุณสามารถเข้าถึงและแก้ไขข้อมูลส่วนบุคคลของคุณได้โดยติดต่อเรา</li>
-          <li data-en="Requesting data deletion: You can request that we delete your personal data by contacting us." data-th="การขอลบข้อมูลของคุณ: คุณสามารถขอให้เราลบข้อมูลส่วนบุคคลของคุณได้โดยติดต่อเรา">การขอลบข้อมูลของคุณ: คุณสามารถขอให้เราลบข้อมูลส่วนบุคคลของคุณได้โดยติดต่อเรา</li>
-          <li data-en="Unfollowing: You can unfollow a person." data-th="การเลิกติดตาม: คุณสามารถเลิกติดตามการติด">การเลิกติดตาม: คุณสามารถเลิกติดตามการติด</li>
-        </ul>
       </div>
     </div>
   </main>
 
   <!-- Footer -->
-  <footer class="site-footer" id="contact">
+  <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-info">
         <h3 data-en="CATFISH BIORESOURCE" data-th="ทรัพยากรชีวภาพปลาดุก">ทรัพยากรชีวภาพปลาดุก</h3>
         <p data-en="AGB Research Unit" data-th="หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์">หน่วยวิจัยด้านจีโนมิกส์และทรัพยากรชีวภาพสัตว์</p>
         <p data-en="Address: Faculty of Science, Kasetsart University" data-th="ที่อยู่: คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์">คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
-        <p data-en="50 Ngamwongwan Rd, Catuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900">ที่อยู่: 50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900</p>
+        <p data-en="50 Ngamwongwan Rd, Catuchak, Bangkok 10900" data-th="50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900">50 ถนนงามวงศ์วาน จตุจักร กรุงเทพฯ 10900</p>
         <p data-en="Phone: +66 2 017 5555 ext. 740072" data-th="เบอร์โทรศัพท์: +66 2 017 5555 ต่อ 740072">เบอร์โทรศัพท์: +66 2 017 5555 ต่อ 740072</p>
         <p>Email: <a href="mailto:agb.sci@ku.th">agb.sci@ku.th</a></p>
       </div>
@@ -734,10 +724,6 @@
           language === "en" ? "Switch to Thai" : "Switch to English"
         );
       }
-
-      document.title = language === "en"
-        ? "Privacy Policy | CATFISH BIORESOURCE"
-        : "นโยบายความเป็นส่วนตัว | CATFISH BIORESOURCE";
     }
 
     if (toggle) {
