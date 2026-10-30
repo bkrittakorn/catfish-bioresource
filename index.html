@@ -370,7 +370,6 @@
       box-shadow: 0 12px 30px rgba(22, 62, 48, 0.15);
     }
 
-    /* 📌 สไตล์ Hover สำหรับปุ่ม View All News ให้เหมือนปุ่มรู้จักโครงการ */
     .btn-light-custom {
       background: #4876a3; 
       color: white; 
@@ -390,6 +389,127 @@
       box-shadow: 0 12px 30px rgba(22, 62, 48, 0.15);
     }
 
+    .hero-carousel-section {
+      background: url('images/images.bg.png') center/cover no-repeat;
+      padding: 60px 0 80px;
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-track-wrapper {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease-in-out;
+      width: 100%;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* กล่องข้อความพาดหัวบนรูป */
+    .carousel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+      color: white;
+      padding: 30px 24px 20px;
+      text-align: center;
+    }
+
+    .carousel-caption h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 6px 0;
+      color: #ffffff;
+    }
+
+    .carousel-caption p {
+      font-size: 13px;
+      margin: 0;
+      color: #cbd5e1;
+    }
+
+    /* ปุ่มลูกศรซ้าย-ขวา */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--ink);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 10;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .carousel-btn:hover {
+      background: #ffffff;
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .carousel-btn.prev { left: -22px; }
+    .carousel-btn.next { right: -22px; }
+
+    /* จุดวงกลมด้านล่าง (Indicators) */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, width 0.3s;
+    }
+
+    .carousel-dot.active {
+      background: var(--blue);
+      width: 24px;
+      border-radius: 6px;
+    }
+    
     section { padding: 76px 0; }
 
     .section-head { max-width: 690px; margin-bottom: 32px; }
@@ -767,29 +887,47 @@
   </header>
 
   <main>
-    <section class="hero" id="home">
+<!-- 📌 ส่วน Hero Carousel สไตล์แบนเนอร์สไลด์ -->
+    <section class="hero-carousel-section" id="home">
       <div class="container">
-        <div class="hero-content">
-          <span class="eyebrow"
-                data-en="Science · Biodiversity · Research"
-                data-th="วิทยาศาสตร์ · ความหลากหลายทางชีวภาพ · งานวิจัย">
-            Science · Biodiversity · Research
-          </span>
+        <div class="carousel-container">
+          <!-- ปุ่มเลื่อนซ้าย -->
+          <button class="carousel-btn prev" id="prevBtn" aria-label="Previous Slide">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
 
-          <h1>CATFISH<br>BIORESOURCE</h1>
-
-          <p data-en="Academic information on catfish bioresources, project data, study topics, and scientific resources regarding catfish."
-             data-th="ข้อมูลวิชาการด้านทรัพยากรชีวภาพปลาดุก ข้อมูลโครงการ หัวข้อการศึกษา และแหล่งข้อมูลทางวิทยาศาสตร์ เกี่ยวกับปลาดุก">
-             Academic information on catfish bioresources, project data, study topics, and scientific resources regarding catfish.
-          </p>
-
-          <div class="actions">
-            <a class="btn btn-light" href="#about"
-               data-en="Explore the Project"
-               data-th="รู้จักโครงการ">
-              Explore the Project
-            </a>
+          <!-- แทร็กรูปภาพสไลด์ -->
+          <div class="carousel-track-wrapper">
+            <div class="carousel-track" id="carouselTrack">
+              <!-- สไลด์ที่ 1 -->
+              <div class="carousel-slide">
+                <img src="images/Catfish Bioresource Logo.png" alt="Slide 1">
+                <div class="carousel-caption">
+                  <h3 data-en="CATFISH BIORESOURCE PROJECT" data-th="โครงการทรัพยากรชีวภาพปลาดุก">CATFISH BIORESOURCE PROJECT</h3>
+                  <p data-en="Academic information on catfish bioresources and research." data-th="ข้อมูลวิชาการด้านทรัพยากรชีวภาพปลาดุกและงานวิจัย">Academic information on catfish bioresources and research.</p>
+                </div>
+              </div>
+              <!-- สไลด์ที่ 2 -->
+              <div class="carousel-slide">
+                <img src="images/images.bg.png" alt="Slide 2">
+                <div class="carousel-caption">
+                  <h3 data-en="Genomic and Biodiversity Research" data-th="การวิจัยด้านจีโนมิกส์และความหลากหลายทางชีวภาพ">Genomic and Biodiversity Research</h3>
+                  <p data-en="Advanced scientific study for sustainable aquatic resources." data-th="การศึกษาวิทยาศาสตร์ขั้นสูงเพื่อทรัพยากรสัตว์น้ำที่ยั่งยืน">Advanced scientific study for sustainable aquatic resources.</p>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- ปุ่มเลื่อนขวา -->
+          <button class="carousel-btn next" id="nextBtn" aria-label="Next Slide">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <!-- จุดบอกสถานะหน้า (Dots) -->
+        <div class="carousel-dots" id="carouselDots">
+          <button class="carousel-dot active" data-index="0"></button>
+          <button class="carousel-dot" data-index="1"></button>
         </div>
       </div>
     </section>
@@ -942,90 +1080,133 @@
   <script src="news-data.js"></script>
 
   <script>
-    const toggle = document.getElementById("languageToggle");
-
-    function renderHomeNewsCards(lang) {
-      const track = document.getElementById("latestNewsTrack");
-      if (!track) return;
-      track.innerHTML = "";
-
-      const latestThree = (typeof newsData !== "undefined") ? newsData.slice(0, 3) : [];
-
-      latestThree.forEach(news => {
-        const title = lang === "en" ? news.titleEn : news.titleTh;
-        const excerpt = lang === "en" ? news.excerptEn : news.excerptTh;
-        const dateStr = lang === "en" ? (news.dateEn || news.date) : news.date;
-        const readMoreText = lang === "en" ? "Read More →" : "อ่านเพิ่มเติม →";
-
-        const targetLink = news.link;
-
-        const cardHTML = `
-          <article class="news-card">
-            <a href="${targetLink}">
-              <div class="news-img-wrapper">
-                <img src="${news.image}" alt="${title}" class="news-thumb" onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">
-              </div>
-            </a>
-            <div class="news-content">
-              <span class="news-date">${dateStr}</span>
-              <h3><a href="${targetLink}">${title}</a></h3>
-              <p>${excerpt}</p>
-              <a href="${targetLink}" class="read-more-link">${readMoreText}</a>
-            </div>
-          </article>
-        `;
-        track.insertAdjacentHTML("beforeend", cardHTML);
-      });
-    }
-
-    function setLanguage(language) {
-      document.documentElement.lang = language;
-      localStorage.setItem("preferred_lang", language);
-
-      document.querySelectorAll("[data-en][data-th]").forEach(element => {
-        let text = element.dataset[language];
-
-        if (text) {
-          if (language === "en") {
-            text = text.replace(/Catfish of the genus Clarias/g, "<b>Catfish of the genus <i>Clarias</i></b>")
-                       .replace(/The CATFISH BIORESOURCE Project/g, "<b>The CATFISH BIORESOURCE Project</b>")
-                       .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
-                       .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
-                       .replace(/Clarias/g, "<i>Clarias</i>");
-          } else {
-            text = text.replace(/ปลาดุกสกุล Clarias/g, "<b>ปลาดุกสกุล <i>Clarias</i></b>")
-                       .replace(/โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก/g, "<b>โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก</b>")
-                       .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
-                       .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
-                       .replace(/Clarias/g, "<i>Clarias</i>");
-          }
-          element.innerHTML = text;
-        }
-      });
-
-      if (toggle) {
-        toggle.setAttribute(
-          "aria-label",
-          language === "en" ? "Switch to Thai" : "Switch to English"
-        );
+      // ควบคุมการทำงานของ Hero Carousel
+      const track = document.getElementById('carouselTrack');
+      const slides = Array.from(track.children);
+      const nextButton = document.getElementById('nextBtn');
+      const prevButton = document.getElementById('prevBtn');
+      const dotsNav = document.getElementById('carouselDots');
+      const dots = Array.from(dotsNav.children);
+  
+      let currentIndex = 0;
+  
+      function updateCarousel(index) {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+        currentIndex = index;
       }
-
-      document.title = language === "en"
-        ? "CATFISH BIORESOURCE | Kasetsart University"
-        : "CATFISH BIORESOURCE | มหาวิทยาลัยเกษตรศาสตร์";
-
-      renderHomeNewsCards(language);
-    }
-
-    if (toggle) {
-      toggle.addEventListener("click", () => {
-        const currentLang = document.documentElement.lang;
-        setLanguage(currentLang === "en" ? "th" : "en");
+  
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel(currentIndex);
       });
-    }
-
-    const savedLang = localStorage.getItem("preferred_lang") || "en";
-    setLanguage(savedLang);
-  </script>
-</body>
+  
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel(currentIndex);
+      });
+  
+      dotsNav.addEventListener('click', e => {
+        const targetDot = e.target.closest('button');
+        if (!targetDot) return;
+        const index = parseInt(targetDot.dataset.index);
+        updateCarousel(index);
+      });
+  
+      // เลื่อนอัตโนมัติทุกๆ 5 วินาที
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel(currentIndex);
+      }, 5000);
+    </script>
+    
+    <script>
+      const toggle = document.getElementById("languageToggle");
+  
+      function renderHomeNewsCards(lang) {
+        const track = document.getElementById("latestNewsTrack");
+        if (!track) return;
+        track.innerHTML = "";
+  
+        const latestThree = (typeof newsData !== "undefined") ? newsData.slice(0, 3) : [];
+  
+        latestThree.forEach(news => {
+          const title = lang === "en" ? news.titleEn : news.titleTh;
+          const excerpt = lang === "en" ? news.excerptEn : news.excerptTh;
+          const dateStr = lang === "en" ? (news.dateEn || news.date) : news.date;
+          const readMoreText = lang === "en" ? "Read More →" : "อ่านเพิ่มเติม →";
+  
+          const targetLink = news.link;
+  
+          const cardHTML = `
+            <article class="news-card">
+              <a href="${targetLink}">
+                <div class="news-img-wrapper">
+                  <img src="${news.image}" alt="${title}" class="news-thumb" onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">
+                </div>
+              </a>
+              <div class="news-content">
+                <span class="news-date">${dateStr}</span>
+                <h3><a href="${targetLink}">${title}</a></h3>
+                <p>${excerpt}</p>
+                <a href="${targetLink}" class="read-more-link">${readMoreText}</a>
+              </div>
+            </article>
+          `;
+          track.insertAdjacentHTML("beforeend", cardHTML);
+        });
+      }
+  
+      function setLanguage(language) {
+        document.documentElement.lang = language;
+        localStorage.setItem("preferred_lang", language);
+  
+        document.querySelectorAll("[data-en][data-th]").forEach(element => {
+          let text = element.dataset[language];
+  
+          if (text) {
+            if (language === "en") {
+              text = text.replace(/Catfish of the genus Clarias/g, "<b>Catfish of the genus <i>Clarias</i></b>")
+                         .replace(/The CATFISH BIORESOURCE Project/g, "<b>The CATFISH BIORESOURCE Project</b>")
+                         .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
+                         .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
+                         .replace(/Clarias/g, "<i>Clarias</i>");
+            } else {
+              text = text.replace(/ปลาดุกสกุล Clarias/g, "<b>ปลาดุกสกุล <i>Clarias</i></b>")
+                         .replace(/โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก/g, "<b>โครงการ CATFISH BIORESOURCE: ทรัพยากรชีวภาพปลาดุก</b>")
+                         .replace(/Clarias macrocephalus/g, "<i>Clarias macrocephalus</i>")
+                         .replace(/Clarias gariepinus/g, "<i>Clarias gariepinus</i>")
+                         .replace(/Clarias/g, "<i>Clarias</i>");
+            }
+            element.innerHTML = text;
+          }
+        });
+  
+        if (toggle) {
+          toggle.setAttribute(
+            "aria-label",
+            language === "en" ? "Switch to Thai" : "Switch to English"
+          );
+        }
+  
+        document.title = language === "en"
+          ? "CATFISH BIORESOURCE | Kasetsart University"
+          : "CATFISH BIORESOURCE | มหาวิทยาลัยเกษตรศาสตร์";
+  
+        renderHomeNewsCards(language);
+      }
+  
+      if (toggle) {
+        toggle.addEventListener("click", () => {
+          const currentLang = document.documentElement.lang;
+          setLanguage(currentLang === "en" ? "th" : "en");
+        });
+      }
+  
+      const savedLang = localStorage.getItem("preferred_lang") || "en";
+      setLanguage(savedLang);
+    </script>
+  </body>
 </html>
