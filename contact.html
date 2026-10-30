@@ -582,7 +582,35 @@
 
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html#home" data-en="Home" data-th="หน้าหลัก">Home</a>
-        <a href="index.html#about" data-en="About" data-th="เกี่ยวกับ">About</a>
+
+        <!-- 📌 Mega Menu: About (About Project & About AGB) -->
+        <div class="nav-item-dropdown">
+          <a href="about.html" style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
+            <span data-en="About" data-th="เกี่ยวกับ">About</span>
+          </a>
+          <div class="mega-menu">
+            <div class="mega-menu-col-left">
+              <div class="mega-menu-title" data-en="About Overview" data-th="ภาพรวมเกี่ยวกับเรา">About Overview</div>
+              <p class="mega-menu-desc" 
+                 data-en="Learn more about our research initiatives, objectives, and the research unit." 
+                 data-th="เรียนรู้เพิ่มเติมเกี่ยวกับโครงการวิจัย วัตถุประสงค์ และหน่วยวิจัยของเรา">
+                Learn more about our research initiatives, objectives, and the research unit.
+              </p>
+            </div>
+            <div class="mega-menu-col-right">
+              <a href="about.html#project" class="mega-menu-item">
+                <span data-en="About Project" data-th="เกี่ยวกับโครงการ">เกี่ยวกับโครงการ</span>
+              </a>
+              <a href="about.html#agb" class="mega-menu-item">
+                <span data-en="AGB Research Unit" data-th="หน่วยวิจัย AGB">หน่วยวิจัย AGB</span>
+              </a>
+              <a href="about-privacy-policy.html" class="mega-menu-item">
+                <span data-en="Privacy Policy" data-th="นโยบายความเป็นส่วนตัว">นโยบายความเป็นส่วนตัว</span>                
+              </a>
+            </div>
+          </div>
+        </div>
+
         <a href="all-news.html" data-en="News" data-th="ข่าวสาร">News</a>
 
         <!-- Mega Menu คลังข้อมูล -->
